@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bautizo y Cumpleaños · Aaron Sebastián Ortiz Alcantar</title>
+  
+  <!-- Tipografía Editorial Minimalista de Lujo (Cinzel + Lora + Montserrat) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Cinzel', 'serif'],
+            body: ['Lora', 'serif'],
+            sans: ['Montserrat', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      /* PALETA EXACTA DEL REEL: VERDE OLIVO TERCIOPELO, BEIGE LINO CÁLIDO, NEGRO ÓNYX Y ORO */
+      --paper: #F5EFE6;
+      --ink: #141714;
+      --ink-muted: #3D4A38;
+      --olive: #3E5033;
+      --olive-light: #526745;
+      --olive-soft: #6E8460;
+      --gold: #C6A052;
+      --gold-light: #E8D5A6;
+      --line: #DCD4C4;
+    }
+
+    html, body {
+      background-color: var(--paper);
+      color: var(--ink);
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Lora', serif;
+      -webkit-font-smoothing: antialiased;
+      font-size: clamp(16px, 3.5vw, 18px);
+      font-weight: 300;
+      line-height: 1.75;
+      position: relative;
+    }
+
+    /* Textura sutil de papel lino artesanal en tono beige */
+    .grain-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: url("https://www.transparenttextures.com/patterns/linen-design.png");
+      mix-blend-mode: multiply;
+    }
+
+    /* Marco Passepartout litúrgico y elegante en verde olivo y oro */
+    .passepartout-outer {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border: 1.5px solid rgba(62, 80, 51, 0.35);
+      pointer-events: none;
+      z-index: 99;
+    }
+
+    .passepartout-inner {
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      border: 1px dashed rgba(198, 160, 82, 0.55);
+      pointer-events: none;
+      z-index: 99;
+    }
+
+    /* Separadores de línea fina de imprenta */
+    .hairline-v {
+      width: 1px;
+      height: 55px;
+      background: linear-gradient(180deg, transparent, var(--gold), transparent);
+      margin: 2.8rem auto;
+    }
+
+    .hairline-h {
+      width: 45px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1.8rem auto;
+    }
+
+    /* Transiciones suaves al hacer scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Contenedores de mapa de Google Maps */
+    .map-container {
+      width: 100%;
+      height: 230px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      filter: contrast(1.02);
+      transition: filter 0.3s ease;
+    }
+
+    /* ============================================================== */
+    /* DIORAMA HEROICO ESPECTACULAR (COMPOSICIÓN DINÁMICA 3D)         */
+    /* ============================================================== */
+    .hero-stage {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      height: 430px;
+      margin: 1.5rem auto 1rem;
+      user-select: none;
+    }
+    @media (min-width: 640px) {
+      .hero-stage {
+        height: 470px;
+      }
+    }
+
+    .hero-layer {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.2s ease;
+      cursor: pointer;
+    }
+    .hero-layer:hover {
+      z-index: 60 !important;
+    }
+
+    .hero-actor {
+      user-select: none;
+      filter: drop-shadow(0 14px 18px rgba(45, 58, 40, 0.24)) drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+      transition: filter 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hero-layer:hover .hero-actor {
+      filter: drop-shadow(0 22px 30px rgba(198, 160, 82, 0.55)) drop-shadow(0 8px 12px rgba(0, 0, 0, 0.25)) brightness(1.06);
+      transform: scale(1.09) translateY(-4px);
+    }
+
+    /* Posicionamiento cinematográfico escalonado y equilibrado */
+    /* 1. Spider-Man: En el aire suspendido arriba en el centro-izq */
+    .hero-spidey-pos {
+      top: 8px;
+      left: 28%;
+      z-index: 35;
+      width: 36%;
+      max-width: 160px;
+    }
+    /* 2. Capitán América: En el flanco frontal izquierdo con escudo */
+    .hero-cap-pos {
+      bottom: 22px;
+      left: 2%;
+      z-index: 26;
+      width: 31%;
+      max-width: 135px;
+    }
+    /* 3. Iron Man: Al frente centro-derecha con repulsor listo */
+    .hero-iron-pos {
+      bottom: 18px;
+      left: 36%;
+      z-index: 28;
+      width: 36%;
+      max-width: 160px;
+    }
+    /* 4. Hulk: Guardián imponente en el flanco derecho */
+    .hero-hulk-pos {
+      bottom: 24px;
+      right: 2%;
+      z-index: 22;
+      width: 37%;
+      max-width: 175px;
+    }
+
+    /* Animaciones de flotación desfasadas */
+    @keyframes floatSpidey {
+      0%, 100% { transform: translateY(0px) rotate(-1.5deg); }
+      50% { transform: translateY(-11px) rotate(1.5deg); }
+    }
+    @keyframes floatCap {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px) rotate(-0.5deg); }
+    }
+    @keyframes floatIron {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-9px) rotate(1deg); }
+    }
+    @keyframes floatHulk {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .hero-float-spidey { animation: floatSpidey 4.6s ease-in-out infinite; }
+    .hero-float-cap { animation: floatCap 5.2s ease-in-out 0.6s infinite; }
+    .hero-float-iron { animation: floatIron 4.8s ease-in-out 1.2s infinite; }
+    .hero-float-hulk { animation: floatHulk 5.8s ease-in-out 1.8s infinite; }
+
+    /* Etiquetas de personajes en papel lino y oro */
+    .hero-tag-chip {
+      margin-top: 5px;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #3E5033;
+      background: rgba(250, 246, 240, 0.94);
+      border: 1px solid rgba(198, 160, 82, 0.5);
+      padding: 2.5px 9px;
+      border-radius: 9999px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+      opacity: 0.88;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+    .hero-layer:hover .hero-tag-chip {
+      opacity: 1;
+      color: #141714;
+      border-color: #C6A052;
+      background: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(198, 160, 82, 0.35);
+    }
+
+    /* Partículas de destellos dorados mágicos */
+    .sparkle {
+      position: absolute;
+      color: #C6A052;
+      pointer-events: none;
+      user-select: none;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.25; transform: scale(0.75) rotate(0deg); }
+      50% { opacity: 1; transform: scale(1.35) rotate(45deg); text-shadow: 0 0 8px rgba(198,160,82,0.8); }
+    }
+    .s-1 { top: 12%; left: 14%; font-size: 14px; animation: twinkle 3s ease-in-out infinite; }
+    .s-2 { top: 18%; right: 15%; font-size: 11px; animation: twinkle 3.6s ease-in-out 0.9s infinite; }
+    .s-3 { bottom: 32%; left: 6%; font-size: 10px; animation: twinkle 4.2s ease-in-out 1.6s infinite; }
+    .s-4 { bottom: 26%; right: 8%; font-size: 13px; animation: twinkle 3.4s ease-in-out 2.2s infinite; }
+
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- Fondo de textura de lino beige y marcos passepartout -->
+  <div class="grain-overlay"></div>
+  <div class="passepartout-outer"></div>
+  <div class="passepartout-inner"></div>
+
+
+
+  <!-- CONTENEDOR EDITORIAL MINIMALISTA CLÁSICO -->
+  <div class="max-w-[550px] mx-auto px-6 py-20 text-center relative z-10 space-y-14">
+    
+    <!-- ============================================================= -->
+    <!-- 1. ENCABEZADO / TÍTULO PRINCIPAL                              -->
+    <!-- ============================================================= -->
+    <header class="reveal space-y-5 pt-4">
+      <p class="font-sans text-[11px] font-semibold tracking-[0.35em] text-[#3E5033] uppercase">
+        Mi Bautizo & Cumpleaños
+      </p>
+
+      <h1 class="font-display text-3xl sm:text-4xl font-normal leading-[1.25] tracking-[0.05em] uppercase text-[#141714]">
+        Aaron Sebastián<br>
+        <span class="text-2xl sm:text-3xl font-light italic font-body lowercase tracking-normal text-[#3E5033]">
+          Ortiz Alcantar
+        </span>
+      </h1>
+      
+      <p class="font-sans text-xs font-semibold tracking-[0.25em] text-[#3E5033] uppercase mt-4">
+        Sábado 3 de Octubre de 2026
+      </p>
+
+      <p class="font-body italic text-[17px] text-[#3D4A38] max-w-[85%] mx-auto pt-2 leading-relaxed">
+        "Con la bendición de Dios y rodeado del amor de mi familia, celebro mi bautizo y mi cumpleaños."
+      </p>
+    </header>
+
+    <div class="hairline-v reveal"></div>
+
+    <!-- ============================================================= -->
+    <!-- 2. CUENTA REGRESIVA                                           -->
+    <!-- ============================================================= -->
+    <section class="reveal space-y-3">
+      <p class="font-sans text-[10px] font-semibold tracking-[0.25em] uppercase text-[#3E5033]">Faltan</p>
+      
+      <div class="flex justify-center items-center gap-4 sm:gap-6">
+        <div class="flex flex-col items-center">
+          <span id="cd-days" class="font-display text-3xl font-normal text-[#141714]">--</span>
+          <span class="font-sans text-[9px] uppercase tracking-widest text-[#526745] font-medium mt-0.5">Días</span>
+        </div>
+        <span class="font-display text-2xl text-[#C6A052]">:</span>
+        <div class="flex flex-col items-center">
+          <span id="cd-hours" class="font-display text-3xl font-normal text-[#141714]">--</span>
+          <span class="font-sans text-[9px] uppercase tracking-widest text-[#526745] font-medium mt-0.5">Horas</span>
+        </div>
+        <span class="font-display text-2xl text-[#C6A052]">:</span>
+        <div class="flex flex-col items-center">
+          <span id="cd-mins" class="font-display text-3xl font-normal text-[#141714]">--</span>
+          <span class="font-sans text-[9px] uppercase tracking-widest text-[#526745] font-medium mt-0.5">Minutos</span>
+        </div>
+        <span class="font-display text-2xl text-[#C6A052]">:</span>
+        <div class="flex flex-col items-center">
+          <span id="cd-secs" class="font-display text-3xl font-normal text-[#141714]">--</span>
+          <span class="font-sans text-[9px] uppercase tracking-widest text-[#526745] font-medium mt-0.5">Segundos</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="hairline-v reveal"></div>
+
+    <!-- ============================================================= -->
+    <!-- 3. CEREMONIA RELIGIOSA                                        -->
+    <!-- ============================================================= -->
+    <section class="reveal space-y-5">
+      <p class="font-sans text-[10px] font-semibold tracking-[0.25em] uppercase text-[#3E5033]">Ceremonia Religiosa</p>
+      <h3 class="font-display text-2xl font-medium tracking-[0.05em] text-[#141714]">
+        Iglesia Nuestra Señora del Carmen
+      </h3>
+      
+      <p class="text-[17px] text-[#3D4A38] max-w-[85%] mx-auto leading-relaxed">
+        Avenida México Norte 117, Centro,<br>C.P. 63000, Tepic, Nayarit, México
+      </p>
+      
+      <!-- Mapa integrado de Google Maps -->
+      <div class="pt-2 max-w-[95%] mx-auto">
+        <iframe 
+          class="map-container"
+          src="https://maps.google.com/maps?q=Iglesia+del+Carmen,+Avenida+Mexico+Norte+117,+Centro,+Tepic,+Nayarit&t=&z=16&ie=UTF8&iwloc=&output=embed"
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      
+      <div class="pt-2">
+        <a href="https://www.google.com/maps/search/?api=1&query=Iglesia+del+Carmen+Avenida+Mexico+Norte+117+Centro+Tepic+Nayarit" target="_blank" class="font-display text-xs tracking-wider uppercase text-[#C6A052] border-b border-[#C6A052]/40 pb-0.5 hover:border-[#C6A052] transition-colors">
+          Abrir en Google Maps
+        </a>
+      </div>
+    </section>
+
+    <div class="hairline-v reveal"></div>
+
+    <!-- ============================================================= -->
+    <!-- 4. RECEPCIÓN Y CUMPLEAÑOS                                     -->
+    <!-- ============================================================= -->
+    <section class="reveal space-y-5">
+      <p class="font-sans text-[10px] font-semibold tracking-[0.25em] uppercase text-[#3E5033]">Celebración</p>
+      <h3 class="font-display text-2xl font-medium tracking-[0.05em] text-[#141714]">
+        Salón de Eventos La Lomita
+      </h3>
+      
+      <p class="text-[17px] text-[#3D4A38] max-w-[85%] mx-auto leading-relaxed">
+        Boulevard Tepic Xalisco #110, Col. La Curva del Guayabo,<br>Tepic, Nayarit
+      </p>
+      
+      <!-- Mapa integrado de Google Maps -->
+      <div class="pt-2 max-w-[95%] mx-auto">
+        <iframe 
+          class="map-container"
+          src="https://maps.google.com/maps?q=Salon+de+eventos+La+lomita,+Boulevard+Tepic+Xalisco+110,+Tepic,+Nayarit&t=&z=16&ie=UTF8&iwloc=&output=embed"
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      
+      <div class="pt-2">
+        <a href="https://www.google.com/maps/search/?api=1&query=Salon+de+eventos+La+lomita+Boulevard+Tepic+Xalisco+110+Tepic+Nayarit" target="_blank" class="font-display text-xs tracking-wider uppercase text-[#C6A052] border-b border-[#C6A052]/40 pb-0.5 hover:border-[#C6A052] transition-colors">
+          Abrir en Google Maps
+        </a>
+      </div>
+
+      <!-- ============================================================= -->
+      <!-- DIORAMA HEROICO ESPECTACULAR (COMPOSICIÓN DINÁMICA 3D)         -->
+      <!-- ============================================================= -->
+      <div class="pt-10 pb-2 relative">
+        
+        <!-- Emblema de honor editorial -->
+        <div class="flex items-center justify-center gap-3 mb-2">
+          <div class="w-8 h-px bg-gradient-to-r from-transparent to-[#C6A052]"></div>
+          <span class="font-sans text-[10px] font-bold tracking-[0.35em] uppercase text-[#3E5033]">
+            El Escuadrón de Aaron
+          </span>
+          <div class="w-8 h-px bg-gradient-to-l from-transparent to-[#C6A052]"></div>
+        </div>
+        
+        <h4 class="font-display text-2xl sm:text-3xl text-[#141714] font-medium tracking-wide">
+          Héroes al Rescate de la Fiesta
+        </h4>
+        
+        <p class="font-body italic text-[15px] sm:text-[16px] text-[#3D4A38] max-w-[85%] mx-auto mt-1 mb-2">
+          Capitán América, Spider-Man, Iron Man y Hulk se reúnen para celebrar su cumpleaños.
+        </p>
+
+        <!-- ESCENARIO DINÁMICO HEROICO EN 3D -->
+        <div class="hero-stage">
+          
+          <!-- Aureola celestial de luz dorada y rayos sutiles -->
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <!-- Resplandor central -->
+            <div class="w-[260px] sm:w-[320px] h-[260px] sm:h-[320px] rounded-full bg-gradient-to-tr from-[#C6A052]/15 via-[#FAF6F0]/60 to-[#3E5033]/15 blur-2xl"></div>
+            <!-- Círculos concéntricos litúrgicos con pespunte fino -->
+            <div class="w-[250px] sm:w-[310px] h-[250px] sm:h-[310px] rounded-full border border-dashed border-[#C6A052]/35 opacity-75"></div>
+            <div class="w-[200px] sm:w-[250px] h-[200px] sm:h-[250px] rounded-full border border-[#C6A052]/20"></div>
+          </div>
+
+          <!-- Destellos dorados flotantes (partículas mágicas) -->
+          <div class="sparkle s-1">✦</div>
+          <div class="sparkle s-2">★</div>
+          <div class="sparkle s-3">✦</div>
+          <div class="sparkle s-4">★</div>
+
+          <!-- SOMBRA BASE COLECTIVA EN EL SUELO -->
+          <div class="absolute bottom-3 left-1/2 -translate-x-1/2 w-[85%] h-7 bg-[#3E5033]/15 rounded-[100%] blur-md pointer-events-none"></div>
+
+          <!-- 1. HULK (Atrás a la derecha, imponente y protector) -->
+          <div class="hero-layer hero-hulk-pos group" title="Hulk">
+            <img 
+              src="/hero_hulk.png?v=3" 
+              alt="Hulk" 
+              class="hero-actor hero-float-hulk w-full h-auto object-contain"
+            />
+            <div class="hero-tag-chip">Hulk</div>
+          </div>
+
+          <!-- 2. CAPITÁN AMÉRICA (Al frente a la izquierda, solemne con escudo) -->
+          <div class="hero-layer hero-cap-pos group" title="Capitán América">
+            <img 
+              src="/hero_cap.png?v=3" 
+              alt="Capitán América" 
+              class="hero-actor hero-float-cap w-full h-auto object-contain"
+            />
+            <div class="hero-tag-chip">Capitán América</div>
+          </div>
+
+          <!-- 3. IRON MAN (Centro derecha al frente, pose heroica con repulsor) -->
+          <div class="hero-layer hero-iron-pos group" title="Iron Man">
+            <img 
+              src="/hero_ironman.png?v=2" 
+              alt="Iron Man" 
+              class="hero-actor hero-float-iron w-full h-auto object-contain"
+            />
+            <div class="hero-tag-chip">Iron Man</div>
+          </div>
+
+          <!-- 4. SPIDER-MAN (En el aire arriba a la izquierda, saltando dinámico) -->
+          <div class="hero-layer hero-spidey-pos group" title="Spider-Man">
+            <!-- Hilo de telaraña dorada sutil que conecta hacia arriba -->
+            <div class="absolute -top-12 left-1/2 w-0.5 h-14 bg-gradient-to-b from-transparent via-[#C6A052]/50 to-[#C6A052] -translate-x-1/2 pointer-events-none"></div>
+            <img 
+              src="/hero_spiderman.png?v=2" 
+              alt="Spider-Man" 
+              class="hero-actor hero-float-spidey w-full h-auto object-contain"
+            />
+            <div class="hero-tag-chip">Spider-Man</div>
+          </div>
+
+        </div>
+
+        <!-- Placa de honor al pie del diorama -->
+        <div class="inline-flex items-center gap-2 px-5 py-2 bg-[#FAF6F0] border border-[#C6A052]/50 rounded-full shadow-sm mt-1">
+          <span class="text-[#C6A052] text-xs">★</span>
+          <span class="font-sans text-[10px] uppercase tracking-[0.25em] text-[#3E5033] font-bold">
+            Guardianes de la Aventura · Festejo de Cumpleaños
+          </span>
+          <span class="text-[#C6A052] text-xs">★</span>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="hairline-v reveal"></div>
+
+    <!-- ============================================================= -->
+    <!-- 5. APARTADO ESPECIAL: CUMPLEAÑOS & MESA DE REGALOS            -->
+    <!-- (Estética de Papelería de Lujo Infantil / Acuarela de Cuento) -->
+    <!-- ============================================================= -->
+    <section class="reveal relative overflow-hidden rounded-3xl border border-[#C6A052]/50 shadow-sm bg-[#FAF6F0] p-6 sm:p-10 text-center space-y-8 my-10">
+      
+      <!-- Marco interior litúrgico de papelería fina -->
+      <div class="absolute inset-2 border border-dashed border-[#C6A052]/35 rounded-2xl pointer-events-none"></div>
+
+      <!-- Encabezado de Cumpleaños -->
+      <div class="relative z-10 space-y-3 pt-2">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 bg-[#3E5033]/10 border border-[#3E5033]/30 rounded-full">
+          <span class="font-sans text-[10px] font-semibold tracking-[0.3em] uppercase text-[#3E5033]">
+            Celebración de Cumpleaños
+          </span>
+        </div>
+
+        <h3 class="font-display text-3xl sm:text-4xl font-normal tracking-[0.05em] uppercase text-[#141714]">
+          ¡Mi Cumpleaños!
+        </h3>
+
+        <p class="font-sans text-xs font-semibold tracking-[0.25em] text-[#3E5033] uppercase">
+          Aaron Sebastián Ortiz Alcantar
+        </p>
+
+        <p class="font-body italic text-[17px] text-[#3D4A38] max-w-[90%] mx-auto leading-relaxed pt-1">
+          "Un pequeño gran héroe celebra su cumpleaños rodeado de amor, bendiciones y aventuras."
+        </p>
+      </div>
+
+      <!-- Divisor sutil en oro -->
+      <div class="relative z-10 w-20 h-px bg-gradient-to-r from-transparent via-[#C6A052] to-transparent mx-auto"></div>
+
+      <!-- Bloque de Regalos -->
+      <div class="relative z-10 space-y-5 pt-1">
+        <p class="font-sans text-[10px] font-semibold tracking-[0.25em] uppercase text-[#3E5033]">
+          Mesa de Regalos
+        </p>
+
+        <!-- Liverpool Centrado y Clickeable -->
+        <div class="text-center">
+          <a 
+            href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/60040338" 
+            target="_blank" 
+            class="inline-flex flex-col items-center justify-center px-9 py-3.5 rounded-2xl border border-[#C6A052]/70 bg-[#FFFFFF] hover:bg-[#FBF8F2] shadow-sm hover:shadow-md transition-all group active:scale-95 cursor-pointer"
+          >
+            <div class="flex items-center gap-2">
+              <span class="font-serif italic font-bold text-2xl text-[#E6007E]">Liverpool</span>
+              <svg class="w-4 h-4 text-[#C6A052] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+            </div>
+            <span class="font-sans text-sm tracking-widest text-[#3E5033] font-bold mt-0.5">60040338</span>
+          </a>
+        </div>
+
+        <!-- Sugerencia de Sobre -->
+        <div class="pt-3 max-w-[88%] mx-auto space-y-2">
+          <h4 class="font-display text-xl font-normal text-[#141714]">
+            Sugerencia de Sobre
+          </h4>
+          <p class="text-[15px] sm:text-[16px] text-[#3D4A38] leading-relaxed">
+            Tu presencia y cariño son nuestro mejor obsequio. Si de igual manera deseas tener un detalle en sobre para Aaron, contaremos con un buzón especial el día del evento en la recepción.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="hairline-v reveal"></div>
+
+    <!-- ============================================================= -->
+    <!-- 6. CONFIRMACIÓN DE ASISTENCIA                                 -->
+    <!-- ============================================================= -->
+    <section class="reveal space-y-6 pb-6">
+      <h3 class="font-display text-2xl font-medium tracking-[0.05em] uppercase text-[#141714]">
+        Confirmación
+      </h3>
+      <p class="text-[17px] text-[#3D4A38] max-w-[85%] mx-auto leading-relaxed">
+        Agradecemos que nos confirmes tu asistencia para recibirte con todo nuestro cariño.
+      </p>
+      
+      <!-- Botón directo de confirmación por WhatsApp en Verde Olivo Terciopelo y Oro -->
+      <div class="pt-3 max-w-[90%] mx-auto">
+        <a 
+          href="https://api.whatsapp.com/send?phone=523111234567&text=%C2%A1Hola!%20Confirmo%20con%20mucho%20gusto%20mi%20asistencia%20al%20Bautizo%20y%20Cumplea%C3%B1os%20de%20Aaron%20Sebasti%C3%A1n%20el%20S%C3%A1bado%203%20de%20Octubre." 
+          target="_blank" 
+          class="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#3E5033] hover:bg-[#141714] text-[#FAF2E6] border border-[#C6A052]/70 rounded-full font-sans text-xs font-semibold tracking-widest uppercase transition-all shadow-md hover:scale-105"
+        >
+          <span>Confirmar por WhatsApp</span>
+          <svg class="w-4 h-4 text-[#C6A052]" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.771.815 2.796.815 3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.767-5.768-5.767zm7.986 5.766c0 4.406-3.584 7.99-7.986 7.99-1.399 0-2.715-.365-3.861-1.006l-4.526 1.187 1.207-4.412c-.732-1.205-1.157-2.616-1.157-4.12 0-4.407 3.584-7.991 7.986-7.991 4.402 0 7.986 3.584 7.986 7.991z"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer editorial clásico -->
+    <footer class="reveal pt-8 pb-12 text-center">
+      <div class="hairline-h"></div>
+      <p class="font-sans text-[10px] tracking-[0.25em] uppercase text-[#3E5033] font-semibold mt-6">
+        Familia Ortiz Alcantar · 2026
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- SCRIPT: Scroll reveal y Cuenta regresiva -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Scroll Reveal Observer
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.08 });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      // 2. Lógica de Cuenta Regresiva (3 de Octubre de 2026)
+      const targetDate = new Date('2026-10-03T13:00:00').getTime();
+      const daysEl = document.getElementById('cd-days');
+      const hoursEl = document.getElementById('cd-hours');
+      const minsEl = document.getElementById('cd-mins');
+      const secsEl = document.getElementById('cd-secs');
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance < 0) {
+          daysEl.innerText = '00';
+          hoursEl.innerText = '00';
+          minsEl.innerText = '00';
+          secsEl.innerText = '00';
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        daysEl.innerText = days.toString().padStart(2, '0');
+        hoursEl.innerText = hours.toString().padStart(2, '0');
+        minsEl.innerText = minutes.toString().padStart(2, '0');
+        secsEl.innerText = seconds.toString().padStart(2, '0');
+      }
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+
+    });
+  </script>
+
+</body>
+</html>
