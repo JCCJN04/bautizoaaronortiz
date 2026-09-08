@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bautizo y Cumpleaños · Aaron Sebastián Ortiz Alcantar</title>
-  
+
   <!-- Tipografía Editorial Minimalista de Lujo (Cinzel + Lora + Montserrat) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
+
   <script>
     tailwind.config = {
       theme: {
@@ -43,9 +46,10 @@
       --line: #DDD5C5;
     }
 
-    html, body {
+    html,
+    body {
       background-color: var(--paper);
-      background-image: 
+      background-image:
         radial-gradient(circle at 10% 12%, rgba(90, 111, 78, 0.08) 0%, transparent 45%),
         radial-gradient(circle at 90% 32%, rgba(46, 61, 37, 0.07) 0%, transparent 42%),
         radial-gradient(circle at 8% 70%, rgba(90, 111, 78, 0.08) 0%, transparent 45%),
@@ -114,6 +118,7 @@
       border-radius: 9999px;
       box-shadow: 0 1px 3px rgba(46, 61, 37, 0.05);
     }
+
     .botanical-badge span {
       font-family: Montserrat, sans-serif;
       font-size: 10px;
@@ -131,6 +136,7 @@
       background: linear-gradient(180deg, transparent, var(--gold), transparent);
       margin: 2.8rem auto;
     }
+
     .hairline-v::after {
       content: '✦';
       position: absolute;
@@ -156,6 +162,7 @@
       transform: translateY(18px);
       transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
     .reveal.is-visible {
       opacity: 1;
       transform: translateY(0);
@@ -182,6 +189,7 @@
       margin: 1.5rem auto 1rem;
       user-select: none;
     }
+
     @media (min-width: 640px) {
       .hero-stage {
         height: 470px;
@@ -196,6 +204,7 @@
       transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.2s ease;
       cursor: pointer;
     }
+
     .hero-layer:hover {
       z-index: 60 !important;
     }
@@ -205,6 +214,7 @@
       filter: drop-shadow(0 14px 18px rgba(45, 58, 40, 0.24)) drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
       transition: filter 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
     .hero-layer:hover .hero-actor {
       filter: drop-shadow(0 22px 30px rgba(198, 160, 82, 0.55)) drop-shadow(0 8px 12px rgba(0, 0, 0, 0.25)) brightness(1.06);
       transform: scale(1.09) translateY(-4px);
@@ -219,6 +229,7 @@
       width: 36%;
       max-width: 160px;
     }
+
     /* 2. Capitán América: En el flanco frontal izquierdo con escudo */
     .hero-cap-pos {
       bottom: 22px;
@@ -227,6 +238,7 @@
       width: 31%;
       max-width: 135px;
     }
+
     /* 3. Iron Man: Al frente centro-derecha con repulsor listo */
     .hero-iron-pos {
       bottom: 18px;
@@ -235,6 +247,7 @@
       width: 36%;
       max-width: 160px;
     }
+
     /* 4. Hulk: Guardián imponente en el flanco derecho */
     .hero-hulk-pos {
       bottom: 24px;
@@ -246,31 +259,84 @@
 
     /* Animaciones de flotación desfasadas */
     @keyframes floatSpidey {
-      0%, 100% { transform: translateY(0px) rotate(-1.5deg); }
-      50% { transform: translateY(-11px) rotate(1.5deg); }
-    }
-    @keyframes floatCap {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-6px) rotate(-0.5deg); }
-    }
-    @keyframes floatIron {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-9px) rotate(1deg); }
-    }
-    @keyframes floatHulk {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-5px); }
-    }
-    @keyframes floatThor {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-7px); }
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(-1.5deg);
+      }
+
+      50% {
+        transform: translateY(-11px) rotate(1.5deg);
+      }
     }
 
-    .hero-float-spidey { animation: floatSpidey 4.6s ease-in-out infinite; }
-    .hero-float-cap { animation: floatCap 5.2s ease-in-out 0.6s infinite; }
-    .hero-float-iron { animation: floatIron 4.8s ease-in-out 1.2s infinite; }
-    .hero-float-hulk { animation: floatHulk 5.8s ease-in-out 1.8s infinite; }
-    .hero-float-thor { animation: floatThor 4.6s ease-in-out 0.4s infinite; }
+    @keyframes floatCap {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-6px) rotate(-0.5deg);
+      }
+    }
+
+    @keyframes floatIron {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-9px) rotate(1deg);
+      }
+    }
+
+    @keyframes floatHulk {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    @keyframes floatThor {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-7px);
+      }
+    }
+
+    .hero-float-spidey {
+      animation: floatSpidey 4.6s ease-in-out infinite;
+    }
+
+    .hero-float-cap {
+      animation: floatCap 5.2s ease-in-out 0.6s infinite;
+    }
+
+    .hero-float-iron {
+      animation: floatIron 4.8s ease-in-out 1.2s infinite;
+    }
+
+    .hero-float-hulk {
+      animation: floatHulk 5.8s ease-in-out 1.8s infinite;
+    }
+
+    .hero-float-thor {
+      animation: floatThor 4.6s ease-in-out 0.4s infinite;
+    }
 
     /* Etiquetas de personajes en papel lino y oro */
     .hero-tag-chip {
@@ -285,11 +351,12 @@
       border: 1px solid rgba(198, 160, 82, 0.5);
       padding: 2.5px 9px;
       border-radius: 9999px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
       opacity: 0.88;
       transition: all 0.3s ease;
       white-space: nowrap;
     }
+
     .hero-layer:hover .hero-tag-chip {
       opacity: 1;
       color: #141714;
@@ -306,15 +373,49 @@
       pointer-events: none;
       user-select: none;
     }
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.25; transform: scale(0.75) rotate(0deg); }
-      50% { opacity: 1; transform: scale(1.35) rotate(45deg); text-shadow: 0 0 8px rgba(198,160,82,0.8); }
-    }
-    .s-1 { top: 12%; left: 14%; font-size: 14px; animation: twinkle 3s ease-in-out infinite; }
-    .s-2 { top: 18%; right: 15%; font-size: 11px; animation: twinkle 3.6s ease-in-out 0.9s infinite; }
-    .s-3 { bottom: 32%; left: 6%; font-size: 10px; animation: twinkle 4.2s ease-in-out 1.6s infinite; }
-    .s-4 { bottom: 26%; right: 8%; font-size: 13px; animation: twinkle 3.4s ease-in-out 2.2s infinite; }
 
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        opacity: 0.25;
+        transform: scale(0.75) rotate(0deg);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.35) rotate(45deg);
+        text-shadow: 0 0 8px rgba(198, 160, 82, 0.8);
+      }
+    }
+
+    .s-1 {
+      top: 12%;
+      left: 14%;
+      font-size: 14px;
+      animation: twinkle 3s ease-in-out infinite;
+    }
+
+    .s-2 {
+      top: 18%;
+      right: 15%;
+      font-size: 11px;
+      animation: twinkle 3.6s ease-in-out 0.9s infinite;
+    }
+
+    .s-3 {
+      bottom: 32%;
+      left: 6%;
+      font-size: 10px;
+      animation: twinkle 4.2s ease-in-out 1.6s infinite;
+    }
+
+    .s-4 {
+      bottom: 26%;
+      right: 8%;
+      font-size: 13px;
+      animation: twinkle 3.4s ease-in-out 2.2s infinite;
+    }
   </style>
 </head>
 
@@ -335,13 +436,14 @@
         <span>Mi Bautizo & Cumpleaños</span>
       </div>
 
-      <h1 class="font-display text-3xl sm:text-4xl font-normal leading-[1.25] tracking-[0.05em] uppercase text-[#141714]">
+      <h1
+        class="font-display text-3xl sm:text-4xl font-normal leading-[1.25] tracking-[0.05em] uppercase text-[#141714]">
         Aaron Sebastián<br>
         <span class="text-2xl sm:text-3xl font-light italic font-body lowercase tracking-normal text-[#2E3D25]">
           Ortiz Alcantar
         </span>
       </h1>
-      
+
       <p class="font-sans text-xs font-semibold tracking-[0.25em] text-[#5A6F4E] uppercase mt-4">
         Sábado 3 de Octubre de 2026
       </p>
@@ -358,26 +460,33 @@
     <!-- ============================================================= -->
     <section class="reveal space-y-3">
       <p class="font-sans text-[10px] font-semibold tracking-[0.25em] uppercase text-[#5A6F4E]">Faltan</p>
-      
+
       <div class="flex justify-center items-center gap-2.5 sm:gap-4">
-        <div class="flex flex-col items-center bg-[#EDE7DD] border border-[#5A6F4E]/30 rounded-2xl px-3 sm:px-4 py-2.5 shadow-sm min-w-[62px]">
+        <div
+          class="flex flex-col items-center bg-[#EDE7DD] border border-[#5A6F4E]/30 rounded-2xl px-3 sm:px-4 py-2.5 shadow-sm min-w-[62px]">
           <span id="cd-days" class="font-display text-2xl sm:text-3xl font-normal text-[#2E3D25]">--</span>
           <span class="font-sans text-[8.5px] uppercase tracking-widest text-[#5A6F4E] font-semibold mt-0.5">Días</span>
         </div>
         <span class="font-display text-xl text-[#C6A052]">:</span>
-        <div class="flex flex-col items-center bg-[#EDE7DD] border border-[#5A6F4E]/30 rounded-2xl px-3 sm:px-4 py-2.5 shadow-sm min-w-[62px]">
+        <div
+          class="flex flex-col items-center bg-[#EDE7DD] border border-[#5A6F4E]/30 rounded-2xl px-3 sm:px-4 py-2.5 shadow-sm min-w-[62px]">
           <span id="cd-hours" class="font-display text-2xl sm:text-3xl font-normal text-[#2E3D25]">--</span>
-          <span class="font-sans text-[8.5px] uppercase tracking-widest text-[#5A6F4E] font-semibold mt-0.5">Horas</span>
+          <span
+            class="font-sans text-[8.5px] uppercase tracking-widest text-[#5A6F4E] font-semibold mt-0.5">Horas</span>
         </div>
         <span class="font-display text-xl text-[#C6A052]">:</span>
-        <div class="flex flex-col items-center bg-[#EDE7DD] border border-[#5A6F4E]/30 rounded-2xl px-3 sm:px-4 py-2.5 shadow-sm min-w-[62px]">
+        <div
+          class="flex flex-col items-center bg-[#EDE7DD] border border-[#5A6F4E]/30 rounded-2xl px-3 sm:px-4 py-2.5 shadow-sm min-w-[62px]">
           <span id="cd-mins" class="font-display text-2xl sm:text-3xl font-normal text-[#2E3D25]">--</span>
-          <span class="font-sans text-[8.5px] uppercase tracking-widest text-[#5A6F4E] font-semibold mt-0.5">Minutos</span>
+          <span
+            class="font-sans text-[8.5px] uppercase tracking-widest text-[#5A6F4E] font-semibold mt-0.5">Minutos</span>
         </div>
         <span class="font-display text-xl text-[#C6A052]">:</span>
-        <div class="flex flex-col items-center bg-[#EDE7DD] border border-[#5A6F4E]/30 rounded-2xl px-3 sm:px-4 py-2.5 shadow-sm min-w-[62px]">
+        <div
+          class="flex flex-col items-center bg-[#EDE7DD] border border-[#5A6F4E]/30 rounded-2xl px-3 sm:px-4 py-2.5 shadow-sm min-w-[62px]">
           <span id="cd-secs" class="font-display text-2xl sm:text-3xl font-normal text-[#2E3D25]">--</span>
-          <span class="font-sans text-[8.5px] uppercase tracking-widest text-[#5A6F4E] font-semibold mt-0.5">Segundos</span>
+          <span
+            class="font-sans text-[8.5px] uppercase tracking-widest text-[#5A6F4E] font-semibold mt-0.5">Segundos</span>
         </div>
       </div>
     </section>
@@ -388,31 +497,27 @@
     <!-- 3. CEREMONIA RELIGIOSA                                        -->
     <!-- ============================================================= -->
     <section class="reveal space-y-5">
-      <div class="botanical-badge mx-auto">
-        <span>Ceremonia Religiosa</span>
-      </div>
-      
+
       <h3 class="font-display text-2xl font-medium tracking-[0.05em] text-[#141714]">
         Iglesia Nuestra Señora del Carmen
       </h3>
-      
+
       <p class="text-[17px] text-[#38492F] max-w-[85%] mx-auto leading-relaxed">
         Avenida México Norte 117, Centro,<br>C.P. 63000, Tepic, Nayarit, México
       </p>
-      
+
       <!-- Mapa integrado de Google Maps -->
       <div class="pt-2 max-w-[95%] mx-auto">
-        <iframe 
-          class="map-container border border-[#5A6F4E]/30 rounded-xl shadow-sm"
+        <iframe class="map-container border border-[#5A6F4E]/30 rounded-xl shadow-sm"
           src="https://maps.google.com/maps?q=Iglesia+del+Carmen,+Avenida+Mexico+Norte+117,+Centro,+Tepic,+Nayarit&t=&z=16&ie=UTF8&iwloc=&output=embed"
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade">
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
         </iframe>
       </div>
-      
+
       <div class="pt-2">
-        <a href="https://www.google.com/maps/search/?api=1&query=Iglesia+del+Carmen+Avenida+Mexico+Norte+117+Centro+Tepic+Nayarit" target="_blank" class="font-display text-xs tracking-wider uppercase text-[#C6A052] border-b border-[#C6A052]/40 pb-0.5 hover:border-[#C6A052] hover:text-[#2E3D25] transition-colors">
+        <a href="https://www.google.com/maps/search/?api=1&query=Iglesia+del+Carmen+Avenida+Mexico+Norte+117+Centro+Tepic+Nayarit"
+          target="_blank"
+          class="font-display text-xs tracking-wider uppercase text-[#C6A052] border-b border-[#C6A052]/40 pb-0.5 hover:border-[#C6A052] hover:text-[#2E3D25] transition-colors">
           Abrir en Google Maps
         </a>
       </div>
@@ -424,31 +529,28 @@
     <!-- 4. RECEPCIÓN Y CUMPLEAÑOS                                     -->
     <!-- ============================================================= -->
     <section class="reveal space-y-5">
-      <div class="botanical-badge mx-auto">
-        <span>Celebración</span>
-      </div>
-      
+
+
       <h3 class="font-display text-2xl font-medium tracking-[0.05em] text-[#141714]">
         Salón de Eventos La Lomita
       </h3>
-      
+
       <p class="text-[17px] text-[#38492F] max-w-[85%] mx-auto leading-relaxed">
         Boulevard Tepic Xalisco #110, Col. La Curva del Guayabo,<br>Tepic, Nayarit
       </p>
-      
+
       <!-- Mapa integrado de Google Maps -->
       <div class="pt-2 max-w-[95%] mx-auto">
-        <iframe 
-          class="map-container border border-[#5A6F4E]/30 rounded-xl shadow-sm"
+        <iframe class="map-container border border-[#5A6F4E]/30 rounded-xl shadow-sm"
           src="https://maps.google.com/maps?q=Salon+de+eventos+La+lomita,+Boulevard+Tepic+Xalisco+110,+Tepic,+Nayarit&t=&z=16&ie=UTF8&iwloc=&output=embed"
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade">
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
         </iframe>
       </div>
-      
+
       <div class="pt-2">
-        <a href="https://www.google.com/maps/search/?api=1&query=Salon+de+eventos+La+lomita+Boulevard+Tepic+Xalisco+110+Tepic+Nayarit" target="_blank" class="font-display text-xs tracking-wider uppercase text-[#C6A052] border-b border-[#C6A052]/40 pb-0.5 hover:border-[#C6A052] hover:text-[#2E3D25] transition-colors">
+        <a href="https://www.google.com/maps/search/?api=1&query=Salon+de+eventos+La+lomita+Boulevard+Tepic+Xalisco+110+Tepic+Nayarit"
+          target="_blank"
+          class="font-display text-xs tracking-wider uppercase text-[#C6A052] border-b border-[#C6A052]/40 pb-0.5 hover:border-[#C6A052] hover:text-[#2E3D25] transition-colors">
           Abrir en Google Maps
         </a>
       </div>
@@ -457,7 +559,7 @@
       <!-- DIORAMA HEROICO ESPECTACULAR (COMPOSICIÓN DINÁMICA 3D)         -->
       <!-- ============================================================= -->
       <div class="pt-10 pb-2 relative">
-        
+
         <!-- Emblema de honor editorial -->
         <div class="flex items-center justify-center gap-3 mb-2">
           <div class="w-8 h-px bg-gradient-to-r from-transparent to-[#C6A052]"></div>
@@ -466,24 +568,28 @@
           </span>
           <div class="w-8 h-px bg-gradient-to-l from-transparent to-[#C6A052]"></div>
         </div>
-        
+
         <h4 class="font-display text-2xl sm:text-3xl text-[#141714] font-medium tracking-wide">
           Héroes al Rescate de la Fiesta
         </h4>
-        
+
         <p class="font-body italic text-[15px] sm:text-[16px] text-[#38492F] max-w-[85%] mx-auto mt-1 mb-2">
           Capitán América, Spider-Man, Iron Man y Hulk se reúnen para celebrar su cumpleaños.
         </p>
 
         <!-- ESCENARIO DINÁMICO HEROICO EN 3D -->
         <div class="hero-stage">
-          
+
           <!-- Aureola celestial con tonalidades botánicas y luz dorada -->
           <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
             <!-- Resplandor central botánico -->
-            <div class="w-[260px] sm:w-[320px] h-[260px] sm:h-[320px] rounded-full bg-gradient-to-tr from-[#C6A052]/20 via-[#FAF7F2]/80 to-[#5A6F4E]/20 blur-2xl"></div>
+            <div
+              class="w-[260px] sm:w-[320px] h-[260px] sm:h-[320px] rounded-full bg-gradient-to-tr from-[#C6A052]/20 via-[#FAF7F2]/80 to-[#5A6F4E]/20 blur-2xl">
+            </div>
             <!-- Círculos concéntricos litúrgicos con pespunte fino -->
-            <div class="w-[250px] sm:w-[310px] h-[250px] sm:h-[310px] rounded-full border border-dashed border-[#C6A052]/40 opacity-80"></div>
+            <div
+              class="w-[250px] sm:w-[310px] h-[250px] sm:h-[310px] rounded-full border border-dashed border-[#C6A052]/40 opacity-80">
+            </div>
             <div class="w-[200px] sm:w-[250px] h-[200px] sm:h-[250px] rounded-full border border-[#5A6F4E]/25"></div>
           </div>
 
@@ -494,54 +600,46 @@
           <div class="sparkle s-4">★</div>
 
           <!-- SOMBRA BASE COLECTIVA EN EL SUELO -->
-          <div class="absolute bottom-3 left-1/2 -translate-x-1/2 w-[85%] h-7 bg-[#2E3D25]/20 rounded-[100%] blur-md pointer-events-none"></div>
+          <div
+            class="absolute bottom-3 left-1/2 -translate-x-1/2 w-[85%] h-7 bg-[#2E3D25]/20 rounded-[100%] blur-md pointer-events-none">
+          </div>
 
           <!-- 1. HULK (Atrás a la derecha, imponente y protector) -->
           <div class="hero-layer hero-hulk-pos group" title="Hulk">
-            <img 
-              src="/hero_hulk.png?v=3" 
-              alt="Hulk" 
-              class="hero-actor hero-float-hulk w-full h-auto object-contain"
-            />
+            <img src="/hero_hulk.png?v=3" alt="Hulk" class="hero-actor hero-float-hulk w-full h-auto object-contain" />
             <div class="hero-tag-chip">Hulk</div>
           </div>
 
           <!-- 2. CAPITÁN AMÉRICA (Al frente a la izquierda, solemne con escudo) -->
           <div class="hero-layer hero-cap-pos group" title="Capitán América">
-            <img 
-              src="/hero_cap.png?v=3" 
-              alt="Capitán América" 
-              class="hero-actor hero-float-cap w-full h-auto object-contain"
-            />
+            <img src="/hero_cap.png?v=3" alt="Capitán América"
+              class="hero-actor hero-float-cap w-full h-auto object-contain" />
             <div class="hero-tag-chip">Capitán América</div>
           </div>
 
           <!-- 3. IRON MAN (Centro derecha al frente, pose heroica con repulsor) -->
           <div class="hero-layer hero-iron-pos group" title="Iron Man">
-            <img 
-              src="/hero_ironman.png?v=2" 
-              alt="Iron Man" 
-              class="hero-actor hero-float-iron w-full h-auto object-contain"
-            />
+            <img src="/hero_ironman.png?v=2" alt="Iron Man"
+              class="hero-actor hero-float-iron w-full h-auto object-contain" />
             <div class="hero-tag-chip">Iron Man</div>
           </div>
 
           <!-- 4. SPIDER-MAN (En el aire arriba a la izquierda, saltando dinámico) -->
           <div class="hero-layer hero-spidey-pos group" title="Spider-Man">
             <!-- Hilo de telaraña dorada sutil que conecta hacia arriba -->
-            <div class="absolute -top-12 left-1/2 w-0.5 h-14 bg-gradient-to-b from-transparent via-[#C6A052]/50 to-[#C6A052] -translate-x-1/2 pointer-events-none"></div>
-            <img 
-              src="/hero_spiderman.png?v=2" 
-              alt="Spider-Man" 
-              class="hero-actor hero-float-spidey w-full h-auto object-contain"
-            />
+            <div
+              class="absolute -top-12 left-1/2 w-0.5 h-14 bg-gradient-to-b from-transparent via-[#C6A052]/50 to-[#C6A052] -translate-x-1/2 pointer-events-none">
+            </div>
+            <img src="/hero_spiderman.png?v=2" alt="Spider-Man"
+              class="hero-actor hero-float-spidey w-full h-auto object-contain" />
             <div class="hero-tag-chip">Spider-Man</div>
           </div>
 
         </div>
 
         <!-- Placa de honor al pie del diorama con tonos mármol y olivo -->
-        <div class="inline-flex items-center gap-2 px-5 py-2 bg-[#EDE7DD]/95 border border-[#5A6F4E]/35 rounded-full shadow-sm mt-1">
+        <div
+          class="inline-flex items-center gap-2 px-5 py-2 bg-[#EDE7DD]/95 border border-[#5A6F4E]/35 rounded-full shadow-sm mt-1">
           <span class="text-[#C6A052] text-xs">★</span>
           <span class="font-sans text-[10px] uppercase tracking-[0.25em] text-[#2E3D25] font-bold">
             Guardianes de la Aventura · Festejo de Cumpleaños
@@ -556,8 +654,9 @@
     <!-- 5. APARTADO ESPECIAL: CUMPLEAÑOS & MESA DE REGALOS            -->
     <!-- (Estética Botánica de Terciopelo, Mármol Cálido y Cuento)     -->
     <!-- ============================================================= -->
-    <section class="reveal relative overflow-hidden rounded-3xl border border-[#5A6F4E]/35 shadow-md bg-gradient-to-b from-[#FAF7F2] to-[#F1ECE2] p-6 sm:p-10 text-center space-y-8 !mt-4 mb-4">
-      
+    <section
+      class="reveal relative overflow-hidden rounded-3xl border border-[#5A6F4E]/35 shadow-md bg-gradient-to-b from-[#FAF7F2] to-[#F1ECE2] p-6 sm:p-10 text-center space-y-8 !mt-4 mb-4">
+
       <!-- Marco interior litúrgico con pespunte oro -->
       <div class="absolute inset-2 border border-dashed border-[#C6A052]/40 rounded-2xl pointer-events-none"></div>
 
@@ -587,15 +686,15 @@
 
         <!-- Liverpool Centrado y Clickeable -->
         <div class="text-center">
-          <a 
-            href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/60040338" 
-            target="_blank" 
-            class="inline-flex flex-col items-center justify-center px-9 py-3.5 rounded-2xl border border-[#C6A052]/80 bg-white hover:bg-[#FAF7F2] shadow-sm hover:shadow-md transition-all group active:scale-95 cursor-pointer"
-          >
+          <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/60040338" target="_blank"
+            class="inline-flex flex-col items-center justify-center px-9 py-3.5 rounded-2xl border border-[#C6A052]/80 bg-white hover:bg-[#FAF7F2] shadow-sm hover:shadow-md transition-all group active:scale-95 cursor-pointer">
             <div class="flex items-center gap-2">
               <span class="font-serif italic font-bold text-2xl text-[#E6007E]">Liverpool</span>
-              <svg class="w-4 h-4 text-[#C6A052] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              <svg
+                class="w-4 h-4 text-[#C6A052] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
             </div>
             <span class="font-sans text-sm tracking-widest text-[#2E3D25] font-bold mt-0.5">60040338</span>
@@ -608,7 +707,8 @@
             Sugerencia de Sobre
           </h4>
           <p class="text-[15px] sm:text-[16px] text-[#38492F] leading-relaxed">
-            Tu presencia y cariño son nuestro mejor obsequio. Si de igual manera deseas tener un detalle en sobre para Aaron, contaremos con un buzón especial el día del evento en la recepción.
+            Tu presencia y cariño son nuestro mejor obsequio. Si de igual manera deseas tener un detalle en sobre para
+            Aaron, contaremos con un buzón especial el día del evento en la recepción.
           </p>
         </div>
       </div>
@@ -618,28 +718,30 @@
     <!-- ============================================================= -->
     <!-- INTERMEDIO HEROICO: CAPITÁN AMÉRICA (EL PRIMER VENGADOR)       -->
     <!-- ============================================================= -->
-    <div class="reveal relative flex flex-col items-center justify-center !mt-1 !mb-1 py-1 select-none group cursor-pointer">
-      
+    <div
+      class="reveal relative flex flex-col items-center justify-center !mt-1 !mb-1 py-1 select-none group cursor-pointer">
+
       <!-- Halo celestial de energía dorada y botánica -->
-      <div class="absolute w-52 h-52 rounded-full bg-gradient-to-tr from-[#C6A052]/25 via-[#FAF7F2]/60 to-[#5A6F4E]/20 blur-2xl pointer-events-none -z-10"></div>
-      
+      <div
+        class="absolute w-52 h-52 rounded-full bg-gradient-to-tr from-[#C6A052]/25 via-[#FAF7F2]/60 to-[#5A6F4E]/20 blur-2xl pointer-events-none -z-10">
+      </div>
+
       <!-- Destellos de honor y luz -->
       <span class="absolute top-2 right-1/4 text-[#C6A052] text-xs animate-pulse pointer-events-none">★</span>
-      <span class="absolute bottom-5 left-1/4 text-[#C6A052] text-[10px] animate-pulse pointer-events-none" style="animation-delay: 1.2s;">✦</span>
+      <span class="absolute bottom-5 left-1/4 text-[#C6A052] text-[10px] animate-pulse pointer-events-none"
+        style="animation-delay: 1.2s;">✦</span>
 
       <!-- Figura de Capitán América en pose de acción dinámica -->
       <div class="relative w-44 sm:w-48 transition-transform duration-500 group-hover:scale-105">
-        <img 
-          src="/hero_cap_action.png" 
-          alt="Capitán América" 
-          class="hero-float-cap w-full h-auto object-contain filter drop-shadow-[0_14px_18px_rgba(46,61,37,0.28)] group-hover:drop-shadow-[0_20px_28px_rgba(198,160,82,0.5)] transition-all duration-300"
-        />
+        <img src="/hero_cap_action.png" alt="Capitán América"
+          class="hero-float-cap w-full h-auto object-contain filter drop-shadow-[0_14px_18px_rgba(46,61,37,0.28)] group-hover:drop-shadow-[0_20px_28px_rgba(198,160,82,0.5)] transition-all duration-300" />
         <!-- Sombra en el suelo -->
         <div class="w-36 h-3 bg-[#2E3D25]/20 rounded-[100%] blur-sm mx-auto -mt-1 pointer-events-none"></div>
       </div>
 
       <!-- Placa de honor en lino y oro -->
-      <div class="mt-1 inline-flex items-center gap-1.5 px-3.5 py-1 bg-[#EDE7DD]/90 border border-[#5A6F4E]/30 rounded-full shadow-sm group-hover:border-[#C6A052] transition-colors">
+      <div
+        class="mt-1 inline-flex items-center gap-1.5 px-3.5 py-1 bg-[#EDE7DD]/90 border border-[#5A6F4E]/30 rounded-full shadow-sm group-hover:border-[#C6A052] transition-colors">
         <span class="text-[#C6A052] text-[9px]">★</span>
         <span class="font-sans text-[8.5px] font-bold tracking-[0.25em] uppercase text-[#2E3D25]">
           Capitán América · Centinela de la Libertad
@@ -650,8 +752,9 @@
     <!-- ============================================================= -->
     <!-- 6. CONFIRMACIÓN DE ASISTENCIA INTERACTIVA (SUPABASE)         -->
     <!-- ============================================================= -->
-    <section class="reveal relative overflow-hidden rounded-3xl border border-[#5A6F4E]/35 shadow-md bg-gradient-to-b from-[#FAF7F2] to-[#F1ECE2] p-6 sm:p-10 text-center space-y-6 !mt-3">
-      
+    <section
+      class="reveal relative overflow-hidden rounded-3xl border border-[#5A6F4E]/35 shadow-md bg-gradient-to-b from-[#FAF7F2] to-[#F1ECE2] p-6 sm:p-10 text-center space-y-6 !mt-3">
+
       <!-- Pespunte litúrgico interior -->
       <div class="absolute inset-2 border border-dashed border-[#C6A052]/40 rounded-2xl pointer-events-none"></div>
 
@@ -664,12 +767,14 @@
           ¿Nos Acompañas?
         </h3>
         <p class="text-[16px] text-[#38492F] max-w-[90%] mx-auto leading-relaxed">
-          Tu presencia es muy importante para nosotros. Por favor confirma tu asistencia a más tardar el 20 de Septiembre.
+          Tu presencia es muy importante para nosotros. Por favor confirma tu asistencia a más tardar el 20 de
+          Septiembre.
         </p>
       </div>
 
       <!-- BANNER DE BIENVENIDA PERSONALIZADA (si entra con ?guest=TOKEN) -->
-      <div id="rsvp-personalized-banner" class="relative z-10 hidden bg-white/90 border border-[#5A6F4E]/40 rounded-2xl p-4 text-center space-y-1 shadow-sm">
+      <div id="rsvp-personalized-banner"
+        class="relative z-10 hidden bg-white/90 border border-[#5A6F4E]/40 rounded-2xl p-4 text-center space-y-1 shadow-sm">
         <span class="text-xs text-[#C6A052]">✦ ✦ ✦</span>
         <h4 id="rsvp-guest-name" class="font-display text-lg font-medium text-[#141714]"></h4>
         <p id="rsvp-passes-info" class="font-sans text-xs text-[#2E3D25] font-semibold"></p>
@@ -677,7 +782,8 @@
 
       <!-- ESTADO: YA ENVIADO / ÉXITO -->
       <div id="rsvp-success-view" class="relative z-10 hidden space-y-5 py-6">
-        <div class="w-16 h-16 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-300 flex items-center justify-center mx-auto text-2xl shadow-sm">
+        <div
+          class="w-16 h-16 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-300 flex items-center justify-center mx-auto text-2xl shadow-sm">
           ✓
         </div>
         <div class="space-y-1.5">
@@ -689,18 +795,13 @@
 
         <!-- Botones de acción post-confirmación -->
         <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a 
-            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Bautizo+y+Cumplea%C3%B1os+Aaron+Sebasti%C3%A1n&dates=20261003T130000/20261003T200000&details=Celebraci%C3%B3n+en+Sal%C3%B3n+de+Eventos+La+Lomita,+Tepic&location=Salon+de+eventos+La+lomita,+Boulevard+Tepic+Xalisco+110,+Tepic,+Nayarit" 
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Bautizo+y+Cumplea%C3%B1os+Aaron+Sebasti%C3%A1n&dates=20261003T130000/20261003T200000&details=Celebraci%C3%B3n+en+Sal%C3%B3n+de+Eventos+La+Lomita,+Tepic&location=Salon+de+eventos+La+lomita,+Boulevard+Tepic+Xalisco+110,+Tepic,+Nayarit"
             target="_blank"
-            class="px-5 py-2.5 bg-white border border-[#C6A052] text-[#2E3D25] rounded-full text-xs font-semibold tracking-wider uppercase hover:bg-[#FAF7F2] transition shadow-sm inline-flex items-center gap-2"
-          >
+            class="px-5 py-2.5 bg-white border border-[#C6A052] text-[#2E3D25] rounded-full text-xs font-semibold tracking-wider uppercase hover:bg-[#FAF7F2] transition shadow-sm inline-flex items-center gap-2">
             <span>📅 Agregar al Calendario</span>
           </a>
-          <button 
-            type="button" 
-            onclick="resetRsvpForm()" 
-            class="text-xs text-[#5A6F4E] underline hover:text-[#141714] px-3 py-2"
-          >
+          <button type="button" onclick="resetRsvpForm()"
+            class="text-xs text-[#5A6F4E] underline hover:text-[#141714] px-3 py-2">
             Modificar respuesta
           </button>
         </div>
@@ -708,23 +809,27 @@
 
       <!-- FORMULARIO INTERACTIVO -->
       <form id="rsvp-interactive-form" onsubmit="handleRsvpSubmit(event)" class="relative z-10 space-y-6">
-        
+
         <!-- PASO 1: ¿ASISTIRÁS? -->
         <div class="space-y-3">
           <p class="font-sans text-[10px] font-semibold tracking-wider uppercase text-[#5A6F4E]">
             ¿Podrás acompañarnos?
           </p>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-[440px] mx-auto">
-            
-            <label class="rsvp-option-label flex items-center justify-center gap-2.5 p-3.5 rounded-2xl border-2 border-[#5A6F4E]/60 bg-white hover:border-[#2E3D25] cursor-pointer transition shadow-sm text-left">
-              <input type="radio" name="attending" value="confirmed" checked onchange="toggleRsvpFields()" class="accent-[#2E3D25] w-4 h-4"/>
+
+            <label
+              class="rsvp-option-label flex items-center justify-center gap-2.5 p-3.5 rounded-2xl border-2 border-[#5A6F4E]/60 bg-white hover:border-[#2E3D25] cursor-pointer transition shadow-sm text-left">
+              <input type="radio" name="attending" value="confirmed" checked onchange="toggleRsvpFields()"
+                class="accent-[#2E3D25] w-4 h-4" />
               <span class="font-sans text-xs font-bold text-[#141714]">
                 Sí, asistiré con gusto
               </span>
             </label>
 
-            <label class="rsvp-option-label flex items-center justify-center gap-2.5 p-3.5 rounded-2xl border-2 border-stone-200 bg-white hover:border-stone-400 cursor-pointer transition shadow-sm text-left">
-              <input type="radio" name="attending" value="declined" onchange="toggleRsvpFields()" class="accent-stone-600 w-4 h-4"/>
+            <label
+              class="rsvp-option-label flex items-center justify-center gap-2.5 p-3.5 rounded-2xl border-2 border-stone-200 bg-white hover:border-stone-400 cursor-pointer transition shadow-sm text-left">
+              <input type="radio" name="attending" value="declined" onchange="toggleRsvpFields()"
+                class="accent-stone-600 w-4 h-4" />
               <span class="font-sans text-xs font-medium text-stone-600">
                 Lamentablemente no podré
               </span>
@@ -735,19 +840,14 @@
 
         <!-- PASO 2: DATOS DEL INVITADO -->
         <div class="space-y-4 max-w-[440px] mx-auto text-left">
-          
+
           <!-- Nombre o Familia -->
           <div id="field-name-wrap">
             <label class="block font-sans text-[10px] font-semibold tracking-wider uppercase text-[#5A6F4E] mb-1">
               Nombre completo o Familia *
             </label>
-            <input 
-              type="text" 
-              id="rsvp-input-name" 
-              required 
-              placeholder="Ej. Familia Martínez González"
-              class="w-full px-4 py-3 rounded-xl border border-[#5A6F4E]/35 bg-white text-stone-800 text-xs focus:outline-none focus:border-[#2E3D25] focus:ring-1 focus:ring-[#2E3D25] shadow-sm"
-            />
+            <input type="text" id="rsvp-input-name" required placeholder="Ej. Familia Martínez González"
+              class="w-full px-4 py-3 rounded-xl border border-[#5A6F4E]/35 bg-white text-stone-800 text-xs focus:outline-none focus:border-[#2E3D25] focus:ring-1 focus:ring-[#2E3D25] shadow-sm" />
           </div>
 
           <!-- Pases a Confirmar (Solo si asiste) -->
@@ -755,24 +855,19 @@
             <label class="block font-sans text-[10px] font-semibold tracking-wider uppercase text-[#5A6F4E] mb-1">
               ¿Cuántas personas asistirán en total? *
             </label>
-            <div class="flex items-center gap-3 bg-white p-2 rounded-xl border border-[#5A6F4E]/35 shadow-sm max-w-[200px]">
-              <button 
-                type="button" 
-                onclick="changePasses(-1)" 
-                class="w-8 h-8 rounded-lg bg-[#EDE7DD] hover:bg-[#E2D8CA] text-[#2E3D25] font-bold text-base flex items-center justify-center transition"
-              >
+            <div
+              class="flex items-center gap-3 bg-white p-2 rounded-xl border border-[#5A6F4E]/35 shadow-sm max-w-[200px]">
+              <button type="button" onclick="changePasses(-1)"
+                class="w-8 h-8 rounded-lg bg-[#EDE7DD] hover:bg-[#E2D8CA] text-[#2E3D25] font-bold text-base flex items-center justify-center transition">
                 −
               </button>
               <span id="passes-display" class="flex-1 text-center font-serif text-lg font-bold text-[#141714]">2</span>
-              <button 
-                type="button" 
-                onclick="changePasses(1)" 
-                class="w-8 h-8 rounded-lg bg-[#EDE7DD] hover:bg-[#E2D8CA] text-[#2E3D25] font-bold text-base flex items-center justify-center transition"
-              >
+              <button type="button" onclick="changePasses(1)"
+                class="w-8 h-8 rounded-lg bg-[#EDE7DD] hover:bg-[#E2D8CA] text-[#2E3D25] font-bold text-base flex items-center justify-center transition">
                 +
               </button>
             </div>
-            <input type="hidden" id="rsvp-input-passes" value="2"/>
+            <input type="hidden" id="rsvp-input-passes" value="2" />
             <p id="passes-limit-hint" class="text-[10px] text-stone-400 mt-1"></p>
           </div>
 
@@ -781,12 +876,8 @@
             <label class="block font-sans text-[10px] font-semibold tracking-wider uppercase text-[#5A6F4E] mb-1">
               ¿Alguna alergia o restricción alimentaria? (opcional)
             </label>
-            <input 
-              type="text" 
-              id="rsvp-input-allergies" 
-              placeholder="Ej. Ninguna / Alergia a mariscos / Vegetariano"
-              class="w-full px-4 py-2.5 rounded-xl border border-[#5A6F4E]/35 bg-white text-stone-800 text-xs focus:outline-none focus:border-[#2E3D25] shadow-sm"
-            />
+            <input type="text" id="rsvp-input-allergies" placeholder="Ej. Ninguna / Alergia a mariscos / Vegetariano"
+              class="w-full px-4 py-2.5 rounded-xl border border-[#5A6F4E]/35 bg-white text-stone-800 text-xs focus:outline-none focus:border-[#2E3D25] shadow-sm" />
           </div>
 
           <!-- Mensaje / Felicitaciones (Opcional) -->
@@ -794,26 +885,19 @@
             <label class="block font-sans text-[10px] font-semibold tracking-wider uppercase text-[#5A6F4E] mb-1">
               Mensaje o bendición para Aaron (opcional)
             </label>
-            <textarea 
-              id="rsvp-input-message" 
-              rows="2"
-              placeholder="Escribe aquí tus buenos deseos..."
-              class="w-full px-4 py-2.5 rounded-xl border border-[#5A6F4E]/35 bg-white text-stone-800 text-xs focus:outline-none focus:border-[#2E3D25] shadow-sm"
-            ></textarea>
+            <textarea id="rsvp-input-message" rows="2" placeholder="Escribe aquí tus buenos deseos..."
+              class="w-full px-4 py-2.5 rounded-xl border border-[#5A6F4E]/35 bg-white text-stone-800 text-xs focus:outline-none focus:border-[#2E3D25] shadow-sm"></textarea>
           </div>
 
         </div>
 
         <!-- Botón de Envío con degradado en Terciopelo Olivo y bordes Oro -->
         <div class="pt-2 max-w-[440px] mx-auto">
-          <button 
-            type="submit" 
-            id="rsvp-submit-btn"
-            class="w-full py-3.5 bg-gradient-to-r from-[#2E3D25] to-[#3B4E31] hover:from-[#1C2717] hover:to-[#2E3D25] text-[#FAF6F0] border border-[#C6A052]/80 rounded-full font-sans text-xs font-semibold tracking-widest uppercase transition-all shadow-md hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
-          >
+          <button type="submit" id="rsvp-submit-btn"
+            class="w-full py-3.5 bg-gradient-to-r from-[#2E3D25] to-[#3B4E31] hover:from-[#1C2717] hover:to-[#2E3D25] text-[#FAF6F0] border border-[#C6A052]/80 rounded-full font-sans text-xs font-semibold tracking-widest uppercase transition-all shadow-md hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 cursor-pointer">
             <span>Confirmar Asistencia</span>
             <svg class="w-4 h-4 text-[#C6A052]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </button>
         </div>
@@ -828,14 +912,7 @@
       <p class="font-sans text-[10px] tracking-[0.25em] uppercase text-[#2E3D25] font-semibold">
         Familia Ortiz Alcantar · 2026
       </p>
-      <div class="pt-2">
-        <a 
-          href="/panel.html" 
-          class="text-[10px] uppercase tracking-widest text-[#C6A052] hover:text-[#2E3D25] transition-colors border-b border-[#C6A052]/30 pb-0.5 font-medium"
-        >
-          Acceso Administrador (Panel)
-        </a>
-      </div>
+
     </footer>
 
   </div>
@@ -907,51 +984,51 @@
             Authorization: `Bearer ${SUPABASE_KEY}`
           }
         })
-        .then(res => res.json())
-        .then(data => {
-          if (data && data.length > 0) {
-            personalizedGuest = data[0];
-            
-            // Autocompletar nombre
-            const nameInput = document.getElementById("rsvp-input-name");
-            if (nameInput) {
-              nameInput.value = personalizedGuest.name;
-              nameInput.readOnly = true;
-              nameInput.classList.add("bg-stone-50", "text-stone-600");
-            }
+          .then(res => res.json())
+          .then(data => {
+            if (data && data.length > 0) {
+              personalizedGuest = data[0];
 
-            // Ajustar pases
-            maxPasses = personalizedGuest.passes_assigned || 1;
-            currentPasses = personalizedGuest.passes_confirmed > 0 
-              ? personalizedGuest.passes_confirmed 
-              : (personalizedGuest.passes_assigned || 1);
-            updatePassesDisplay();
+              // Autocompletar nombre
+              const nameInput = document.getElementById("rsvp-input-name");
+              if (nameInput) {
+                nameInput.value = personalizedGuest.name;
+                nameInput.readOnly = true;
+                nameInput.classList.add("bg-stone-50", "text-stone-600");
+              }
 
-            // Mostrar banner personalizado
-            const banner = document.getElementById("rsvp-personalized-banner");
-            const nameEl = document.getElementById("rsvp-guest-name");
-            const infoEl = document.getElementById("rsvp-passes-info");
-            if (banner && nameEl && infoEl) {
-              nameEl.innerText = `¡Hola, ${personalizedGuest.name}!`;
-              infoEl.innerText = `Hemos reservado ${personalizedGuest.passes_assigned} pases con mucho cariño para ustedes.`;
-              banner.classList.remove("hidden");
-            }
+              // Ajustar pases
+              maxPasses = personalizedGuest.passes_assigned || 1;
+              currentPasses = personalizedGuest.passes_confirmed > 0
+                ? personalizedGuest.passes_confirmed
+                : (personalizedGuest.passes_assigned || 1);
+              updatePassesDisplay();
 
-            const limitHint = document.getElementById("passes-limit-hint");
-            if (limitHint) {
-              limitHint.innerText = `Pases asignados para tu invitación: ${personalizedGuest.passes_assigned}`;
-            }
+              // Mostrar banner personalizado
+              const banner = document.getElementById("rsvp-personalized-banner");
+              const nameEl = document.getElementById("rsvp-guest-name");
+              const infoEl = document.getElementById("rsvp-passes-info");
+              if (banner && nameEl && infoEl) {
+                nameEl.innerText = `¡Hola, ${personalizedGuest.name}!`;
+                infoEl.innerText = `Hemos reservado ${personalizedGuest.passes_assigned} pases con mucho cariño para ustedes.`;
+                banner.classList.remove("hidden");
+              }
 
-            // Si ya respondió antes
-            if (personalizedGuest.rsvp_status === 'confirmed' || personalizedGuest.rsvp_status === 'declined') {
-              showSuccessState(personalizedGuest.name, personalizedGuest.rsvp_status);
+              const limitHint = document.getElementById("passes-limit-hint");
+              if (limitHint) {
+                limitHint.innerText = `Pases asignados para tu invitación: ${personalizedGuest.passes_assigned}`;
+              }
+
+              // Si ya respondió antes
+              if (personalizedGuest.rsvp_status === 'confirmed' || personalizedGuest.rsvp_status === 'declined') {
+                showSuccessState(personalizedGuest.name, personalizedGuest.rsvp_status);
+              }
             }
-          }
-        })
-        .catch(err => console.error("Error al consultar invitado:", err));
+          })
+          .catch(err => console.error("Error al consultar invitado:", err));
       }
 
-      window.changePasses = function(delta) {
+      window.changePasses = function (delta) {
         const newPasses = currentPasses + delta;
         if (newPasses >= 1 && newPasses <= maxPasses) {
           currentPasses = newPasses;
@@ -966,7 +1043,7 @@
         if (hiddenInput) hiddenInput.value = currentPasses;
       }
 
-      window.toggleRsvpFields = function() {
+      window.toggleRsvpFields = function () {
         const attendingVal = document.querySelector('input[name="attending"]:checked').value;
         const passesWrap = document.getElementById("field-passes-wrap");
         const allergiesWrap = document.getElementById("field-allergies-wrap");
@@ -980,7 +1057,7 @@
         }
       };
 
-      window.handleRsvpSubmit = async function(e) {
+      window.handleRsvpSubmit = async function (e) {
         e.preventDefault();
         const submitBtn = document.getElementById("rsvp-submit-btn");
         submitBtn.disabled = true;
@@ -1081,7 +1158,7 @@
         }
       }
 
-      window.resetRsvpForm = function() {
+      window.resetRsvpForm = function () {
         const form = document.getElementById("rsvp-interactive-form");
         const successView = document.getElementById("rsvp-success-view");
         if (form) form.classList.remove("hidden");
@@ -1092,4 +1169,5 @@
   </script>
 
 </body>
+
 </html>
