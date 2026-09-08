@@ -261,11 +261,16 @@
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-5px); }
     }
+    @keyframes floatThor {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
 
     .hero-float-spidey { animation: floatSpidey 4.6s ease-in-out infinite; }
     .hero-float-cap { animation: floatCap 5.2s ease-in-out 0.6s infinite; }
     .hero-float-iron { animation: floatIron 4.8s ease-in-out 1.2s infinite; }
     .hero-float-hulk { animation: floatHulk 5.8s ease-in-out 1.8s infinite; }
+    .hero-float-thor { animation: floatThor 4.6s ease-in-out 0.4s infinite; }
 
     /* Etiquetas de personajes en papel lino y oro */
     .hero-tag-chip {
@@ -553,7 +558,7 @@
     <!-- 5. APARTADO ESPECIAL: CUMPLEAÑOS & MESA DE REGALOS            -->
     <!-- (Estética Botánica de Terciopelo, Mármol Cálido y Cuento)     -->
     <!-- ============================================================= -->
-    <section class="reveal relative overflow-hidden rounded-3xl border border-[#5A6F4E]/35 shadow-md bg-gradient-to-b from-[#FAF7F2] to-[#F1ECE2] p-6 sm:p-10 text-center space-y-8 my-10">
+    <section class="reveal relative overflow-hidden rounded-3xl border border-[#5A6F4E]/35 shadow-md bg-gradient-to-b from-[#FAF7F2] to-[#F1ECE2] p-6 sm:p-10 text-center space-y-8 mt-8 mb-4">
       
       <!-- Marco interior litúrgico con pespunte oro -->
       <div class="absolute inset-2 border border-dashed border-[#C6A052]/40 rounded-2xl pointer-events-none"></div>
@@ -612,12 +617,42 @@
 
     </section>
 
-    <div class="hairline-v reveal"></div>
+    <!-- ============================================================= -->
+    <!-- INTERMEDIO HEROICO: THOR (DIOS DEL TRUENO Y PROTECTOR)        -->
+    <!-- ============================================================= -->
+    <div class="reveal relative flex flex-col items-center justify-center !mt-1 !mb-1 py-1 select-none group cursor-pointer">
+      
+      <!-- Halo de energía dorada y botánica -->
+      <div class="absolute w-52 h-52 rounded-full bg-gradient-to-tr from-[#C6A052]/25 via-[#FAF7F2]/60 to-[#5A6F4E]/20 blur-2xl pointer-events-none -z-10"></div>
+      
+      <!-- Destellos de trueno y luz -->
+      <span class="absolute top-2 right-1/4 text-[#C6A052] text-xs animate-pulse pointer-events-none">✦</span>
+      <span class="absolute bottom-5 left-1/4 text-[#C6A052] text-[10px] animate-pulse pointer-events-none" style="animation-delay: 1.2s;">⚡</span>
+
+      <!-- Figura de Thor dinámica con flotación sutil -->
+      <div class="relative w-56 sm:w-64 transition-transform duration-500 group-hover:scale-105">
+        <img 
+          src="/hero_thor.png" 
+          alt="Thor" 
+          class="hero-float-thor w-full h-auto object-contain filter drop-shadow-[0_14px_18px_rgba(46,61,37,0.28)] group-hover:drop-shadow-[0_20px_28px_rgba(198,160,82,0.5)] transition-all duration-300"
+        />
+        <!-- Sombra en el suelo -->
+        <div class="w-36 h-3 bg-[#2E3D25]/20 rounded-[100%] blur-sm mx-auto -mt-1 pointer-events-none"></div>
+      </div>
+
+      <!-- Placa de honor en lino y oro -->
+      <div class="mt-1 inline-flex items-center gap-1.5 px-3.5 py-1 bg-[#EDE7DD]/90 border border-[#5A6F4E]/30 rounded-full shadow-sm group-hover:border-[#C6A052] transition-colors">
+        <span class="text-[#C6A052] text-[9px]">⚡</span>
+        <span class="font-sans text-[8.5px] font-bold tracking-[0.25em] uppercase text-[#2E3D25]">
+          Thor · Guardián de Asgard
+        </span>
+      </div>
+    </div>
 
     <!-- ============================================================= -->
     <!-- 6. CONFIRMACIÓN DE ASISTENCIA INTERACTIVA (SUPABASE)         -->
     <!-- ============================================================= -->
-    <section class="reveal relative overflow-hidden rounded-3xl border border-[#5A6F4E]/35 shadow-md bg-gradient-to-b from-[#FAF7F2] to-[#F1ECE2] p-6 sm:p-10 text-center space-y-6">
+    <section class="reveal relative overflow-hidden rounded-3xl border border-[#5A6F4E]/35 shadow-md bg-gradient-to-b from-[#FAF7F2] to-[#F1ECE2] p-6 sm:p-10 text-center space-y-6 !mt-3">
       
       <!-- Pespunte litúrgico interior -->
       <div class="absolute inset-2 border border-dashed border-[#C6A052]/40 rounded-2xl pointer-events-none"></div>
