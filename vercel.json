@@ -1,7 +1,27 @@
 {
   "rewrites": [
     {
-      "source": "/((?!.*\\.(?:png|jpg|jpeg|gif|svg|ico|mp3|mp4|webp|woff|woff2|ttf|css|js)$).*)",
+      "source": "/:path*.png",
+      "destination": "/:path*.png"
+    },
+    {
+      "source": "/:path*.jpg",
+      "destination": "/:path*.jpg"
+    },
+    {
+      "source": "/:path*.jpeg",
+      "destination": "/:path*.jpeg"
+    },
+    {
+      "source": "/:path*.mp3",
+      "destination": "/:path*.mp3"
+    },
+    {
+      "source": "/:path*.svg",
+      "destination": "/:path*.svg"
+    },
+    {
+      "source": "/:path*",
       "destination": "/index.html"
     }
   ]
