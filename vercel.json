@@ -1,24 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/:path*.png",
-      "destination": "/:path*.png"
-    },
-    {
-      "source": "/:path*.jpg",
-      "destination": "/:path*.jpg"
-    },
-    {
-      "source": "/:path*.jpeg",
-      "destination": "/:path*.jpeg"
-    },
-    {
-      "source": "/:path*.mp3",
-      "destination": "/:path*.mp3"
-    },
-    {
-      "source": "/:path*.svg",
-      "destination": "/:path*.svg"
+      "source": "/bautizoaaron/:path*",
+      "destination": "/:path*"
     },
     {
       "source": "/:path*",
