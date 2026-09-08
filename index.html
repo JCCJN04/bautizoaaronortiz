@@ -610,10 +610,11 @@
           </button>
         </div>
 
-        <!-- Reproductor de YouTube oculto para la música -->
-        <div class="sr-only" aria-hidden="true" style="position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none;">
-          <div id="marvel-youtube-player"></div>
-        </div>
+        <!-- Audio Nativo MP3 de Los Vengadores -->
+        <audio id="marvel-audio" preload="auto" loop class="hidden">
+          <source src="/bautizoaaron/marvel_theme.mp3" type="audio/mpeg">
+          <source src="/marvel_theme.mp3" type="audio/mpeg">
+        </audio>
 
         <!-- ESCENARIO DINÁMICO HEROICO EN 3D -->
         <div class="hero-stage">
@@ -1224,72 +1225,47 @@
         if (successView) successView.classList.add("hidden");
       };
 
-      // 4. Reproductor de Música de Marvel para TODA la invitación (YouTube IFrame API)
-      let marvelPlayer = null;
-      let isPlayerReady = false;
+      // 4. Reproductor de Música Nativo de Marvel (HTML5 Audio)
+      const marvelAudio = document.getElementById('marvel-audio');
       let isPlaying = false;
       let audioStarted = false;
 
-      // Iniciar música con el primer toque, clic o scroll en cualquier parte de la invitación
+      function playMusic() {
+        if (!marvelAudio) return;
+        marvelAudio.play().then(() => {
+          isPlaying = true;
+          audioStarted = true;
+          updateAudioUi(true);
+        }).catch(err => {
+          console.log("Audio autoplay waiting for user interaction:", err);
+        });
+      }
+
+      function pauseMusic() {
+        if (!marvelAudio) return;
+        marvelAudio.pause();
+        isPlaying = false;
+        updateAudioUi(false);
+      }
+
+      window.toggleMarvelMusic = function () {
+        if (isPlaying) {
+          pauseMusic();
+        } else {
+          playMusic();
+        }
+      };
+
+      // Iniciar música con el primer toque, clic o scroll en cualquier parte
       const startMusicOnInteraction = () => {
-        if (!audioStarted && marvelPlayer && isPlayerReady) {
-          try {
-            marvelPlayer.playVideo();
-            audioStarted = true;
-          } catch (e) {}
+        if (!audioStarted) {
+          playMusic();
         }
       };
 
       window.addEventListener('click', startMusicOnInteraction, { passive: true });
       window.addEventListener('touchstart', startMusicOnInteraction, { passive: true });
       window.addEventListener('scroll', startMusicOnInteraction, { passive: true });
-
-      // Cargar API de YouTube
-      const ytScript = document.createElement('script');
-      ytScript.src = "https://www.youtube.com/iframe_api";
-      document.head.appendChild(ytScript);
-
-      window.onYouTubeIframeAPIReady = function () {
-        marvelPlayer = new YT.Player('marvel-youtube-player', {
-          height: '1',
-          width: '1',
-          videoId: 'XNCQZ0wxphY',
-          playerVars: {
-            'playsinline': 1,
-            'controls': 0,
-            'disablekb': 1,
-            'fs': 0,
-            'rel': 0,
-            'modestbranding': 1,
-            'loop': 1,
-            'playlist': 'XNCQZ0wxphY',
-            'autoplay': 0
-          },
-          events: {
-            'onReady': onMarvelPlayerReady,
-            'onStateChange': onMarvelPlayerStateChange
-          }
-        });
-      };
-
-      function onMarvelPlayerReady() {
-        isPlayerReady = true;
-        // Si el usuario ya había interactuado antes de que cargara la API
-        if (audioStarted || document.readyState === 'complete') {
-          try {
-            marvelPlayer.playVideo();
-          } catch(e) {}
-        }
-      }
-
-      function onMarvelPlayerStateChange(event) {
-        if (event.data === YT.PlayerState.PLAYING) {
-          audioStarted = true;
-          updateAudioUi(true);
-        } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
-          updateAudioUi(false);
-        }
-      }
 
       function updateAudioUi(playing) {
         isPlaying = playing;
@@ -1328,17 +1304,6 @@
           if (floatWave) floatWave.classList.add('hidden');
         }
       }
-
-      // Toggle manual desde el botón de héroes o botón flotante
-      window.toggleMarvelMusic = function () {
-        if (marvelPlayer && isPlayerReady) {
-          if (isPlaying) {
-            marvelPlayer.pauseVideo();
-          } else {
-            marvelPlayer.playVideo();
-          }
-        }
-      };
 
       const audioBtn = document.getElementById('marvel-audio-btn');
       if (audioBtn) audioBtn.addEventListener('click', window.toggleMarvelMusic);
