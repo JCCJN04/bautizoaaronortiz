@@ -428,10 +428,31 @@
 
 
 
+  <!-- Capa de Fondo Botánico Wallpaper (Fijo, detrás de todo el contenido) -->
+  <div class="fixed inset-0 pointer-events-none select-none z-0 overflow-hidden">
+    <!-- Pradera botánica en la base del fondo (izquierda) -->
+    <div class="absolute -bottom-8 -left-10 w-72 sm:w-88 md:w-[420px] opacity-70 transform -rotate-2">
+      <img src="/flor_transparent.png" alt="Botanical background" class="w-full h-auto object-contain" />
+    </div>
+    <!-- Pradera botánica en la base del fondo (derecha reflejada) -->
+    <div class="absolute -bottom-8 -right-10 w-72 sm:w-88 md:w-[420px] opacity-70 transform scale-x-[-1] rotate-2">
+      <img src="/flor_transparent.png" alt="Botanical background" class="w-full h-auto object-contain" />
+    </div>
+    <!-- Follaje botánico superior izquierdo de fondo (invertido colgando hacia abajo) -->
+    <div class="absolute -top-6 -left-12 w-64 sm:w-80 opacity-65 transform scale-y-[-1] -rotate-12">
+      <img src="/flor_transparent.png" alt="Botanical background" class="w-full h-auto object-contain" />
+    </div>
+    <!-- Follaje botánico superior derecho de fondo (invertido colgando hacia abajo y reflejado) -->
+    <div class="absolute -top-6 -right-12 w-64 sm:w-80 opacity-65 transform scale-x-[-1] scale-y-[-1] rotate-12">
+      <img src="/flor_transparent.png" alt="Botanical background" class="w-full h-auto object-contain" />
+    </div>
+  </div>
+
   <div class="max-w-[550px] mx-auto px-6 py-20 text-center relative z-10 space-y-14">
+
     <!-- 1. ENCABEZADO / TÍTULO PRINCIPAL                              -->
     <!-- ============================================================= -->
-    <header class="reveal space-y-5 pt-4">
+    <header class="reveal space-y-4 pt-2">
       <div class="botanical-badge mx-auto">
         <span>Mi Bautizo & Cumpleaños</span>
       </div>
@@ -558,7 +579,7 @@
       <!-- ============================================================= -->
       <!-- DIORAMA HEROICO ESPECTACULAR (COMPOSICIÓN DINÁMICA 3D)         -->
       <!-- ============================================================= -->
-      <div class="pt-10 pb-2 relative">
+      <div id="heroes-section" class="pt-10 pb-2 relative">
 
         <!-- Emblema de honor editorial -->
         <div class="flex items-center justify-center gap-3 mb-2">
@@ -576,6 +597,23 @@
         <p class="font-body italic text-[15px] sm:text-[16px] text-[#38492F] max-w-[85%] mx-auto mt-1 mb-2">
           Capitán América, Spider-Man, Iron Man y Hulk se reúnen para celebrar su cumpleaños.
         </p>
+
+        <!-- Badge interactivo de audio / tema musical de Marvel -->
+        <div class="flex justify-center my-2">
+          <button type="button" id="marvel-audio-btn"
+            class="inline-flex items-center gap-2 px-4 py-1.5 bg-[#EDE7DD]/95 border border-[#C6A052]/70 rounded-full shadow-sm cursor-pointer hover:bg-[#EDE7DD] hover:scale-105 active:scale-95 transition-all text-center">
+            <span id="marvel-audio-icon" class="text-[#C6A052] text-xs">🎵</span>
+            <span id="marvel-audio-text" class="font-sans text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#2E3D25]">
+              Tema de Los Vengadores
+            </span>
+            <span id="marvel-audio-indicator" class="w-2 h-2 rounded-full bg-[#5A6F4E] opacity-60"></span>
+          </button>
+        </div>
+
+        <!-- Reproductor de YouTube oculto para la música -->
+        <div class="sr-only" aria-hidden="true" style="position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none;">
+          <div id="marvel-youtube-player"></div>
+        </div>
 
         <!-- ESCENARIO DINÁMICO HEROICO EN 3D -->
         <div class="hero-stage">
@@ -924,6 +962,20 @@
 
   </div>
 
+  <!-- Botón Flotante de Música Ambiental para toda la invitación -->
+  <aside aria-label="Control de música" class="fixed bottom-6 right-6 z-50">
+    <button type="button" id="floating-music-btn" aria-label="Alternar música"
+      class="flex items-center gap-2 px-3.5 py-2.5 bg-[#EDE7DD]/95 hover:bg-[#FAF7F2] text-[#2E3D25] border border-[#C6A052]/80 rounded-full shadow-lg backdrop-blur-md transition-all transform hover:scale-105 active:scale-95 cursor-pointer group">
+      <span id="float-music-icon" class="text-sm">🎵</span>
+      <span class="font-sans text-[10px] font-bold tracking-wider uppercase pr-1">Música</span>
+      <span id="float-music-wave" class="hidden flex items-center gap-0.5">
+        <span class="w-1 h-3 bg-[#C6A052] rounded-full animate-pulse"></span>
+        <span class="w-1 h-4 bg-[#5A6F4E] rounded-full animate-pulse" style="animation-delay: 0.15s"></span>
+        <span class="w-1 h-2 bg-[#C6A052] rounded-full animate-pulse" style="animation-delay: 0.3s"></span>
+      </span>
+    </button>
+  </aside>
+
   <!-- SCRIPT: Scroll reveal y Cuenta regresiva -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -1171,6 +1223,128 @@
         if (form) form.classList.remove("hidden");
         if (successView) successView.classList.add("hidden");
       };
+
+      // 4. Reproductor de Música de Marvel para TODA la invitación (YouTube IFrame API)
+      let marvelPlayer = null;
+      let isPlayerReady = false;
+      let isPlaying = false;
+      let audioStarted = false;
+
+      // Iniciar música con el primer toque, clic o scroll en cualquier parte de la invitación
+      const startMusicOnInteraction = () => {
+        if (!audioStarted && marvelPlayer && isPlayerReady) {
+          try {
+            marvelPlayer.playVideo();
+            audioStarted = true;
+          } catch (e) {}
+        }
+      };
+
+      window.addEventListener('click', startMusicOnInteraction, { passive: true });
+      window.addEventListener('touchstart', startMusicOnInteraction, { passive: true });
+      window.addEventListener('scroll', startMusicOnInteraction, { passive: true });
+
+      // Cargar API de YouTube
+      const ytScript = document.createElement('script');
+      ytScript.src = "https://www.youtube.com/iframe_api";
+      document.head.appendChild(ytScript);
+
+      window.onYouTubeIframeAPIReady = function () {
+        marvelPlayer = new YT.Player('marvel-youtube-player', {
+          height: '1',
+          width: '1',
+          videoId: 'XNCQZ0wxphY',
+          playerVars: {
+            'playsinline': 1,
+            'controls': 0,
+            'disablekb': 1,
+            'fs': 0,
+            'rel': 0,
+            'modestbranding': 1,
+            'loop': 1,
+            'playlist': 'XNCQZ0wxphY',
+            'autoplay': 0
+          },
+          events: {
+            'onReady': onMarvelPlayerReady,
+            'onStateChange': onMarvelPlayerStateChange
+          }
+        });
+      };
+
+      function onMarvelPlayerReady() {
+        isPlayerReady = true;
+        // Si el usuario ya había interactuado antes de que cargara la API
+        if (audioStarted || document.readyState === 'complete') {
+          try {
+            marvelPlayer.playVideo();
+          } catch(e) {}
+        }
+      }
+
+      function onMarvelPlayerStateChange(event) {
+        if (event.data === YT.PlayerState.PLAYING) {
+          audioStarted = true;
+          updateAudioUi(true);
+        } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+          updateAudioUi(false);
+        }
+      }
+
+      function updateAudioUi(playing) {
+        isPlaying = playing;
+        
+        // Elementos en la sección de héroes
+        const icon = document.getElementById('marvel-audio-icon');
+        const text = document.getElementById('marvel-audio-text');
+        const indicator = document.getElementById('marvel-audio-indicator');
+        const btn = document.getElementById('marvel-audio-btn');
+
+        // Elemento flotante fijo
+        const floatIcon = document.getElementById('float-music-icon');
+        const floatWave = document.getElementById('float-music-wave');
+
+        if (playing) {
+          if (icon) icon.innerText = "🔊";
+          if (text) text.innerText = "Sonando: Tema de Los Vengadores";
+          if (indicator) {
+            indicator.classList.remove('bg-[#5A6F4E]', 'opacity-60');
+            indicator.classList.add('bg-[#C6A052]', 'animate-ping');
+          }
+          if (btn) btn.classList.add('border-[#C6A052]', 'bg-[#EDE7DD]');
+
+          if (floatIcon) floatIcon.innerText = "🔊";
+          if (floatWave) floatWave.classList.remove('hidden');
+        } else {
+          if (icon) icon.innerText = "🎵";
+          if (text) text.innerText = "Tema de Los Vengadores";
+          if (indicator) {
+            indicator.classList.remove('bg-[#C6A052]', 'animate-ping');
+            indicator.classList.add('bg-[#5A6F4E]', 'opacity-60');
+          }
+          if (btn) btn.classList.remove('border-[#C6A052]');
+
+          if (floatIcon) floatIcon.innerText = "🔇";
+          if (floatWave) floatWave.classList.add('hidden');
+        }
+      }
+
+      // Toggle manual desde el botón de héroes o botón flotante
+      window.toggleMarvelMusic = function () {
+        if (marvelPlayer && isPlayerReady) {
+          if (isPlaying) {
+            marvelPlayer.pauseVideo();
+          } else {
+            marvelPlayer.playVideo();
+          }
+        }
+      };
+
+      const audioBtn = document.getElementById('marvel-audio-btn');
+      if (audioBtn) audioBtn.addEventListener('click', window.toggleMarvelMusic);
+
+      const floatBtn = document.getElementById('floating-music-btn');
+      if (floatBtn) floatBtn.addEventListener('click', window.toggleMarvelMusic);
 
     });
   </script>
