@@ -3,10 +3,6 @@
     {
       "source": "/bautizoaaron/:path*",
       "destination": "/:path*"
-    },
-    {
-      "source": "/:path*",
-      "destination": "/index.html"
     }
   ]
 }
