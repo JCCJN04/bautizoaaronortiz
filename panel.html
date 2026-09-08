@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel de Confirmaciones · Bautizo y Cumpleaños Aaron Sebastián</title>
+  
+  <!-- Tipografía Editorial (Cinzel + Lora + Montserrat) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Lora:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Cinzel', 'serif'],
+            body: ['Lora', 'serif'],
+            sans: ['Montserrat', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --paper: #FAF6F0;
+      --paper-card: #FFFFFF;
+      --ink: #141714;
+      --olive: #3E5033;
+      --olive-dark: #273420;
+      --gold: #C6A052;
+      --gold-light: #EBDCB8;
+      --line: #E8E0D2;
+    }
+    body {
+      background-color: var(--paper);
+      color: var(--ink);
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+    }
+    .font-serif-title {
+      font-family: 'Cinzel', serif;
+    }
+  </style>
+</head>
+<body class="antialiased p-4 sm:p-8">
+
+  <!-- ============================================================== -->
+  <!-- 1. LOGIN GATE / PROTECCIÓN CON CLAVE PIN                         -->
+  <!-- ============================================================== -->
+  <div id="login-gate" class="fixed inset-0 z-50 bg-[#FAF6F0] flex items-center justify-center p-4">
+    <div class="max-w-md w-full bg-white rounded-3xl p-8 sm:p-10 shadow-xl border border-[#C6A052]/40 text-center space-y-6 relative overflow-hidden">
+      
+      <!-- Detalle decorativo superior -->
+      <div class="w-12 h-1 bg-[#C6A052] mx-auto rounded-full"></div>
+      
+      <div class="space-y-2">
+        <p class="text-[10px] font-bold tracking-[0.3em] uppercase text-[#3E5033]">
+          Acceso Exclusivo Anfitrión
+        </p>
+        <h1 class="font-serif-title text-2xl sm:text-3xl text-[#141714]">
+          Panel de Respuestas
+        </h1>
+        <p class="text-xs text-stone-500">
+          Bautizo & Cumpleaños de Aaron Sebastián
+        </p>
+      </div>
+
+      <form id="login-form" onsubmit="handleLogin(event)" class="space-y-4 pt-2">
+        <div class="text-left">
+          <label class="block text-[11px] font-semibold tracking-wider uppercase text-[#3E5033] mb-1.5">
+            PIN o Contraseña
+          </label>
+          <input 
+            type="password" 
+            id="pin-input" 
+            required 
+            placeholder="Introduce tu PIN (Ej. 2026)"
+            class="w-full px-4 py-3 rounded-xl border border-stone-200 text-stone-800 focus:outline-none focus:border-[#C6A052] text-center font-mono tracking-widest text-lg shadow-sm"
+          />
+        </div>
+        <p id="login-error" class="text-xs text-rose-600 font-medium hidden">
+          PIN incorrecto. Intenta de nuevo.
+        </p>
+        <button 
+          type="submit" 
+          class="w-full py-3.5 bg-[#3E5033] hover:bg-[#273420] text-[#FAF2E6] font-semibold text-xs tracking-widest uppercase rounded-xl transition-all shadow-md active:scale-95"
+        >
+          Ingresar al Panel
+        </button>
+      </form>
+
+      <p class="text-[11px] text-stone-400">
+        PIN predeterminado: <span class="font-mono font-bold text-stone-600">2026</span>
+      </p>
+    </div>
+  </div>
+
+
+  <!-- ============================================================== -->
+  <!-- 2. PANEL PRINCIPAL (HOST DASHBOARD)                            -->
+  <!-- ============================================================== -->
+  <div id="panel-content" class="max-w-6xl mx-auto space-y-8 hidden">
+    
+    <!-- Encabezado del Panel -->
+    <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#C6A052]/30">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#3E5033]/10 border border-[#3E5033]/30 rounded-full mb-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-600 animate-ping"></span>
+          <span class="text-[10px] font-bold tracking-widest uppercase text-[#3E5033]">
+            Sincronizado en Vivo
+          </span>
+        </div>
+        <h1 class="font-serif-title text-2xl sm:text-3xl text-[#141714]">
+          Confirmaciones · Aaron Sebastián
+        </h1>
+        <p class="text-xs text-stone-500 mt-1">
+          Sábado 3 de Octubre de 2026 · Salón de Eventos La Lomita
+        </p>
+      </div>
+
+      <!-- Acciones de cabecera -->
+      <div class="flex flex-wrap items-center gap-3">
+        <button 
+          onclick="openAddGuestModal()" 
+          class="px-4 py-2.5 bg-[#3E5033] hover:bg-[#273420] text-white rounded-xl text-xs font-semibold tracking-wider uppercase transition shadow-sm flex items-center gap-2"
+        >
+          <svg class="w-4 h-4 text-[#C6A052]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+          </svg>
+          <span>Nuevo Invitado / Pase</span>
+        </button>
+
+        <button 
+          onclick="exportToCSV()" 
+          class="px-4 py-2.5 bg-white border border-[#C6A052]/60 hover:bg-[#FAF6F0] text-[#3E5033] rounded-xl text-xs font-semibold tracking-wider uppercase transition shadow-sm flex items-center gap-2"
+        >
+          <svg class="w-4 h-4 text-[#C6A052]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+          </svg>
+          <span>Descargar Excel</span>
+        </button>
+
+        <button 
+          onclick="fetchGuests()" 
+          title="Actualizar datos" 
+          class="p-2.5 bg-white border border-stone-200 hover:bg-stone-50 text-stone-600 rounded-xl transition"
+        >
+          <svg id="refresh-icon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+          </svg>
+        </button>
+
+        <button 
+          onclick="logout()" 
+          class="text-xs text-stone-400 hover:text-stone-700 underline px-2"
+        >
+          Salir
+        </button>
+      </div>
+    </header>
+
+
+    <!-- ============================================================ -->
+    <!-- 4 TARJETAS DE MÉTRICAS / RESUMEN                             -->
+    <!-- ============================================================ -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      
+      <!-- Total Registros -->
+      <div class="bg-white rounded-2xl p-5 border border-stone-200/80 shadow-sm space-y-1">
+        <p class="text-[10px] font-bold tracking-widest uppercase text-stone-500">Respuestas</p>
+        <p id="stat-total" class="font-serif-title text-3xl font-bold text-[#141714]">0</p>
+        <p class="text-[11px] text-stone-400">Familias / Invitados</p>
+      </div>
+
+      <!-- Pases Confirmados -->
+      <div class="bg-white rounded-2xl p-5 border border-emerald-200 shadow-sm space-y-1 relative overflow-hidden">
+        <div class="absolute -right-2 -bottom-2 w-16 h-16 bg-emerald-50 rounded-full pointer-events-none"></div>
+        <p class="text-[10px] font-bold tracking-widest uppercase text-emerald-700">Pases Confirmados</p>
+        <p id="stat-confirmed-passes" class="font-serif-title text-3xl font-bold text-emerald-800">0</p>
+        <p id="stat-confirmed-count" class="text-[11px] text-emerald-600 font-medium">0 asistirán</p>
+      </div>
+
+      <!-- Declinados -->
+      <div class="bg-white rounded-2xl p-5 border border-stone-200 shadow-sm space-y-1">
+        <p class="text-[10px] font-bold tracking-widest uppercase text-rose-700">No Asistirán</p>
+        <p id="stat-declined" class="font-serif-title text-3xl font-bold text-rose-700">0</p>
+        <p class="text-[11px] text-stone-400">Agradecieron</p>
+      </div>
+
+      <!-- Pendientes (si hay lista) -->
+      <div class="bg-white rounded-2xl p-5 border border-amber-200 shadow-sm space-y-1">
+        <p class="text-[10px] font-bold tracking-widest uppercase text-amber-700">Pendientes</p>
+        <p id="stat-pending" class="font-serif-title text-3xl font-bold text-amber-800">0</p>
+        <p class="text-[11px] text-stone-400">Por responder</p>
+      </div>
+
+    </div>
+
+
+    <!-- ============================================================ -->
+    <!-- BUSCADOR Y FILTROS                                           -->
+    <!-- ============================================================ -->
+    <div class="bg-white rounded-2xl p-4 border border-stone-200/80 shadow-sm flex flex-col md:flex-row gap-4 items-center justify-between">
+      
+      <!-- Búsqueda -->
+      <div class="relative w-full md:w-80">
+        <svg class="w-4 h-4 text-stone-400 absolute left-3.5 top-3.5 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+        <input 
+          type="text" 
+          id="search-input" 
+          oninput="filterGuests()" 
+          placeholder="Buscar por nombre o familia..." 
+          class="w-full pl-10 pr-4 py-2 text-xs rounded-xl border border-stone-200 focus:outline-none focus:border-[#C6A052]"
+        />
+      </div>
+
+      <!-- Filtro por Estado -->
+      <div class="flex items-center gap-2 w-full md:w-auto overflow-x-auto">
+        <button onclick="setFilter('all')" id="filter-all" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wider uppercase bg-[#3E5033] text-white">
+          Todos (<span id="count-all">0</span>)
+        </button>
+        <button onclick="setFilter('confirmed')" id="filter-confirmed" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wider uppercase bg-stone-100 text-stone-600 hover:bg-stone-200">
+          Asistirán (<span id="count-confirmed">0</span>)
+        </button>
+        <button onclick="setFilter('declined')" id="filter-declined" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wider uppercase bg-stone-100 text-stone-600 hover:bg-stone-200">
+          No Asistirán (<span id="count-declined">0</span>)
+        </button>
+        <button onclick="setFilter('pending')" id="filter-pending" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wider uppercase bg-stone-100 text-stone-600 hover:bg-stone-200">
+          Pendientes (<span id="count-pending">0</span>)
+        </button>
+      </div>
+
+    </div>
+
+
+    <!-- ============================================================ -->
+    <!-- TABLA DE INVITADOS                                           -->
+    <!-- ============================================================ -->
+    <div class="bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead class="bg-[#FAF6F0] border-b border-stone-200 text-stone-600 uppercase tracking-wider font-semibold text-[10px]">
+            <tr>
+              <th class="py-3.5 px-4">Invitado / Familia</th>
+              <th class="py-3.5 px-4 text-center">Estado</th>
+              <th class="py-3.5 px-4 text-center">Pases</th>
+              <th class="py-3.5 px-4">Notas / Alergias</th>
+              <th class="py-3.5 px-4">Mensaje</th>
+              <th class="py-3.5 px-4">Fecha</th>
+              <th class="py-3.5 px-4 text-center">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="guests-table-body" class="divide-y divide-stone-100">
+            <!-- Cargando... -->
+            <tr>
+              <td colspan="7" class="py-12 text-center text-stone-400">
+                Cargando confirmaciones...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ============================================================== -->
+  <!-- MODAL: AGREGAR INVITADO / CREAR PASE PERSONALIZADO             -->
+  <!-- ============================================================== -->
+  <div id="add-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="max-w-md w-full bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-[#C6A052]/40 space-y-5">
+      <div class="flex items-center justify-between">
+        <h3 class="font-serif-title text-xl text-[#141714]">Crear Pase Personalizado</h3>
+        <button onclick="closeAddGuestModal()" class="text-stone-400 hover:text-stone-700">✕</button>
+      </div>
+
+      <form onsubmit="handleAddGuest(event)" class="space-y-4">
+        <div>
+          <label class="block text-[11px] font-semibold tracking-wider uppercase text-[#3E5033] mb-1">
+            Nombre del Invitado o Familia
+          </label>
+          <input 
+            type="text" 
+            id="new-guest-name" 
+            required 
+            placeholder="Ej. Familia Martínez Ortiz" 
+            class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-xs focus:outline-none focus:border-[#C6A052]"
+          />
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-semibold tracking-wider uppercase text-[#3E5033] mb-1">
+            Pases Asignados
+          </label>
+          <input 
+            type="number" 
+            id="new-guest-passes" 
+            required 
+            min="1" 
+            max="15" 
+            value="2" 
+            class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-xs focus:outline-none focus:border-[#C6A052]"
+          />
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-semibold tracking-wider uppercase text-[#3E5033] mb-1">
+            Teléfono (opcional)
+          </label>
+          <input 
+            type="tel" 
+            id="new-guest-phone" 
+            placeholder="Ej. 3111234567" 
+            class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-xs focus:outline-none focus:border-[#C6A052]"
+          />
+        </div>
+
+        <div class="pt-2 flex gap-3">
+          <button 
+            type="button" 
+            onclick="closeAddGuestModal()" 
+            class="flex-1 py-2.5 bg-stone-100 hover:bg-stone-200 text-stone-700 font-semibold text-xs tracking-wider uppercase rounded-xl"
+          >
+            Cancelar
+          </button>
+          <button 
+            type="submit" 
+            id="save-guest-btn" 
+            class="flex-1 py-2.5 bg-[#3E5033] hover:bg-[#273420] text-[#FAF2E6] font-semibold text-xs tracking-wider uppercase rounded-xl transition shadow-sm"
+          >
+            Guardar y Generar Link
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ============================================================== -->
+  <!-- MODAL: LINK PERSONALIZADO GENERADO                             -->
+  <!-- ============================================================== -->
+  <div id="link-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="max-w-md w-full bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-[#C6A052]/40 space-y-5 text-center">
+      <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto text-xl">
+        ✓
+      </div>
+      <h3 class="font-serif-title text-xl text-[#141714]">¡Pase Creado con Éxito!</h3>
+      <p id="created-guest-info" class="text-xs text-stone-600 font-medium"></p>
+      
+      <div class="bg-stone-50 p-3 rounded-xl border border-stone-200 text-left">
+        <p class="text-[10px] uppercase font-bold text-stone-400 mb-1">Enlace personalizado:</p>
+        <p id="created-guest-link" class="text-xs font-mono text-emerald-800 break-all select-all"></p>
+      </div>
+
+      <div class="flex flex-col gap-2 pt-2">
+        <button 
+          onclick="copyCreatedLink()" 
+          id="copy-link-btn" 
+          class="w-full py-3 bg-[#3E5033] hover:bg-[#273420] text-white rounded-xl text-xs font-semibold tracking-wider uppercase shadow"
+        >
+          Copiar Enlace
+        </button>
+        <a 
+          id="whatsapp-share-btn" 
+          target="_blank" 
+          class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold tracking-wider uppercase flex items-center justify-center gap-2"
+        >
+          <span>Enviar por WhatsApp</span>
+        </a>
+        <button 
+          onclick="closeLinkModal()" 
+          class="text-xs text-stone-500 hover:text-stone-800 pt-2"
+        >
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================== -->
+  <!-- JAVASCRIPT DEL PANEL                                           -->
+  <!-- ============================================================== -->
+  <script>
+    const SUPABASE_URL = "https://mnswhidquvjaaviyqtfi.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1uc3doaWRxdXZqYWF2aXlxdGZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODcwMDQ3MjUsImV4cCI6MjEwMjU4MDcyNX0.E_m3pf6zyzCl50b2LF4lEtbo8NyVaqAjF0Xwb1iytPw";
+    const EVENT_ID = "f7851afd-3993-4ca1-abeb-82327ff4abba";
+    const PIN_CORRECT = "2026";
+
+    let allGuests = [];
+    let currentFilter = 'all';
+
+    // 1. Verificación de Autenticación
+    function checkAuth() {
+      const auth = sessionStorage.getItem("host_panel_auth");
+      if (auth === "true") {
+        document.getElementById("login-gate").classList.add("hidden");
+        document.getElementById("panel-content").classList.remove("hidden");
+        fetchGuests();
+      } else {
+        document.getElementById("login-gate").classList.remove("hidden");
+        document.getElementById("panel-content").classList.add("hidden");
+      }
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const pin = document.getElementById("pin-input").value.trim();
+      if (pin === PIN_CORRECT) {
+        sessionStorage.setItem("host_panel_auth", "true");
+        document.getElementById("login-error").classList.add("hidden");
+        checkAuth();
+      } else {
+        document.getElementById("login-error").classList.remove("hidden");
+      }
+    }
+
+    function logout() {
+      sessionStorage.removeItem("host_panel_auth");
+      checkAuth();
+    }
+
+    // 2. Cargar Invitados desde Supabase
+    async function fetchGuests() {
+      const refreshIcon = document.getElementById("refresh-icon");
+      if (refreshIcon) refreshIcon.classList.add("animate-spin");
+
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/guests?event_id=eq.${EVENT_ID}&order=created_at.desc`, {
+          headers: {
+            apikey: SUPABASE_KEY,
+            Authorization: `Bearer ${SUPABASE_KEY}`
+          }
+        });
+
+        if (res.ok) {
+          allGuests = await res.json();
+          renderStats();
+          filterGuests();
+        } else {
+          console.error("Error cargando lista de invitados");
+        }
+      } catch (err) {
+        console.error("Error al conectar con la base de datos:", err);
+      } finally {
+        if (refreshIcon) refreshIcon.classList.remove("animate-spin");
+      }
+    }
+
+    // 3. Renderizar Métricas
+    function renderStats() {
+      const total = allGuests.length;
+      const confirmed = allGuests.filter(g => g.rsvp_status === 'confirmed');
+      const declined = allGuests.filter(g => g.rsvp_status === 'declined');
+      const pending = allGuests.filter(g => g.rsvp_status === 'pending');
+
+      const confirmedPasses = confirmed.reduce((acc, g) => acc + (g.passes_confirmed || g.passes_assigned || 1), 0);
+
+      document.getElementById("stat-total").innerText = total;
+      document.getElementById("stat-confirmed-passes").innerText = confirmedPasses;
+      document.getElementById("stat-confirmed-count").innerText = `${confirmed.length} familias confirmadas`;
+      document.getElementById("stat-declined").innerText = declined.length;
+      document.getElementById("stat-pending").innerText = pending.length;
+
+      document.getElementById("count-all").innerText = total;
+      document.getElementById("count-confirmed").innerText = confirmed.length;
+      document.getElementById("count-declined").innerText = declined.length;
+      document.getElementById("count-pending").innerText = pending.length;
+    }
+
+    // 4. Filtrar y Renderizar Tabla
+    function setFilter(filter) {
+      currentFilter = filter;
+      document.querySelectorAll(".filter-btn").forEach(btn => {
+        btn.classList.remove("bg-[#3E5033]", "text-white");
+        btn.classList.add("bg-stone-100", "text-stone-600");
+      });
+      const activeBtn = document.getElementById(`filter-${filter}`);
+      if (activeBtn) {
+        activeBtn.classList.add("bg-[#3E5033]", "text-white");
+        activeBtn.classList.remove("bg-stone-100", "text-stone-600");
+      }
+      filterGuests();
+    }
+
+    function filterGuests() {
+      const query = document.getElementById("search-input").value.toLowerCase().trim();
+      const filtered = allGuests.filter(g => {
+        const matchesQuery = (g.name || "").toLowerCase().includes(query) || (g.notes || "").toLowerCase().includes(query);
+        const matchesFilter = currentFilter === 'all' || g.rsvp_status === currentFilter;
+        return matchesQuery && matchesFilter;
+      });
+
+      renderTable(filtered);
+    }
+
+    function renderTable(guests) {
+      const tbody = document.getElementById("guests-table-body");
+      if (!tbody) return;
+
+      if (guests.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" class="py-10 text-center text-stone-400">
+              No se encontraron invitados con los filtros seleccionados.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = guests.map(g => {
+        let statusBadge = '';
+        if (g.rsvp_status === 'confirmed') {
+          statusBadge = '<span class="inline-flex items-center gap-1 px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full font-semibold text-[10px]">✓ Confirmado</span>';
+        } else if (g.rsvp_status === 'declined') {
+          statusBadge = '<span class="inline-flex items-center gap-1 px-2.5 py-1 bg-rose-50 text-rose-700 border border-rose-200 rounded-full font-semibold text-[10px]">✕ No asistirá</span>';
+        } else {
+          statusBadge = '<span class="inline-flex items-center gap-1 px-2.5 py-1 bg-amber-50 text-amber-700 border border-amber-200 rounded-full font-semibold text-[10px]">⏳ Pendiente</span>';
+        }
+
+        // Formato de fecha
+        const dateStr = g.confirmed_at || g.created_at;
+        const dateFormatted = dateStr ? new Date(dateStr).toLocaleDateString('es-MX', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }) : '-';
+
+        // Pases
+        const passesText = g.rsvp_status === 'confirmed' 
+          ? `<span class="font-bold text-emerald-800 text-sm">${g.passes_confirmed || g.passes_assigned || 1}</span>` 
+          : `<span class="text-stone-400">${g.passes_assigned || 1} asignados</span>`;
+
+        // Parsear notas (Alergias / Mensaje)
+        const notesRaw = g.notes || '';
+        let alergias = '-';
+        let mensaje = '-';
+
+        if (notesRaw.includes('|')) {
+          const parts = notesRaw.split('|').map(s => s.trim());
+          alergias = parts.filter(p => !p.startsWith('Mensaje:')).join(', ') || '-';
+          const msgPart = parts.find(p => p.startsWith('Mensaje:'));
+          if (msgPart) mensaje = msgPart.replace('Mensaje:', '').trim();
+        } else if (notesRaw) {
+          mensaje = notesRaw;
+        }
+
+        return `
+          <tr class="hover:bg-stone-50/60 transition">
+            <td class="py-3.5 px-4 font-semibold text-stone-900">
+              ${escapeHtml(g.name || 'Invitado')}
+              ${g.phone ? `<p class="text-[10px] text-stone-400 font-normal">${g.phone}</p>` : ''}
+            </td>
+            <td class="py-3.5 px-4 text-center">${statusBadge}</td>
+            <td class="py-3.5 px-4 text-center">${passesText}</td>
+            <td class="py-3.5 px-4 text-stone-600 max-w-[180px] truncate" title="${escapeHtml(alergias)}">
+              ${escapeHtml(alergias)}
+            </td>
+            <td class="py-3.5 px-4 text-stone-600 italic max-w-[200px] truncate" title="${escapeHtml(mensaje)}">
+              ${escapeHtml(mensaje)}
+            </td>
+            <td class="py-3.5 px-4 text-stone-400 text-[11px] whitespace-nowrap">
+              ${dateFormatted}
+            </td>
+            <td class="py-3.5 px-4 text-center whitespace-nowrap">
+              <div class="flex items-center justify-center gap-1.5">
+                ${g.token ? `
+                  <button onclick="copyGuestDirectLink('${g.token}')" title="Copiar enlace personalizado" class="p-1.5 hover:bg-stone-100 text-[#C6A052] rounded-lg">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+                    </svg>
+                  </button>
+                ` : ''}
+                <button onclick="deleteGuest('${g.id}')" title="Eliminar registro" class="p-1.5 hover:bg-rose-50 text-rose-500 rounded-lg">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                  </svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // 5. Agregar Invitado / Crear Pase Personalizado
+    function openAddGuestModal() {
+      document.getElementById("add-modal").classList.remove("hidden");
+      document.getElementById("add-modal").classList.add("flex");
+      document.getElementById("new-guest-name").focus();
+    }
+    function closeAddGuestModal() {
+      document.getElementById("add-modal").classList.add("hidden");
+      document.getElementById("add-modal").classList.remove("flex");
+    }
+
+    async function handleAddGuest(e) {
+      e.preventDefault();
+      const btn = document.getElementById("save-guest-btn");
+      btn.disabled = true;
+      btn.innerText = "Guardando...";
+
+      const name = document.getElementById("new-guest-name").value.trim();
+      const passes = parseInt(document.getElementById("new-guest-passes").value, 10) || 2;
+      const phone = document.getElementById("new-guest-phone").value.trim() || null;
+      const token = Math.random().toString(36).substring(2, 9);
+
+      try {
+        const payload = {
+          event_id: EVENT_ID,
+          token: token,
+          name: name,
+          passes_assigned: passes,
+          passes_confirmed: 0,
+          rsvp_status: 'pending',
+          phone: phone
+        };
+
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/guests`, {
+          method: "POST",
+          headers: {
+            apikey: SUPABASE_KEY,
+            Authorization: `Bearer ${SUPABASE_KEY}`,
+            "Content-Type": "application/json",
+            Prefer: "return=representation"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          closeAddGuestModal();
+          e.target.reset();
+          await fetchGuests();
+          showLinkModal(name, passes, token, phone);
+        } else {
+          alert("Error al crear el invitado.");
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Error de conexión al guardar.");
+      } finally {
+        btn.disabled = false;
+        btn.innerText = "Guardar y Generar Link";
+      }
+    }
+
+    // 6. Modal de Enlace Creado
+    let currentCopiedLink = "";
+    function showLinkModal(name, passes, token, phone) {
+      const baseUrl = window.location.origin + window.location.pathname.replace('panel.html', '');
+      const fullLink = `${baseUrl}?guest=${token}`;
+      currentCopiedLink = fullLink;
+
+      document.getElementById("created-guest-info").innerText = `${name} (${passes} pases asignados)`;
+      document.getElementById("created-guest-link").innerText = fullLink;
+
+      // Botón WhatsApp
+      const waMsg = encodeURIComponent(`¡Hola ${name}! Te invitamos con mucho cariño al Bautizo y Cumpleaños de Aaron Sebastián. Puedes ver todos los detalles y confirmar tus pases aquí: ${fullLink}`);
+      const waUrl = phone 
+        ? `https://api.whatsapp.com/send?phone=52${phone.replace(/\D/g, '')}&text=${waMsg}`
+        : `https://api.whatsapp.com/send?text=${waMsg}`;
+
+      document.getElementById("whatsapp-share-btn").href = waUrl;
+
+      document.getElementById("link-modal").classList.remove("hidden");
+      document.getElementById("link-modal").classList.add("flex");
+    }
+
+    function closeLinkModal() {
+      document.getElementById("link-modal").classList.add("hidden");
+      document.getElementById("link-modal").classList.remove("flex");
+    }
+
+    function copyCreatedLink() {
+      navigator.clipboard.writeText(currentCopiedLink).then(() => {
+        const btn = document.getElementById("copy-link-btn");
+        btn.innerText = "¡Enlace Copiado!";
+        setTimeout(() => btn.innerText = "Copiar Enlace", 2000);
+      });
+    }
+
+    function copyGuestDirectLink(token) {
+      const baseUrl = window.location.origin + window.location.pathname.replace('panel.html', '');
+      const fullLink = `${baseUrl}?guest=${token}`;
+      navigator.clipboard.writeText(fullLink).then(() => {
+        alert("¡Enlace personalizado copiado al portapapeles!\n" + fullLink);
+      });
+    }
+
+    // 7. Eliminar Invitado
+    async function deleteGuest(id) {
+      if (!confirm("¿Estás seguro de eliminar este registro?")) return;
+
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/guests?id=eq.${id}`, {
+          method: "DELETE",
+          headers: {
+            apikey: SUPABASE_KEY,
+            Authorization: `Bearer ${SUPABASE_KEY}`
+          }
+        });
+
+        if (res.ok) {
+          fetchGuests();
+        } else {
+          alert("No se pudo eliminar el registro.");
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    // 8. Exportar a CSV (Excel)
+    function exportToCSV() {
+      if (allGuests.length === 0) {
+        alert("No hay registros para exportar.");
+        return;
+      }
+
+      const headers = ["Nombre / Familia", "Telefono", "Estado", "Pases Asignados", "Pases Confirmados", "Notas / Alergias", "Fecha"];
+      const rows = allGuests.map(g => [
+        `"${(g.name || '').replace(/"/g, '""')}"`,
+        `"${(g.phone || '')}"`,
+        `"${g.rsvp_status}"`,
+        g.passes_assigned || 1,
+        g.rsvp_status === 'confirmed' ? (g.passes_confirmed || g.passes_assigned || 1) : 0,
+        `"${(g.notes || '').replace(/"/g, '""')}"`,
+        `"${g.confirmed_at || g.created_at || ''}"`
+      ]);
+
+      const csvContent = "\uFEFF" + [headers.join(","), ...rows.map(r => r.join(","))].join("\n");
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `Confirmaciones_Aaron_Sebastian_${new Date().toISOString().slice(0, 10)}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.innerText = text;
+      return div.innerHTML;
+    }
+
+    // Iniciar al cargar
+    document.addEventListener("DOMContentLoaded", checkAuth);
+  </script>
+
+</body>
+</html>

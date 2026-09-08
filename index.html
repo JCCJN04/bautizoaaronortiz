@@ -579,37 +579,208 @@
     <div class="hairline-v reveal"></div>
 
     <!-- ============================================================= -->
-    <!-- 6. CONFIRMACIÓN DE ASISTENCIA                                 -->
+    <!-- 6. CONFIRMACIÓN DE ASISTENCIA INTERACTIVA (SUPABASE)         -->
     <!-- ============================================================= -->
-    <section class="reveal space-y-6 pb-6">
-      <h3 class="font-display text-2xl font-medium tracking-[0.05em] uppercase text-[#141714]">
-        Confirmación
-      </h3>
-      <p class="text-[17px] text-[#3D4A38] max-w-[85%] mx-auto leading-relaxed">
-        Agradecemos que nos confirmes tu asistencia para recibirte con todo nuestro cariño.
-      </p>
+    <section class="reveal relative overflow-hidden rounded-3xl border border-[#C6A052]/50 shadow-sm bg-[#FAF6F0] p-6 sm:p-10 text-center space-y-6">
       
-      <!-- Botón directo de confirmación por WhatsApp en Verde Olivo Terciopelo y Oro -->
-      <div class="pt-3 max-w-[90%] mx-auto">
-        <a 
-          href="https://api.whatsapp.com/send?phone=523111234567&text=%C2%A1Hola!%20Confirmo%20con%20mucho%20gusto%20mi%20asistencia%20al%20Bautizo%20y%20Cumplea%C3%B1os%20de%20Aaron%20Sebasti%C3%A1n%20el%20S%C3%A1bado%203%20de%20Octubre." 
-          target="_blank" 
-          class="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#3E5033] hover:bg-[#141714] text-[#FAF2E6] border border-[#C6A052]/70 rounded-full font-sans text-xs font-semibold tracking-widest uppercase transition-all shadow-md hover:scale-105"
-        >
-          <span>Confirmar por WhatsApp</span>
-          <svg class="w-4 h-4 text-[#C6A052]" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.771.815 2.796.815 3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.767-5.768-5.767zm7.986 5.766c0 4.406-3.584 7.99-7.986 7.99-1.399 0-2.715-.365-3.861-1.006l-4.526 1.187 1.207-4.412c-.732-1.205-1.157-2.616-1.157-4.12 0-4.407 3.584-7.991 7.986-7.991 4.402 0 7.986 3.584 7.986 7.991z"/>
-          </svg>
-        </a>
+      <!-- Pespunte litúrgico interior -->
+      <div class="absolute inset-2 border border-dashed border-[#C6A052]/35 rounded-2xl pointer-events-none"></div>
+
+      <!-- Título de sección -->
+      <div class="relative z-10 space-y-2">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 bg-[#3E5033]/10 border border-[#3E5033]/30 rounded-full">
+          <span class="font-sans text-[10px] font-semibold tracking-[0.3em] uppercase text-[#3E5033]">
+            Confirmación de Asistencia
+          </span>
+        </div>
+        <h3 class="font-display text-2xl sm:text-3xl font-normal tracking-[0.05em] uppercase text-[#141714]">
+          ¿Nos Acompañas?
+        </h3>
+        <p class="text-[16px] text-[#3D4A38] max-w-[90%] mx-auto leading-relaxed">
+          Tu presencia es muy importante para nosotros. Por favor confirma tu asistencia a más tardar el 20 de Septiembre.
+        </p>
       </div>
+
+      <!-- BANNER DE BIENVENIDA PERSONALIZADA (si entra con ?guest=TOKEN) -->
+      <div id="rsvp-personalized-banner" class="relative z-10 hidden bg-white/85 border border-[#C6A052]/60 rounded-2xl p-4 text-center space-y-1 shadow-sm">
+        <span class="text-xs text-[#C6A052]">✦ ✦ ✦</span>
+        <h4 id="rsvp-guest-name" class="font-display text-lg font-medium text-[#141714]"></h4>
+        <p id="rsvp-passes-info" class="font-sans text-xs text-[#3E5033] font-semibold"></p>
+      </div>
+
+      <!-- ESTADO: YA ENVIADO / ÉXITO -->
+      <div id="rsvp-success-view" class="relative z-10 hidden space-y-5 py-6">
+        <div class="w-16 h-16 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-300 flex items-center justify-center mx-auto text-2xl shadow-sm">
+          ✓
+        </div>
+        <div class="space-y-1.5">
+          <h4 id="success-title" class="font-display text-2xl text-[#141714]">¡Muchas Gracias!</h4>
+          <p id="success-desc" class="text-[15px] text-[#3D4A38] leading-relaxed max-w-[85%] mx-auto">
+            Hemos registrado tu confirmación. Será un gran honor celebrar juntos este día tan especial.
+          </p>
+        </div>
+
+        <!-- Botones de acción post-confirmación -->
+        <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a 
+            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Bautizo+y+Cumplea%C3%B1os+Aaron+Sebasti%C3%A1n&dates=20261003T130000/20261003T200000&details=Celebraci%C3%B3n+en+Sal%C3%B3n+de+Eventos+La+Lomita,+Tepic&location=Salon+de+eventos+La+lomita,+Boulevard+Tepic+Xalisco+110,+Tepic,+Nayarit" 
+            target="_blank"
+            class="px-5 py-2.5 bg-white border border-[#C6A052] text-[#3E5033] rounded-full text-xs font-semibold tracking-wider uppercase hover:bg-[#FAF6F0] transition shadow-sm inline-flex items-center gap-2"
+          >
+            <span>📅 Agregar al Calendario</span>
+          </a>
+          <button 
+            type="button" 
+            onclick="resetRsvpForm()" 
+            class="text-xs text-[#3E5033] underline hover:text-[#141714] px-3 py-2"
+          >
+            Modificar respuesta
+          </button>
+        </div>
+      </div>
+
+      <!-- FORMULARIO INTERACTIVO -->
+      <form id="rsvp-interactive-form" onsubmit="handleRsvpSubmit(event)" class="relative z-10 space-y-6">
+        
+        <!-- PASO 1: ¿ASISTIRÁS? -->
+        <div class="space-y-3">
+          <p class="font-sans text-[10px] font-semibold tracking-wider uppercase text-[#3E5033]">
+            ¿Podrás acompañarnos?
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-[440px] mx-auto">
+            
+            <label class="rsvp-option-label flex items-center justify-center gap-2.5 p-3.5 rounded-2xl border-2 border-[#C6A052]/60 bg-white hover:border-[#3E5033] cursor-pointer transition shadow-sm text-left">
+              <input type="radio" name="attending" value="confirmed" checked onchange="toggleRsvpFields()" class="accent-[#3E5033] w-4 h-4"/>
+              <span class="font-sans text-xs font-bold text-[#141714]">
+                Sí, asistiré con gusto
+              </span>
+            </label>
+
+            <label class="rsvp-option-label flex items-center justify-center gap-2.5 p-3.5 rounded-2xl border-2 border-stone-200 bg-white hover:border-stone-400 cursor-pointer transition shadow-sm text-left">
+              <input type="radio" name="attending" value="declined" onchange="toggleRsvpFields()" class="accent-stone-600 w-4 h-4"/>
+              <span class="font-sans text-xs font-medium text-stone-600">
+                Lamentablemente no podré
+              </span>
+            </label>
+
+          </div>
+        </div>
+
+        <!-- PASO 2: DATOS DEL INVITADO -->
+        <div class="space-y-4 max-w-[440px] mx-auto text-left">
+          
+          <!-- Nombre o Familia -->
+          <div id="field-name-wrap">
+            <label class="block font-sans text-[10px] font-semibold tracking-wider uppercase text-[#3E5033] mb-1">
+              Nombre completo o Familia *
+            </label>
+            <input 
+              type="text" 
+              id="rsvp-input-name" 
+              required 
+              placeholder="Ej. Familia Martínez González"
+              class="w-full px-4 py-3 rounded-xl border border-[#C6A052]/40 bg-white text-stone-800 text-xs focus:outline-none focus:border-[#3E5033] focus:ring-1 focus:ring-[#3E5033] shadow-sm"
+            />
+          </div>
+
+          <!-- Pases a Confirmar (Solo si asiste) -->
+          <div id="field-passes-wrap" class="space-y-1">
+            <label class="block font-sans text-[10px] font-semibold tracking-wider uppercase text-[#3E5033] mb-1">
+              ¿Cuántas personas asistirán en total? *
+            </label>
+            <div class="flex items-center gap-3 bg-white p-2 rounded-xl border border-[#C6A052]/40 shadow-sm max-w-[200px]">
+              <button 
+                type="button" 
+                onclick="changePasses(-1)" 
+                class="w-8 h-8 rounded-lg bg-[#FAF6F0] hover:bg-[#EBDCB8] text-[#3E5033] font-bold text-base flex items-center justify-center transition"
+              >
+                −
+              </button>
+              <span id="passes-display" class="flex-1 text-center font-serif text-lg font-bold text-[#141714]">2</span>
+              <button 
+                type="button" 
+                onclick="changePasses(1)" 
+                class="w-8 h-8 rounded-lg bg-[#FAF6F0] hover:bg-[#EBDCB8] text-[#3E5033] font-bold text-base flex items-center justify-center transition"
+              >
+                +
+              </button>
+            </div>
+            <input type="hidden" id="rsvp-input-passes" value="2"/>
+            <p id="passes-limit-hint" class="text-[10px] text-stone-400 mt-1"></p>
+          </div>
+
+          <!-- Alergias o Restricciones (Opcional) -->
+          <div id="field-allergies-wrap">
+            <label class="block font-sans text-[10px] font-semibold tracking-wider uppercase text-[#3E5033] mb-1">
+              ¿Alguna alergia o restricción alimentaria? (opcional)
+            </label>
+            <input 
+              type="text" 
+              id="rsvp-input-allergies" 
+              placeholder="Ej. Ninguna / Alergia a mariscos / Vegetariano"
+              class="w-full px-4 py-2.5 rounded-xl border border-[#C6A052]/40 bg-white text-stone-800 text-xs focus:outline-none focus:border-[#3E5033] shadow-sm"
+            />
+          </div>
+
+          <!-- Mensaje / Felicitaciones (Opcional) -->
+          <div>
+            <label class="block font-sans text-[10px] font-semibold tracking-wider uppercase text-[#3E5033] mb-1">
+              Mensaje o bendición para Aaron (opcional)
+            </label>
+            <textarea 
+              id="rsvp-input-message" 
+              rows="2"
+              placeholder="Escribe aquí tus buenos deseos..."
+              class="w-full px-4 py-2.5 rounded-xl border border-[#C6A052]/40 bg-white text-stone-800 text-xs focus:outline-none focus:border-[#3E5033] shadow-sm"
+            ></textarea>
+          </div>
+
+        </div>
+
+        <!-- Botón de Envío -->
+        <div class="pt-2 max-w-[440px] mx-auto">
+          <button 
+            type="submit" 
+            id="rsvp-submit-btn"
+            class="w-full py-3.5 bg-[#3E5033] hover:bg-[#141714] text-[#FAF2E6] border border-[#C6A052]/70 rounded-full font-sans text-xs font-semibold tracking-widest uppercase transition-all shadow-md hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <span>Confirmar Asistencia</span>
+            <svg class="w-4 h-4 text-[#C6A052]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Enlace alternativo a WhatsApp -->
+        <p class="text-[11px] text-[#3D4A38]/80 pt-1">
+          ¿Prefieres confirmar directamente? 
+          <a 
+            href="https://api.whatsapp.com/send?phone=523111234567&text=%C2%A1Hola!%20Confirmo%20mi%20asistencia%20al%20Bautizo%20y%20Cumplea%C3%B1os%20de%20Aaron%20Sebasti%C3%A1n." 
+            target="_blank" 
+            class="text-[#3E5033] font-semibold underline hover:text-[#C6A052] transition-colors"
+          >
+            Escríbenos por WhatsApp
+          </a>
+        </p>
+
+      </form>
+
     </section>
 
     <!-- Footer editorial clásico -->
-    <footer class="reveal pt-8 pb-12 text-center">
+    <footer class="reveal pt-8 pb-12 text-center space-y-4">
       <div class="hairline-h"></div>
-      <p class="font-sans text-[10px] tracking-[0.25em] uppercase text-[#3E5033] font-semibold mt-6">
+      <p class="font-sans text-[10px] tracking-[0.25em] uppercase text-[#3E5033] font-semibold">
         Familia Ortiz Alcantar · 2026
       </p>
+      <div class="pt-2">
+        <a 
+          href="/panel.html" 
+          class="text-[10px] uppercase tracking-widest text-[#C6A052] hover:text-[#3E5033] transition-colors border-b border-[#C6A052]/30 pb-0.5 font-medium"
+        >
+          Acceso Anfitrión: Panel de Respuestas
+        </a>
+      </div>
     </footer>
 
   </div>
@@ -660,6 +831,207 @@
       updateCountdown();
       setInterval(updateCountdown, 1000);
 
+
+      // 3. Sistema de RSVP y Conexión en Vivo con Supabase
+      const SUPABASE_URL = "https://mnswhidquvjaaviyqtfi.supabase.co";
+      const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1uc3doaWRxdXZqYWF2aXlxdGZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODcwMDQ3MjUsImV4cCI6MjEwMjU4MDcyNX0.E_m3pf6zyzCl50b2LF4lEtbo8NyVaqAjF0Xwb1iytPw";
+      const EVENT_ID = "f7851afd-3993-4ca1-abeb-82327ff4abba";
+
+      let personalizedGuest = null;
+      let maxPasses = 12;
+      let currentPasses = 2;
+
+      // Lectura de token personalizado desde la URL (?guest=xxx o ?token=xxx)
+      const urlParams = new URLSearchParams(window.location.search);
+      const guestToken = urlParams.get("guest") || urlParams.get("token") || urlParams.get("p");
+
+      if (guestToken) {
+        fetch(`${SUPABASE_URL}/rest/v1/guests?token=eq.${guestToken}&event_id=eq.${EVENT_ID}&select=*`, {
+          headers: {
+            apikey: SUPABASE_KEY,
+            Authorization: `Bearer ${SUPABASE_KEY}`
+          }
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.length > 0) {
+            personalizedGuest = data[0];
+            
+            // Autocompletar nombre
+            const nameInput = document.getElementById("rsvp-input-name");
+            if (nameInput) {
+              nameInput.value = personalizedGuest.name;
+              nameInput.readOnly = true;
+              nameInput.classList.add("bg-stone-50", "text-stone-600");
+            }
+
+            // Ajustar pases
+            maxPasses = personalizedGuest.passes_assigned || 1;
+            currentPasses = personalizedGuest.passes_confirmed > 0 
+              ? personalizedGuest.passes_confirmed 
+              : (personalizedGuest.passes_assigned || 1);
+            updatePassesDisplay();
+
+            // Mostrar banner personalizado
+            const banner = document.getElementById("rsvp-personalized-banner");
+            const nameEl = document.getElementById("rsvp-guest-name");
+            const infoEl = document.getElementById("rsvp-passes-info");
+            if (banner && nameEl && infoEl) {
+              nameEl.innerText = `¡Hola, ${personalizedGuest.name}!`;
+              infoEl.innerText = `Hemos reservado ${personalizedGuest.passes_assigned} pases con mucho cariño para ustedes.`;
+              banner.classList.remove("hidden");
+            }
+
+            const limitHint = document.getElementById("passes-limit-hint");
+            if (limitHint) {
+              limitHint.innerText = `Pases asignados para tu invitación: ${personalizedGuest.passes_assigned}`;
+            }
+
+            // Si ya respondió antes
+            if (personalizedGuest.rsvp_status === 'confirmed' || personalizedGuest.rsvp_status === 'declined') {
+              showSuccessState(personalizedGuest.name, personalizedGuest.rsvp_status);
+            }
+          }
+        })
+        .catch(err => console.error("Error al consultar invitado:", err));
+      }
+
+      window.changePasses = function(delta) {
+        const newPasses = currentPasses + delta;
+        if (newPasses >= 1 && newPasses <= maxPasses) {
+          currentPasses = newPasses;
+          updatePassesDisplay();
+        }
+      };
+
+      function updatePassesDisplay() {
+        const display = document.getElementById("passes-display");
+        const hiddenInput = document.getElementById("rsvp-input-passes");
+        if (display) display.innerText = currentPasses;
+        if (hiddenInput) hiddenInput.value = currentPasses;
+      }
+
+      window.toggleRsvpFields = function() {
+        const attendingVal = document.querySelector('input[name="attending"]:checked').value;
+        const passesWrap = document.getElementById("field-passes-wrap");
+        const allergiesWrap = document.getElementById("field-allergies-wrap");
+
+        if (attendingVal === "declined") {
+          if (passesWrap) passesWrap.classList.add("hidden");
+          if (allergiesWrap) allergiesWrap.classList.add("hidden");
+        } else {
+          if (passesWrap) passesWrap.classList.remove("hidden");
+          if (allergiesWrap) allergiesWrap.classList.remove("hidden");
+        }
+      };
+
+      window.handleRsvpSubmit = async function(e) {
+        e.preventDefault();
+        const submitBtn = document.getElementById("rsvp-submit-btn");
+        submitBtn.disabled = true;
+        submitBtn.innerText = "Guardando respuesta...";
+
+        const attendingVal = document.querySelector('input[name="attending"]:checked').value;
+        const guestName = document.getElementById("rsvp-input-name").value.trim();
+        const passesCount = attendingVal === "confirmed" ? currentPasses : 0;
+        const allergies = document.getElementById("rsvp-input-allergies").value.trim();
+        const message = document.getElementById("rsvp-input-message").value.trim();
+
+        const notesParts = [];
+        if (allergies) notesParts.push(`Alergias: ${allergies}`);
+        if (message) notesParts.push(`Mensaje: ${message}`);
+        const finalNotes = notesParts.join(" | ");
+
+        try {
+          if (personalizedGuest) {
+            // Actualizar registro existente por token
+            const payload = {
+              rsvp_status: attendingVal,
+              passes_confirmed: passesCount,
+              confirmed_at: new Date().toISOString(),
+              notes: finalNotes || null
+            };
+
+            const res = await fetch(`${SUPABASE_URL}/rest/v1/guests?id=eq.${personalizedGuest.id}`, {
+              method: "PATCH",
+              headers: {
+                apikey: SUPABASE_KEY,
+                Authorization: `Bearer ${SUPABASE_KEY}`,
+                "Content-Type": "application/json",
+                Prefer: "return=representation"
+              },
+              body: JSON.stringify(payload)
+            });
+
+            if (res.ok) {
+              showSuccessState(guestName, attendingVal);
+            } else {
+              alert("Hubo un detalle al registrar tu respuesta. Por favor intenta nuevamente.");
+            }
+          } else {
+            // Invitado General: Insertar nuevo registro
+            const tokenGen = Math.random().toString(36).substring(2, 9);
+            const payload = {
+              event_id: EVENT_ID,
+              token: tokenGen,
+              name: guestName,
+              passes_assigned: passesCount || 1,
+              passes_confirmed: passesCount,
+              rsvp_status: attendingVal,
+              confirmed_at: new Date().toISOString(),
+              notes: finalNotes || null
+            };
+
+            const res = await fetch(`${SUPABASE_URL}/rest/v1/guests`, {
+              method: "POST",
+              headers: {
+                apikey: SUPABASE_KEY,
+                Authorization: `Bearer ${SUPABASE_KEY}`,
+                "Content-Type": "application/json",
+                Prefer: "return=representation"
+              },
+              body: JSON.stringify(payload)
+            });
+
+            if (res.ok) {
+              showSuccessState(guestName, attendingVal);
+            } else {
+              alert("Hubo un detalle al guardar tu respuesta. Por favor intenta de nuevo.");
+            }
+          }
+        } catch (err) {
+          console.error("Error al enviar RSVP:", err);
+          alert("Error de conexión. Por favor verifica tu red e intenta de nuevo.");
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Confirmar Asistencia";
+        }
+      };
+
+      function showSuccessState(name, status) {
+        const form = document.getElementById("rsvp-interactive-form");
+        const successView = document.getElementById("rsvp-success-view");
+        const titleEl = document.getElementById("success-title");
+        const descEl = document.getElementById("success-desc");
+
+        if (form) form.classList.add("hidden");
+        if (successView) successView.classList.remove("hidden");
+
+        if (status === 'declined') {
+          if (titleEl) titleEl.innerText = "Agradecemos tu Mensaje";
+          if (descEl) descEl.innerText = `Muchas gracias por avisarnos, ${name}. Lamentamos que no puedas acompañarnos, pero sentimos tu cariño y buenos deseos.`;
+        } else {
+          if (titleEl) titleEl.innerText = `¡Gracias por Confirmar!`;
+          if (descEl) descEl.innerText = `¡Será un honor contar con tu presencia, ${name}! Hemos registrado tu confirmación con éxito.`;
+        }
+      }
+
+      window.resetRsvpForm = function() {
+        const form = document.getElementById("rsvp-interactive-form");
+        const successView = document.getElementById("rsvp-success-view");
+        if (form) form.classList.remove("hidden");
+        if (successView) successView.classList.add("hidden");
+      };
 
     });
   </script>
