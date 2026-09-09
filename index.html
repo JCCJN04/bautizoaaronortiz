@@ -399,10 +399,30 @@
 
 <body class="antialiased">
 
+  <!-- Fondo dinámico intercambiable (Fondo 1 al 6) -->
+  <div id="bg-dynamic-layer" class="fixed inset-0 pointer-events-none z-0 bg-cover bg-top bg-no-repeat transition-all duration-500 opacity-90"></div>
+  <div id="bg-readability-scrim" class="fixed inset-0 pointer-events-none z-0 bg-[#FAF9F6]/30 transition-opacity duration-500"></div>
+
   <!-- Fondo de textura de lino artesanal y marcos passepartout -->
   <div class="grain-overlay"></div>
   <div class="passepartout-outer"></div>
   <div class="passepartout-inner"></div>
+
+  <!-- Selector Flotante de Fondos (Para previsualizar y elegir del 1 al 6) -->
+  <div class="fixed top-3 left-1/2 -translate-x-1/2 z-[9999] select-none max-w-[95vw]">
+    <div class="flex items-center gap-1 sm:gap-1.5 px-3 py-1.5 bg-white/95 backdrop-blur-md border border-[#C59B27]/50 rounded-full shadow-lg">
+      <span class="font-sans text-[9.5px] font-bold uppercase tracking-wider text-[#4A5640] pr-0.5 flex items-center gap-1">
+        <span>🎨</span> <span class="hidden xs:inline">Fondo:</span>
+      </span>
+      <button type="button" onclick="setFondo('1')" id="btn-fondo-1" class="fondo-btn w-7 h-7 rounded-full text-xs font-bold transition-all border border-[#DFE3D8] hover:scale-110 active:scale-95 flex items-center justify-center cursor-pointer">1</button>
+      <button type="button" onclick="setFondo('2')" id="btn-fondo-2" class="fondo-btn w-7 h-7 rounded-full text-xs font-bold transition-all border border-[#DFE3D8] hover:scale-110 active:scale-95 flex items-center justify-center cursor-pointer">2</button>
+      <button type="button" onclick="setFondo('3')" id="btn-fondo-3" class="fondo-btn w-7 h-7 rounded-full text-xs font-bold transition-all border border-[#DFE3D8] hover:scale-110 active:scale-95 flex items-center justify-center cursor-pointer">3</button>
+      <button type="button" onclick="setFondo('4')" id="btn-fondo-4" class="fondo-btn w-7 h-7 rounded-full text-xs font-bold transition-all border border-[#DFE3D8] hover:scale-110 active:scale-95 flex items-center justify-center cursor-pointer">4</button>
+      <button type="button" onclick="setFondo('5')" id="btn-fondo-5" class="fondo-btn w-7 h-7 rounded-full text-xs font-bold transition-all border border-[#DFE3D8] hover:scale-110 active:scale-95 flex items-center justify-center cursor-pointer">5</button>
+      <button type="button" onclick="setFondo('6')" id="btn-fondo-6" class="fondo-btn w-7 h-7 rounded-full text-xs font-bold transition-all border border-[#DFE3D8] hover:scale-110 active:scale-95 flex items-center justify-center cursor-pointer">6</button>
+      <button type="button" onclick="setFondo('0')" id="btn-fondo-0" title="Sin imagen / Lino limpio" class="fondo-btn px-2 h-7 rounded-full text-[10px] font-semibold transition-all border border-[#DFE3D8] hover:scale-105 active:scale-95 flex items-center justify-center cursor-pointer">Lino</button>
+    </div>
+  </div>
 
   <div class="max-w-[550px] mx-auto px-6 py-20 text-center relative z-10 space-y-14">
 
@@ -486,14 +506,14 @@
       <div>
         <p class="font-sans text-[10px] tracking-[0.25em] uppercase text-[#4A5640] font-bold mb-1">Mis Padres</p>
         <p class="font-display text-2xl sm:text-3xl font-semibold tracking-[0.05em] text-[#1A2216]">
-          Maritza Alcantar &amp; José Ortiz
+          Maritza &amp; José
         </p>
       </div>
       <div class="hairline-h"></div>
       <div>
         <p class="font-sans text-[10px] tracking-[0.25em] uppercase text-[#4A5640] font-bold mb-1">Mis Padrinos de Bautizo</p>
         <p class="font-display text-2xl sm:text-3xl font-semibold tracking-[0.05em] text-[#1A2216]">
-          Sheila Acosta &amp; Benjamín Castro
+          Sheila &amp; Benjamín
         </p>
       </div>
       <div class="hairline-h"></div>
@@ -934,20 +954,6 @@
 
   </div>
 
-  <!-- Botón Flotante de Música Ambiental para toda la invitación -->
-  <aside aria-label="Control de música" class="fixed bottom-6 right-6 z-50">
-    <button type="button" id="floating-music-btn" aria-label="Alternar música"
-      class="flex items-center gap-2 px-3.5 py-2.5 bg-[#EDE7DD]/95 hover:bg-[#FAF7F2] text-[#2E3D25] border border-[#C6A052]/80 rounded-full shadow-lg backdrop-blur-md transition-all transform hover:scale-105 active:scale-95 cursor-pointer group">
-      <span id="float-music-icon" class="text-sm">🎵</span>
-      <span class="font-sans text-[10px] font-bold tracking-wider uppercase pr-1">Música</span>
-      <span id="float-music-wave" class="hidden flex items-center gap-0.5">
-        <span class="w-1 h-3 bg-[#C6A052] rounded-full animate-pulse"></span>
-        <span class="w-1 h-4 bg-[#5A6F4E] rounded-full animate-pulse" style="animation-delay: 0.15s"></span>
-        <span class="w-1 h-2 bg-[#C6A052] rounded-full animate-pulse" style="animation-delay: 0.3s"></span>
-      </span>
-    </button>
-  </aside>
-
   <!-- SCRIPT: Scroll reveal y Cuenta regresiva -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -1195,6 +1201,59 @@
         if (form) form.classList.remove("hidden");
         if (successView) successView.classList.add("hidden");
       };
+
+      // 4. Selector Dinámico de Fondos (Fondo 1 al 6)
+      const fondos = {
+        '1': '/bautizoaaron/fondo1.jpg',
+        '2': '/bautizoaaron/fondo2.jpg',
+        '3': '/bautizoaaron/fondo3.jpg',
+        '4': '/bautizoaaron/fondo4.jpg',
+        '5': '/bautizoaaron/fondo5.jpg',
+        '6': '/bautizoaaron/fondo6.jpg',
+        '0': ''
+      };
+
+      window.setFondo = function(id) {
+        const bgLayer = document.getElementById('bg-dynamic-layer');
+        const scrim = document.getElementById('bg-readability-scrim');
+        if (!bgLayer) return;
+
+        // Resaltar botón activo
+        document.querySelectorAll('.fondo-btn').forEach(btn => {
+          btn.classList.remove('bg-[#1A2216]', 'text-white', 'border-[#1A2216]', 'shadow-md', 'scale-110');
+          btn.classList.add('bg-white', 'text-[#1A2216]', 'border-[#DFE3D8]');
+        });
+        const activeBtn = document.getElementById(`btn-fondo-${id}`);
+        if (activeBtn) {
+          activeBtn.classList.remove('bg-white', 'text-[#1A2216]', 'border-[#DFE3D8]');
+          activeBtn.classList.add('bg-[#1A2216]', 'text-white', 'border-[#1A2216]', 'shadow-md', 'scale-110');
+        }
+
+        if (id === '0' || !fondos[id]) {
+          bgLayer.style.backgroundImage = 'none';
+          bgLayer.classList.add('opacity-0');
+          if (scrim) scrim.classList.add('opacity-0');
+        } else {
+          // Soporte dual para proxy de producción y localhost
+          const primaryUrl = fondos[id];
+          const localUrl = `/fondo${id}.jpg`;
+          bgLayer.style.backgroundImage = `url("${primaryUrl}"), url("${localUrl}")`;
+          bgLayer.classList.remove('opacity-0');
+          if (scrim) scrim.classList.remove('opacity-0');
+        }
+
+        // Guardar preferencia y sincronizar query param ?fondo=X
+        try {
+          localStorage.setItem('selected_fondo_aaron', id);
+          const url = new URL(window.location.href);
+          url.searchParams.set('fondo', id);
+          window.history.replaceState({}, '', url.toString());
+        } catch (e) {}
+      };
+
+      // Cargar fondo inicial desde URL ?fondo=X o localStorage (por defecto Fondo 1)
+      const initialFondo = urlParams.get('fondo') || localStorage.getItem('selected_fondo_aaron') || '1';
+      window.setFondo(initialFondo);
 
     });
   </script>
