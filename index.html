@@ -146,6 +146,23 @@
       transform: translateY(0);
     }
 
+    /* Animación para el formulario paso a paso */
+    @keyframes stepFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .wizard-step-active {
+      display: block !important;
+      animation: stepFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
     /* Contenedores de mapa de Google Maps */
     .map-container {
       width: 100%;
@@ -167,262 +184,20 @@
       margin: 1.5rem auto 1rem;
       user-select: none;
     }
-
-    @media (min-width: 640px) {
-      .hero-stage {
-        height: 470px;
-      }
-    }
-
-    .hero-layer {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.2s ease;
-      cursor: pointer;
-    }
-
-    .hero-layer:hover {
-      z-index: 60 !important;
-    }
-
-    .hero-actor {
-      user-select: none;
-      filter: drop-shadow(0 14px 18px rgba(45, 58, 40, 0.24)) drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
-      transition: filter 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .hero-layer:hover .hero-actor {
-      filter: drop-shadow(0 22px 30px rgba(198, 160, 82, 0.55)) drop-shadow(0 8px 12px rgba(0, 0, 0, 0.25)) brightness(1.06);
-      transform: scale(1.09) translateY(-4px);
-    }
-
-    /* Posicionamiento cinematográfico escalonado y equilibrado */
-    /* 1. Spider-Man: En el aire suspendido arriba en el centro-izq */
-    .hero-spidey-pos {
-      top: 8px;
-      left: 28%;
-      z-index: 35;
-      width: 36%;
-      max-width: 160px;
-    }
-
-    /* 2. Capitán América: En el flanco frontal izquierdo con escudo */
-    .hero-cap-pos {
-      bottom: 22px;
-      left: 2%;
-      z-index: 26;
-      width: 31%;
-      max-width: 135px;
-    }
-
-    /* 3. Iron Man: Al frente centro-derecha con repulsor listo */
-    .hero-iron-pos {
-      bottom: 18px;
-      left: 36%;
-      z-index: 28;
-      width: 36%;
-      max-width: 160px;
-    }
-
-    /* 4. Hulk: Guardián imponente en el flanco derecho */
-    .hero-hulk-pos {
-      bottom: 24px;
-      right: 2%;
-      z-index: 22;
-      width: 37%;
-      max-width: 175px;
-    }
-
-    /* Animaciones de flotación desfasadas */
-    @keyframes floatSpidey {
-
-      0%,
-      100% {
-        transform: translateY(0px) rotate(-1.5deg);
-      }
-
-      50% {
-        transform: translateY(-11px) rotate(1.5deg);
-      }
-    }
-
-    @keyframes floatCap {
-
-      0%,
-      100% {
-        transform: translateY(0px);
-      }
-
-      50% {
-        transform: translateY(-6px) rotate(-0.5deg);
-      }
-    }
-
-    @keyframes floatIron {
-
-      0%,
-      100% {
-        transform: translateY(0px);
-      }
-
-      50% {
-        transform: translateY(-9px) rotate(1deg);
-      }
-    }
-
-    @keyframes floatHulk {
-
-      0%,
-      100% {
-        transform: translateY(0px);
-      }
-
-      50% {
-        transform: translateY(-5px);
-      }
-    }
-
-    @keyframes floatThor {
-
-      0%,
-      100% {
-        transform: translateY(0px);
-      }
-
-      50% {
-        transform: translateY(-7px);
-      }
-    }
-
-    .hero-float-spidey {
-      animation: floatSpidey 4.6s ease-in-out infinite;
-    }
-
-    .hero-float-cap {
-      animation: floatCap 5.2s ease-in-out 0.6s infinite;
-    }
-
-    .hero-float-iron {
-      animation: floatIron 4.8s ease-in-out 1.2s infinite;
-    }
-
-    .hero-float-hulk {
-      animation: floatHulk 5.8s ease-in-out 1.8s infinite;
-    }
-
-    .hero-float-thor {
-      animation: floatThor 4.6s ease-in-out 0.4s infinite;
-    }
-
-    /* Etiquetas de personajes en papel lino y oro */
-    .hero-tag-chip {
-      margin-top: 5px;
-      font-family: ui-sans-serif, system-ui, sans-serif;
-      font-size: 8.5px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #3E5033;
-      background: rgba(250, 246, 240, 0.94);
-      border: 1px solid rgba(198, 160, 82, 0.5);
-      padding: 2.5px 9px;
-      border-radius: 9999px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
-      opacity: 0.88;
-      transition: all 0.3s ease;
-      white-space: nowrap;
-    }
-
-    .hero-layer:hover .hero-tag-chip {
-      opacity: 1;
-      color: #141714;
-      border-color: #C6A052;
-      background: #FFFFFF;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(198, 160, 82, 0.35);
-    }
-
-    /* Partículas de destellos dorados mágicos */
-    .sparkle {
-      position: absolute;
-      color: #C6A052;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    @keyframes twinkle {
-
-      0%,
-      100% {
-        opacity: 0.25;
-        transform: scale(0.75) rotate(0deg);
-      }
-
-      50% {
-        opacity: 1;
-        transform: scale(1.35) rotate(45deg);
-        text-shadow: 0 0 8px rgba(198, 160, 82, 0.8);
-      }
-    }
-
-    .s-1 {
-      top: 12%;
-      left: 14%;
-      font-size: 14px;
-      animation: twinkle 3s ease-in-out infinite;
-    }
-
-    .s-2 {
-      top: 18%;
-      right: 15%;
-      font-size: 11px;
-      animation: twinkle 3.6s ease-in-out 0.9s infinite;
-    }
-
-    .s-3 {
-      bottom: 32%;
-      left: 6%;
-      font-size: 10px;
-      animation: twinkle 4.2s ease-in-out 1.6s infinite;
-    }
-
-    .s-4 {
-      bottom: 26%;
-      right: 8%;
-      font-size: 13px;
-      animation: twinkle 3.4s ease-in-out 2.2s infinite;
-    }
   </style>
 </head>
 
 <body class="antialiased">
 
-  <!-- Fondo dinámico intercambiable (Fondo 1 al 6) -->
-  <div id="bg-dynamic-layer" class="fixed inset-0 pointer-events-none z-0 bg-cover bg-top bg-no-repeat transition-all duration-500 opacity-90"></div>
-  <div id="bg-readability-scrim" class="fixed inset-0 pointer-events-none z-0 bg-[#FAF9F6]/30 transition-opacity duration-500"></div>
+  <!-- Fondo Botánico Litúrgico Fijo (Fondo 6) -->
+  <div id="bg-dynamic-layer" class="fixed inset-0 pointer-events-none z-0 bg-cover bg-top bg-no-repeat opacity-90"
+       style="background-image: url('/bautizoaaron/fondo6.jpg'), url('/fondo6.jpg');"></div>
+  <div class="fixed inset-0 pointer-events-none z-0 bg-[#FAF9F6]/25"></div>
 
   <!-- Fondo de textura de lino artesanal y marcos passepartout -->
   <div class="grain-overlay"></div>
   <div class="passepartout-outer"></div>
   <div class="passepartout-inner"></div>
-
-  <!-- Selector Flotante de Fondos (Para previsualizar y elegir del 1 al 6) -->
-  <div class="fixed top-3 left-1/2 -translate-x-1/2 z-[9999] select-none max-w-[95vw]">
-    <div class="flex items-center gap-1 sm:gap-1.5 px-3 py-1.5 bg-white/95 backdrop-blur-md border border-[#C59B27]/50 rounded-full shadow-lg">
-      <span class="font-sans text-[9.5px] font-bold uppercase tracking-wider text-[#4A5640] pr-0.5 flex items-center gap-1">
-        <span>🎨</span> <span class="hidden xs:inline">Fondo:</span>
-      </span>
-      <button type="button" onclick="setFondo('1')" id="btn-fondo-1" class="fondo-btn w-7 h-7 rounded-full text-xs font-bold transition-all border border-[#DFE3D8] hover:scale-110 active:scale-95 flex items-center justify-center cursor-pointer">1</button>
-      <button type="button" onclick="setFondo('2')" id="btn-fondo-2" class="fondo-btn w-7 h-7 rounded-full text-xs font-bold transition-all border border-[#DFE3D8] hover:scale-110 active:scale-95 flex items-center justify-center cursor-pointer">2</button>
-      <button type="button" onclick="setFondo('3')" id="btn-fondo-3" class="fondo-btn w-7 h-7 rounded-full text-xs font-bold transition-all border border-[#DFE3D8] hover:scale-110 active:scale-95 flex items-center justify-center cursor-pointer">3</button>
-      <button type="button" onclick="setFondo('4')" id="btn-fondo-4" class="fondo-btn w-7 h-7 rounded-full text-xs font-bold transition-all border border-[#DFE3D8] hover:scale-110 active:scale-95 flex items-center justify-center cursor-pointer">4</button>
-      <button type="button" onclick="setFondo('5')" id="btn-fondo-5" class="fondo-btn w-7 h-7 rounded-full text-xs font-bold transition-all border border-[#DFE3D8] hover:scale-110 active:scale-95 flex items-center justify-center cursor-pointer">5</button>
-      <button type="button" onclick="setFondo('6')" id="btn-fondo-6" class="fondo-btn w-7 h-7 rounded-full text-xs font-bold transition-all border border-[#DFE3D8] hover:scale-110 active:scale-95 flex items-center justify-center cursor-pointer">6</button>
-      <button type="button" onclick="setFondo('0')" id="btn-fondo-0" title="Sin imagen / Lino limpio" class="fondo-btn px-2 h-7 rounded-full text-[10px] font-semibold transition-all border border-[#DFE3D8] hover:scale-105 active:scale-95 flex items-center justify-center cursor-pointer">Lino</button>
-    </div>
-  </div>
 
   <div class="max-w-[550px] mx-auto px-6 py-20 text-center relative z-10 space-y-14">
 
@@ -443,11 +218,9 @@
       </div>
 
       <h1
-        class="font-display text-3xl sm:text-4xl font-semibold leading-[1.2] tracking-[0.05em] uppercase text-[#1A2216]">
+        class="font-display text-3xl sm:text-4xl font-semibold leading-[1.25] tracking-[0.05em] uppercase text-[#1A2216]">
         Aaron Sebastián<br>
-        <span class="text-2xl sm:text-3xl font-light italic font-body lowercase tracking-normal text-[#2C3524]">
-          Ortiz Alcantar
-        </span>
+        Ortiz Alcantar
       </h1>
 
       <p class="font-sans text-xs font-bold tracking-[0.25em] text-[#4A5640] uppercase mt-3">
@@ -514,13 +287,6 @@
         <p class="font-sans text-[10px] tracking-[0.25em] uppercase text-[#4A5640] font-bold mb-1">Mis Padrinos de Bautizo</p>
         <p class="font-display text-2xl sm:text-3xl font-semibold tracking-[0.05em] text-[#1A2216]">
           Sheila &amp; Benjamín
-        </p>
-      </div>
-      <div class="hairline-h"></div>
-      <div>
-        <p class="font-sans text-[10px] tracking-[0.25em] uppercase text-[#4A5640] font-bold mb-1">Mis Padrinos de Presentación</p>
-        <p class="font-display text-xl sm:text-2xl font-normal italic font-body text-[#4A5640]">
-          Por confirmar
         </p>
       </div>
     </section>
@@ -590,106 +356,30 @@
         </a>
       </div>
 
-      <!-- ============================================================= -->
-      <!-- DIORAMA HEROICO ESPECTACULAR (COMPOSICIÓN DINÁMICA 3D)         -->
-      <!-- ============================================================= -->
-      <div id="heroes-section" class="pt-10 pb-2 relative">
-
-        <!-- Emblema de honor editorial -->
-        <div class="flex items-center justify-center gap-3 mb-2">
-          <div class="w-8 h-px bg-gradient-to-r from-transparent to-[#C59B27]"></div>
-          <span class="font-sans text-[10px] font-bold tracking-[0.35em] uppercase text-[#1A2216]">
-            El Escuadrón de Aaron
-          </span>
-          <div class="w-8 h-px bg-gradient-to-l from-transparent to-[#C59B27]"></div>
-        </div>
-
-        <h4 class="font-display text-2xl sm:text-3xl text-[#1A2216] font-semibold tracking-wide">
-          Héroes al Rescate de la Fiesta
-        </h4>
-
-        <p class="font-body italic text-[15px] sm:text-[16px] text-[#2C3524] font-medium max-w-[85%] mx-auto mt-1 mb-2">
-          Capitán América, Spider-Man, Iron Man y Hulk se reúnen para celebrar su cumpleaños.
-        </p>
-
-        <!-- ESCENARIO DINÁMICO HEROICO EN 3D -->
-        <div class="hero-stage">
-
-          <!-- Aureola celestial con tonalidades cálidas y luz dorada -->
-          <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <!-- Resplandor central -->
-            <div
-              class="w-[260px] sm:w-[320px] h-[260px] sm:h-[320px] rounded-full bg-gradient-to-tr from-[#C59B27]/15 via-white/80 to-[#4A5640]/15 blur-2xl">
-            </div>
-            <!-- Círculos concéntricos litúrgicos con pespunte fino -->
-            <div
-              class="w-[250px] sm:w-[310px] h-[250px] sm:h-[310px] rounded-full border border-dashed border-[#C59B27]/40 opacity-80">
-            </div>
-            <div class="w-[200px] sm:w-[250px] h-[200px] sm:h-[250px] rounded-full border border-[#DFE3D8]"></div>
-          </div>
-
-          <!-- Destellos dorados flotantes (partículas mágicas) -->
-          <div class="sparkle s-1">✦</div>
-          <div class="sparkle s-2">★</div>
-          <div class="sparkle s-3">✦</div>
-          <div class="sparkle s-4">★</div>
-
-          <!-- SOMBRA BASE COLECTIVA EN EL SUELO -->
-          <div
-            class="absolute bottom-3 left-1/2 -translate-x-1/2 w-[85%] h-7 bg-[#1A2216]/15 rounded-[100%] blur-md pointer-events-none">
-          </div>
-
-          <!-- 1. HULK (Atrás a la derecha, imponente y protector) -->
-          <div class="hero-layer hero-hulk-pos group" title="Hulk">
-            <img src="/bautizoaaron/hero_hulk.png?v=3" alt="Hulk" class="hero-actor hero-float-hulk w-full h-auto object-contain" />
-            <div class="hero-tag-chip">Hulk</div>
-          </div>
-
-          <!-- 2. CAPITÁN AMÉRICA (Al frente a la izquierda, solemne con escudo) -->
-          <div class="hero-layer hero-cap-pos group" title="Capitán América">
-            <img src="/bautizoaaron/hero_cap.png?v=3" alt="Capitán América"
-              class="hero-actor hero-float-cap w-full h-auto object-contain" />
-            <div class="hero-tag-chip">Capitán América</div>
-          </div>
-
-          <!-- 3. IRON MAN (Centro derecha al frente, pose heroica con repulsor) -->
-          <div class="hero-layer hero-iron-pos group" title="Iron Man">
-            <img src="/bautizoaaron/hero_ironman.png?v=2" alt="Iron Man"
-              class="hero-actor hero-float-iron w-full h-auto object-contain" />
-            <div class="hero-tag-chip">Iron Man</div>
-          </div>
-
-          <!-- 4. SPIDER-MAN (En el aire arriba a la izquierda, saltando dinámico) -->
-          <div class="hero-layer hero-spidey-pos group" title="Spider-Man">
-            <!-- Hilo de telaraña dorada sutil que conecta hacia arriba -->
-            <div
-              class="absolute -top-12 left-1/2 w-0.5 h-14 bg-gradient-to-b from-transparent via-[#C59B27]/50 to-[#C59B27] -translate-x-1/2 pointer-events-none">
-            </div>
-            <img src="/bautizoaaron/hero_spiderman.png?v=2" alt="Spider-Man"
-              class="hero-actor hero-float-spidey w-full h-auto object-contain" />
-            <div class="hero-tag-chip">Spider-Man</div>
-          </div>
-
-        </div>
-
-        <!-- Placa de honor al pie del diorama -->
-        <div
-          class="inline-flex items-center gap-2 px-5 py-2 bg-white/95 border border-[#DFE3D8] rounded-full shadow-sm mt-1">
-          <span class="text-[#C59B27] text-xs">★</span>
-          <span class="font-sans text-[10px] uppercase tracking-[0.25em] text-[#1A2216] font-bold">
-            Guardianes de la Aventura · Festejo de Cumpleaños
-          </span>
-          <span class="text-[#C59B27] text-xs">★</span>
-        </div>
-
-      </div>
     </section>
 
+    <div class="hairline-v reveal"></div>
+
     <!-- ============================================================= -->
-    <!-- 6. APARTADO ESPECIAL: CUMPLEAÑOS & MESA DE REGALOS            -->
+    <!-- 6. CÓDIGO DE VESTIMENTA (DRESS CODE)                          -->
+    <!-- ============================================================= -->
+    <section class="reveal space-y-4">
+      <p class="font-sans text-[10px] font-bold tracking-[0.25em] uppercase text-[#4A5640]">Código de Vestimenta</p>
+      <h3 class="font-display text-2xl sm:text-3xl font-semibold tracking-[0.05em] text-[#1A2216]">
+        Formal
+      </h3>
+      <p class="text-[17px] text-[#2C3524] max-w-[85%] mx-auto leading-relaxed font-medium">
+        Te sugerimos asistir con vestimenta formal para acompañarnos en esta fecha tan especial.
+      </p>
+    </section>
+
+    <div class="hairline-v reveal"></div>
+
+    <!-- ============================================================= -->
+    <!-- 7. APARTADO ESPECIAL: CUMPLEAÑOS & MESA DE REGALOS            -->
     <!-- ============================================================= -->
     <section
-      class="reveal relative overflow-hidden rounded-3xl border border-[#DFE3D8] shadow-sm bg-white/70 p-6 sm:p-10 text-center space-y-8 !mt-4 mb-4">
+      class="reveal relative overflow-hidden rounded-3xl border border-[#DFE3D8] shadow-sm bg-white/75 p-6 sm:p-10 text-center space-y-8 !mt-4 mb-4">
 
       <!-- Marco interior litúrgico con pespunte oro -->
       <div class="absolute inset-2 border border-dashed border-[#C59B27]/40 rounded-2xl pointer-events-none"></div>
@@ -705,7 +395,7 @@
         </p>
 
         <p class="font-body italic text-[17px] sm:text-[18px] text-[#2C3524] font-medium max-w-[90%] mx-auto leading-relaxed pt-1">
-          "Un pequeño gran héroe celebra su cumpleaños rodeado de amor, bendiciones y aventuras."
+          "Un pequeño gran festejo para celebrar su primer año de vida rodeado de amor, bendiciones y alegría."
         </p>
       </div>
 
@@ -747,39 +437,7 @@
 
     </section>
 
-    <!-- ============================================================= -->
-    <!-- INTERMEDIO HEROICO: CAPITÁN AMÉRICA (EL PRIMER VENGADOR)       -->
-    <!-- ============================================================= -->
-    <div
-      class="reveal relative flex flex-col items-center justify-center !mt-1 !mb-1 py-1 select-none group cursor-pointer">
-
-      <!-- Halo cálido de energía dorada -->
-      <div
-        class="absolute w-52 h-52 rounded-full bg-gradient-to-tr from-[#C59B27]/20 via-white/80 to-[#4A5640]/15 blur-2xl pointer-events-none -z-10">
-      </div>
-
-      <!-- Destellos de honor y luz -->
-      <span class="absolute top-2 right-1/4 text-[#C59B27] text-xs animate-pulse pointer-events-none">★</span>
-      <span class="absolute bottom-5 left-1/4 text-[#C59B27] text-[10px] animate-pulse pointer-events-none"
-        style="animation-delay: 1.2s;">✦</span>
-
-      <!-- Figura de Capitán América en pose de acción dinámica -->
-      <div class="relative w-44 sm:w-48 transition-transform duration-500 group-hover:scale-105">
-        <img src="/bautizoaaron/hero_cap_action.png" alt="Capitán América"
-          class="hero-float-cap w-full h-auto object-contain filter drop-shadow-[0_14px_18px_rgba(26,34,22,0.22)] group-hover:drop-shadow-[0_20px_28px_rgba(197,155,39,0.45)] transition-all duration-300" />
-        <!-- Sombra en el suelo -->
-        <div class="w-36 h-3 bg-[#1A2216]/15 rounded-[100%] blur-sm mx-auto -mt-1 pointer-events-none"></div>
-      </div>
-
-      <!-- Placa de honor en lino y oro -->
-      <div
-        class="mt-1 inline-flex items-center gap-1.5 px-3.5 py-1 bg-white/95 border border-[#DFE3D8] rounded-full shadow-sm group-hover:border-[#C59B27] transition-colors">
-        <span class="text-[#C59B27] text-[9px]">★</span>
-        <span class="font-sans text-[8.5px] font-bold tracking-[0.25em] uppercase text-[#1A2216]">
-          Capitán América · Centinela de la Libertad
-        </span>
-      </div>
-    </div>
+    <div class="hairline-v reveal"></div>
 
     <!-- ============================================================= -->
     <!-- 7. CONFIRMACIÓN DE ASISTENCIA INTERACTIVA (SUPABASE)         -->
@@ -837,99 +495,225 @@
         </div>
       </div>
 
-      <!-- FORMULARIO INTERACTIVO -->
+      <!-- FORMULARIO INTERACTIVO (PASO A PASO / PREGUNTA POR PREGUNTA) -->
       <form id="rsvp-interactive-form" onsubmit="handleRsvpSubmit(event)" class="relative z-10 space-y-6">
 
-        <!-- PASO 1: ¿ASISTIRÁS? -->
-        <div class="space-y-3">
-          <p class="font-sans text-[10px] font-semibold tracking-wider uppercase text-[#5A6F4E]">
-            ¿Podrás acompañarnos?
-          </p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-[440px] mx-auto">
+        <!-- INDICADOR DE PROGRESO -->
+        <div class="max-w-[440px] mx-auto space-y-2">
+          <div class="flex items-center justify-between text-[11px] font-semibold text-[#5A6F4E] tracking-wider uppercase">
+            <span id="wizard-step-label" class="font-sans">Pregunta 1 de 5</span>
+            <span id="wizard-progress-pct" class="text-[#C59B27] font-bold">20%</span>
+          </div>
+          <div class="w-full bg-[#DFE3D8]/60 h-2 rounded-full overflow-hidden p-0.5 border border-[#C59B27]/20">
+            <div id="wizard-progress-bar" class="bg-gradient-to-r from-[#C59B27] to-[#2E3D25] h-full rounded-full transition-all duration-300 ease-out" style="width: 20%;"></div>
+          </div>
+        </div>
 
-            <label
-              class="rsvp-option-label flex items-center justify-center gap-2.5 p-3.5 rounded-2xl border-2 border-[#5A6F4E]/60 bg-white hover:border-[#2E3D25] cursor-pointer transition shadow-sm text-left">
-              <input type="radio" name="attending" value="confirmed" checked onchange="toggleRsvpFields()"
+        <!-- =================== PREGUNTA 1: NOMBRE =================== -->
+        <div id="rsvp-step-1" class="wizard-step-active space-y-4 max-w-[440px] mx-auto text-left">
+          <div class="space-y-1 text-center">
+            <p class="font-sans text-[11px] font-bold tracking-[0.2em] uppercase text-[#5A6F4E]">
+              Paso 1 · Identificación
+            </p>
+            <h4 class="font-display text-xl sm:text-2xl font-semibold text-[#1A2216]">
+              ¿A nombre de quién registramos?
+            </h4>
+            <p class="text-[14px] text-[#4A5640]">
+              Ingresa tu nombre completo o el de tu familia para comenzar.
+            </p>
+          </div>
+
+          <div class="pt-2">
+            <label class="block font-sans text-[10px] font-semibold tracking-wider uppercase text-[#5A6F4E] mb-1.5">
+              Nombre completo o Familia *
+            </label>
+            <input type="text" id="rsvp-input-name" required placeholder="Ej. Familia Martínez González o Maritza Alcantar"
+              class="w-full px-4 py-3 rounded-xl border border-[#5A6F4E]/35 bg-white text-stone-800 text-xs focus:outline-none focus:border-[#2E3D25] focus:ring-1 focus:ring-[#2E3D25] shadow-sm" />
+            <p id="name-error-msg" class="hidden text-[11px] text-red-600 font-medium mt-1.5">
+              ⚠️ Por favor ingresa tu nombre o familia para poder continuar.
+            </p>
+          </div>
+
+          <div class="pt-4">
+            <button type="button" onclick="nextRsvpStep()"
+              class="w-full py-3.5 bg-gradient-to-r from-[#2E3D25] to-[#3B4E31] hover:from-[#1C2717] hover:to-[#2E3D25] text-[#FAF6F0] border border-[#C6A052]/80 rounded-full font-sans text-xs font-semibold tracking-widest uppercase transition-all shadow-md hover:scale-[1.01] active:scale-95 flex items-center justify-center gap-2 cursor-pointer">
+              <span>Continuar</span>
+              <svg class="w-4 h-4 text-[#C6A052]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- =================== PREGUNTA 2: ASISTENCIA =================== -->
+        <div id="rsvp-step-2" class="hidden space-y-4 max-w-[440px] mx-auto text-left">
+          <div class="space-y-1 text-center">
+            <p class="font-sans text-[11px] font-bold tracking-[0.2em] uppercase text-[#5A6F4E]">
+              Paso 2 · Asistencia
+            </p>
+            <h4 class="font-display text-xl sm:text-2xl font-semibold text-[#1A2216]">
+              ¿Podrás acompañarnos a celebrar?
+            </h4>
+            <p class="text-[14px] text-[#4A5640]">
+              Selecciona una de las siguientes opciones:
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            <label id="attending-card-confirmed" onclick="selectAttendingOption('confirmed')"
+              class="flex items-center justify-center gap-3 p-4 rounded-2xl border-2 border-[#2E3D25] bg-[#FAF7F2] ring-2 ring-[#2E3D25]/30 cursor-pointer transition shadow-sm text-left">
+              <input type="radio" name="attending" value="confirmed" checked onchange="updateAttendingRadioStyles()"
                 class="accent-[#2E3D25] w-4 h-4" />
               <span class="font-sans text-xs font-bold text-[#141714]">
                 Sí, asistiré con gusto
               </span>
             </label>
 
-            <label
-              class="rsvp-option-label flex items-center justify-center gap-2.5 p-3.5 rounded-2xl border-2 border-stone-200 bg-white hover:border-stone-400 cursor-pointer transition shadow-sm text-left">
-              <input type="radio" name="attending" value="declined" onchange="toggleRsvpFields()"
+            <label id="attending-card-declined" onclick="selectAttendingOption('declined')"
+              class="flex items-center justify-center gap-3 p-4 rounded-2xl border-2 border-stone-200 bg-white cursor-pointer transition shadow-sm text-left">
+              <input type="radio" name="attending" value="declined" onchange="updateAttendingRadioStyles()"
                 class="accent-stone-600 w-4 h-4" />
               <span class="font-sans text-xs font-medium text-stone-600">
                 Lamentablemente no podré
               </span>
             </label>
+          </div>
 
+          <div class="pt-4 flex items-center gap-3">
+            <button type="button" onclick="prevRsvpStep()"
+              class="w-1/3 py-3 bg-white border border-[#DFE3D8] hover:border-[#5A6F4E] text-[#2E3D25] rounded-full font-sans text-xs font-semibold tracking-wider uppercase transition shadow-sm flex items-center justify-center gap-1 cursor-pointer">
+              <span>← Atrás</span>
+            </button>
+            <button type="button" onclick="nextRsvpStep()"
+              class="w-2/3 py-3.5 bg-gradient-to-r from-[#2E3D25] to-[#3B4E31] hover:from-[#1C2717] hover:to-[#2E3D25] text-[#FAF6F0] border border-[#C6A052]/80 rounded-full font-sans text-xs font-semibold tracking-widest uppercase transition-all shadow-md hover:scale-[1.01] active:scale-95 flex items-center justify-center gap-2 cursor-pointer">
+              <span>Continuar</span>
+              <svg class="w-4 h-4 text-[#C6A052]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
           </div>
         </div>
 
-        <!-- PASO 2: DATOS DEL INVITADO -->
-        <div class="space-y-4 max-w-[440px] mx-auto text-left">
-
-          <!-- Nombre o Familia -->
-          <div id="field-name-wrap">
-            <label class="block font-sans text-[10px] font-semibold tracking-wider uppercase text-[#5A6F4E] mb-1">
-              Nombre completo o Familia *
-            </label>
-            <input type="text" id="rsvp-input-name" required placeholder="Ej. Familia Martínez González"
-              class="w-full px-4 py-3 rounded-xl border border-[#5A6F4E]/35 bg-white text-stone-800 text-xs focus:outline-none focus:border-[#2E3D25] focus:ring-1 focus:ring-[#2E3D25] shadow-sm" />
+        <!-- =================== PREGUNTA 3 =================== -->
+        <div id="rsvp-step-3" class="hidden space-y-4 max-w-[440px] mx-auto text-center">
+          <div class="space-y-1">
+            <p class="font-sans text-[11px] font-bold tracking-[0.2em] uppercase text-[#5A6F4E]">
+              Paso 3 · Cantidad de Pases
+            </p>
+            <h4 class="font-display text-xl sm:text-2xl font-semibold text-[#1A2216]">
+              ¿Cuántas personas asistirán en total?
+            </h4>
+            <p class="text-[14px] text-[#4A5640]">
+              Indica el número total de integrantes que nos acompañarán.
+            </p>
           </div>
 
-          <!-- Pases a Confirmar (Solo si asiste) -->
-          <div id="field-passes-wrap" class="space-y-1">
-            <label class="block font-sans text-[10px] font-semibold tracking-wider uppercase text-[#5A6F4E] mb-1">
-              ¿Cuántas personas asistirán en total? *
-            </label>
-            <div
-              class="flex items-center gap-3 bg-white p-2 rounded-xl border border-[#5A6F4E]/35 shadow-sm max-w-[200px]">
+          <div class="pt-3 flex flex-col items-center justify-center gap-2">
+            <div class="flex items-center gap-4 bg-white p-2.5 rounded-2xl border border-[#5A6F4E]/35 shadow-sm min-w-[220px]">
               <button type="button" onclick="changePasses(-1)"
-                class="w-8 h-8 rounded-lg bg-[#EDE7DD] hover:bg-[#E2D8CA] text-[#2E3D25] font-bold text-base flex items-center justify-center transition">
+                class="w-10 h-10 rounded-xl bg-[#EDE7DD] hover:bg-[#E2D8CA] text-[#2E3D25] font-bold text-xl flex items-center justify-center transition active:scale-95">
                 −
               </button>
-              <span id="passes-display" class="flex-1 text-center font-serif text-lg font-bold text-[#141714]">2</span>
+              <div class="flex-1 text-center">
+                <span id="passes-display" class="font-serif text-2xl font-bold text-[#141714]">2</span>
+                <span class="block text-[10px] uppercase tracking-wider text-[#5A6F4E] font-medium">personas</span>
+              </div>
               <button type="button" onclick="changePasses(1)"
-                class="w-8 h-8 rounded-lg bg-[#EDE7DD] hover:bg-[#E2D8CA] text-[#2E3D25] font-bold text-base flex items-center justify-center transition">
+                class="w-10 h-10 rounded-xl bg-[#EDE7DD] hover:bg-[#E2D8CA] text-[#2E3D25] font-bold text-xl flex items-center justify-center transition active:scale-95">
                 +
               </button>
             </div>
             <input type="hidden" id="rsvp-input-passes" value="2" />
-            <p id="passes-limit-hint" class="text-[10px] text-stone-400 mt-1"></p>
+            <p id="passes-limit-hint" class="text-[11px] text-[#5A6F4E] font-medium mt-1"></p>
           </div>
 
-          <!-- Alergias o Restricciones (Opcional) -->
-          <div id="field-allergies-wrap">
-            <label class="block font-sans text-[10px] font-semibold tracking-wider uppercase text-[#5A6F4E] mb-1">
-              ¿Alguna alergia o restricción alimentaria? (opcional)
-            </label>
-            <input type="text" id="rsvp-input-allergies" placeholder="Ej. Ninguna / Alergia a mariscos / Vegetariano"
-              class="w-full px-4 py-2.5 rounded-xl border border-[#5A6F4E]/35 bg-white text-stone-800 text-xs focus:outline-none focus:border-[#2E3D25] shadow-sm" />
+          <div class="pt-4 flex items-center gap-3">
+            <button type="button" onclick="prevRsvpStep()"
+              class="w-1/3 py-3 bg-white border border-[#DFE3D8] hover:border-[#5A6F4E] text-[#2E3D25] rounded-full font-sans text-xs font-semibold tracking-wider uppercase transition shadow-sm flex items-center justify-center gap-1 cursor-pointer">
+              <span>← Atrás</span>
+            </button>
+            <button type="button" onclick="nextRsvpStep()"
+              class="w-2/3 py-3.5 bg-gradient-to-r from-[#2E3D25] to-[#3B4E31] hover:from-[#1C2717] hover:to-[#2E3D25] text-[#FAF6F0] border border-[#C6A052]/80 rounded-full font-sans text-xs font-semibold tracking-widest uppercase transition-all shadow-md hover:scale-[1.01] active:scale-95 flex items-center justify-center gap-2 cursor-pointer">
+              <span>Continuar</span>
+              <svg class="w-4 h-4 text-[#C6A052]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
           </div>
-
-          <!-- Mensaje / Felicitaciones (Opcional) -->
-          <div>
-            <label class="block font-sans text-[10px] font-semibold tracking-wider uppercase text-[#5A6F4E] mb-1">
-              Mensaje o bendición para Aaron (opcional)
-            </label>
-            <textarea id="rsvp-input-message" rows="2" placeholder="Escribe aquí tus buenos deseos..."
-              class="w-full px-4 py-2.5 rounded-xl border border-[#5A6F4E]/35 bg-white text-stone-800 text-xs focus:outline-none focus:border-[#2E3D25] shadow-sm"></textarea>
-          </div>
-
         </div>
 
-        <!-- Botón de Envío con degradado en Terciopelo Olivo y bordes Oro -->
-        <div class="pt-2 max-w-[440px] mx-auto">
-          <button type="submit" id="rsvp-submit-btn"
-            class="w-full py-3.5 bg-gradient-to-r from-[#2E3D25] to-[#3B4E31] hover:from-[#1C2717] hover:to-[#2E3D25] text-[#FAF6F0] border border-[#C6A052]/80 rounded-full font-sans text-xs font-semibold tracking-widest uppercase transition-all shadow-md hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 cursor-pointer">
-            <span>Confirmar Asistencia</span>
-            <svg class="w-4 h-4 text-[#C6A052]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </button>
+        <!-- =================== PREGUNTA 4 =================== -->
+        <div id="rsvp-step-4" class="hidden space-y-4 max-w-[440px] mx-auto text-left">
+          <div class="space-y-1 text-center">
+            <p class="font-sans text-[11px] font-bold tracking-[0.2em] uppercase text-[#5A6F4E]">
+              Paso 4 · Preferencias
+            </p>
+            <h4 class="font-display text-xl sm:text-2xl font-semibold text-[#1A2216]">
+              ¿Alguna alergia o restricción?
+            </h4>
+            <p class="text-[14px] text-[#4A5640]">
+              Queremos atenderte de la mejor manera (opcional).
+            </p>
+          </div>
+
+          <div class="pt-2">
+            <label class="block font-sans text-[10px] font-semibold tracking-wider uppercase text-[#5A6F4E] mb-1.5">
+              Restricciones alimentarias o notas especiales
+            </label>
+            <input type="text" id="rsvp-input-allergies" placeholder="Ej. Ninguna / Alergia a mariscos / Vegetariano"
+              class="w-full px-4 py-3 rounded-xl border border-[#5A6F4E]/35 bg-white text-stone-800 text-xs focus:outline-none focus:border-[#2E3D25] shadow-sm" />
+          </div>
+
+          <div class="pt-4 flex items-center gap-3">
+            <button type="button" onclick="prevRsvpStep()"
+              class="w-1/3 py-3 bg-white border border-[#DFE3D8] hover:border-[#5A6F4E] text-[#2E3D25] rounded-full font-sans text-xs font-semibold tracking-wider uppercase transition shadow-sm flex items-center justify-center gap-1 cursor-pointer">
+              <span>← Atrás</span>
+            </button>
+            <button type="button" onclick="nextRsvpStep()"
+              class="w-2/3 py-3.5 bg-gradient-to-r from-[#2E3D25] to-[#3B4E31] hover:from-[#1C2717] hover:to-[#2E3D25] text-[#FAF6F0] border border-[#C6A052]/80 rounded-full font-sans text-xs font-semibold tracking-widest uppercase transition-all shadow-md hover:scale-[1.01] active:scale-95 flex items-center justify-center gap-2 cursor-pointer">
+              <span>Continuar</span>
+              <svg class="w-4 h-4 text-[#C6A052]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- =================== PREGUNTA 5 (FINAL) =================== -->
+        <div id="rsvp-step-5" class="hidden space-y-4 max-w-[440px] mx-auto text-left">
+          <div class="space-y-1 text-center">
+            <p class="font-sans text-[11px] font-bold tracking-[0.2em] uppercase text-[#5A6F4E]">
+              Paso Final · Mensaje
+            </p>
+            <h4 class="font-display text-xl sm:text-2xl font-semibold text-[#1A2216]">
+              Mensaje o bendición para Aaron
+            </h4>
+            <p class="text-[14px] text-[#4A5640]">
+              Dedícale unas hermosas palabras para su día especial (opcional).
+            </p>
+          </div>
+
+          <div class="pt-2">
+            <label class="block font-sans text-[10px] font-semibold tracking-wider uppercase text-[#5A6F4E] mb-1.5">
+              Tus buenos deseos
+            </label>
+            <textarea id="rsvp-input-message" rows="3" placeholder="Escribe aquí tus felicitaciones o bendiciones..."
+              class="w-full px-4 py-3 rounded-xl border border-[#5A6F4E]/35 bg-white text-stone-800 text-xs focus:outline-none focus:border-[#2E3D25] shadow-sm"></textarea>
+          </div>
+
+          <div class="pt-4 flex items-center gap-3">
+            <button type="button" onclick="prevRsvpStep()"
+              class="w-1/3 py-3 bg-white border border-[#DFE3D8] hover:border-[#5A6F4E] text-[#2E3D25] rounded-full font-sans text-xs font-semibold tracking-wider uppercase transition shadow-sm flex items-center justify-center gap-1 cursor-pointer">
+              <span>← Atrás</span>
+            </button>
+            <button type="submit" id="rsvp-submit-btn"
+              class="w-2/3 py-3.5 bg-gradient-to-r from-[#2E3D25] to-[#3B4E31] hover:from-[#1C2717] hover:to-[#2E3D25] text-[#FAF6F0] border border-[#C6A052]/80 rounded-full font-sans text-xs font-semibold tracking-widest uppercase transition-all shadow-md hover:scale-[1.01] active:scale-95 flex items-center justify-center gap-2 cursor-pointer">
+              <span id="rsvp-submit-btn-text">Confirmar Asistencia</span>
+              <svg class="w-4 h-4 text-[#C6A052]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </button>
+          </div>
         </div>
 
       </form>
@@ -1009,6 +793,167 @@
       let personalizedGuest = null;
       let maxPasses = 12;
       let currentPasses = 2;
+      let currentStep = 1;
+
+      function getActiveSteps() {
+        const attendingVal = document.querySelector('input[name="attending"]:checked')?.value || 'confirmed';
+        if (attendingVal === 'declined') {
+          return [1, 2, 5]; // Si no puede asistir: Asistencia (1) -> Nombre (2) -> Mensaje (5)
+        }
+        return [1, 2, 3, 4, 5]; // Todos los pasos
+      }
+
+      function updateWizardUI() {
+        const activeSteps = getActiveSteps();
+        let stepIdx = activeSteps.indexOf(currentStep);
+        if (stepIdx === -1) {
+          currentStep = activeSteps[0];
+          stepIdx = 0;
+        }
+
+        const totalActive = activeSteps.length;
+        const currentPos = stepIdx + 1;
+        const pct = Math.round((currentPos / totalActive) * 100);
+
+        // Actualizar barra de progreso y etiquetas
+        const stepLabel = document.getElementById("wizard-step-label");
+        const pctLabel = document.getElementById("wizard-progress-pct");
+        const progBar = document.getElementById("wizard-progress-bar");
+        if (stepLabel) stepLabel.innerText = `Pregunta ${currentPos} de ${totalActive}`;
+        if (pctLabel) pctLabel.innerText = `${pct}%`;
+        if (progBar) progBar.style.width = `${pct}%`;
+
+        // Mostrar únicamente el paso activo
+        [1, 2, 3, 4, 5].forEach(s => {
+          const stepEl = document.getElementById(`rsvp-step-${s}`);
+          if (stepEl) {
+            if (s === currentStep) {
+              stepEl.classList.remove("hidden");
+              stepEl.classList.add("wizard-step-active");
+            } else {
+              stepEl.classList.add("hidden");
+              stepEl.classList.remove("wizard-step-active");
+            }
+          }
+        });
+
+        // Autofocus al campo de nombre en el paso 1 si no está prellenado
+        if (currentStep === 1) {
+          const nameInput = document.getElementById("rsvp-input-name");
+          if (nameInput && !nameInput.readOnly) {
+            setTimeout(() => nameInput.focus(), 150);
+          }
+        }
+
+        // Texto del botón en el paso final
+        const submitBtnText = document.getElementById("rsvp-submit-btn-text");
+        const attendingVal = document.querySelector('input[name="attending"]:checked')?.value;
+        if (submitBtnText) {
+          submitBtnText.innerText = attendingVal === 'declined' ? 'Enviar Respuesta' : 'Confirmar Asistencia';
+        }
+      }
+
+      window.selectAttendingOption = function (val) {
+        const radio = document.querySelector(`input[name="attending"][value="${val}"]`);
+        if (radio) {
+          radio.checked = true;
+        }
+        updateAttendingRadioStyles();
+        // Actualizar barra de progreso si cambia el número de pasos restantes
+        const activeSteps = getActiveSteps();
+        const stepIdx = activeSteps.indexOf(currentStep);
+        const totalActive = activeSteps.length;
+        const currentPos = (stepIdx !== -1 ? stepIdx : 1) + 1;
+        const pct = Math.round((currentPos / totalActive) * 100);
+        const stepLabel = document.getElementById("wizard-step-label");
+        const pctLabel = document.getElementById("wizard-progress-pct");
+        const progBar = document.getElementById("wizard-progress-bar");
+        if (stepLabel) stepLabel.innerText = `Pregunta ${currentPos} de ${totalActive}`;
+        if (pctLabel) pctLabel.innerText = `${pct}%`;
+        if (progBar) progBar.style.width = `${pct}%`;
+      };
+
+      window.updateAttendingRadioStyles = function () {
+        const confirmedRadio = document.querySelector('input[name="attending"][value="confirmed"]');
+        const declinedRadio = document.querySelector('input[name="attending"][value="declined"]');
+        const confirmedCard = document.getElementById("attending-card-confirmed");
+        const declinedCard = document.getElementById("attending-card-declined");
+
+        if (confirmedRadio && confirmedRadio.checked) {
+          if (confirmedCard) {
+            confirmedCard.classList.add("border-[#2E3D25]", "bg-[#FAF7F2]", "ring-2", "ring-[#2E3D25]/30");
+            confirmedCard.classList.remove("border-stone-200", "bg-white");
+          }
+          if (declinedCard) {
+            declinedCard.classList.remove("border-[#2E3D25]", "bg-[#FAF7F2]", "ring-2", "ring-[#2E3D25]/30");
+            declinedCard.classList.add("border-stone-200", "bg-white");
+          }
+        } else if (declinedRadio && declinedRadio.checked) {
+          if (declinedCard) {
+            declinedCard.classList.add("border-[#2E3D25]", "bg-[#FAF7F2]", "ring-2", "ring-[#2E3D25]/30");
+            declinedCard.classList.remove("border-stone-200", "bg-white");
+          }
+          if (confirmedCard) {
+            confirmedCard.classList.remove("border-[#2E3D25]", "bg-[#FAF7F2]", "ring-2", "ring-[#2E3D25]/30");
+            confirmedCard.classList.add("border-stone-200", "bg-white");
+          }
+        }
+      };
+
+      window.nextRsvpStep = function () {
+        // Validación del Paso 1: Nombre obligatorio
+        if (currentStep === 1) {
+          const nameInput = document.getElementById("rsvp-input-name");
+          const nameError = document.getElementById("name-error-msg");
+          if (!nameInput.value.trim()) {
+            if (nameError) nameError.classList.remove("hidden");
+            nameInput.classList.add("border-red-400", "focus:border-red-500", "focus:ring-red-200");
+            nameInput.focus();
+            return;
+          } else {
+            if (nameError) nameError.classList.add("hidden");
+            nameInput.classList.remove("border-red-400", "focus:border-red-500", "focus:ring-red-200");
+          }
+        }
+
+        const activeSteps = getActiveSteps();
+        const currentIdx = activeSteps.indexOf(currentStep);
+        if (currentIdx < activeSteps.length - 1) {
+          currentStep = activeSteps[currentIdx + 1];
+          updateWizardUI();
+        }
+      };
+
+      window.prevRsvpStep = function () {
+        const activeSteps = getActiveSteps();
+        const currentIdx = activeSteps.indexOf(currentStep);
+        if (currentIdx > 0) {
+          currentStep = activeSteps[currentIdx - 1];
+          updateWizardUI();
+        }
+      };
+
+      // Permitir avanzar con tecla Enter en inputs de texto
+      const nameInputEl = document.getElementById("rsvp-input-name");
+      const allergyInputEl = document.getElementById("rsvp-input-allergies");
+
+      if (nameInputEl) {
+        nameInputEl.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            nextRsvpStep();
+          }
+        });
+      }
+
+      if (allergyInputEl) {
+        allergyInputEl.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            nextRsvpStep();
+          }
+        });
+      }
 
       // Lectura de token personalizado desde la URL (?guest=xxx o ?token=xxx)
       const urlParams = new URLSearchParams(window.location.search);
@@ -1080,25 +1025,12 @@
         if (hiddenInput) hiddenInput.value = currentPasses;
       }
 
-      window.toggleRsvpFields = function () {
-        const attendingVal = document.querySelector('input[name="attending"]:checked').value;
-        const passesWrap = document.getElementById("field-passes-wrap");
-        const allergiesWrap = document.getElementById("field-allergies-wrap");
-
-        if (attendingVal === "declined") {
-          if (passesWrap) passesWrap.classList.add("hidden");
-          if (allergiesWrap) allergiesWrap.classList.add("hidden");
-        } else {
-          if (passesWrap) passesWrap.classList.remove("hidden");
-          if (allergiesWrap) allergiesWrap.classList.remove("hidden");
-        }
-      };
-
       window.handleRsvpSubmit = async function (e) {
         e.preventDefault();
         const submitBtn = document.getElementById("rsvp-submit-btn");
+        const submitBtnText = document.getElementById("rsvp-submit-btn-text");
         submitBtn.disabled = true;
-        submitBtn.innerText = "Guardando respuesta...";
+        if (submitBtnText) submitBtnText.innerText = "Guardando respuesta...";
 
         const attendingVal = document.querySelector('input[name="attending"]:checked').value;
         const guestName = document.getElementById("rsvp-input-name").value.trim();
@@ -1173,7 +1105,9 @@
           alert("Error de conexión. Por favor verifica tu red e intenta de nuevo.");
         } finally {
           submitBtn.disabled = false;
-          submitBtn.innerText = "Confirmar Asistencia";
+          if (submitBtnText) {
+            submitBtnText.innerText = attendingVal === 'declined' ? 'Enviar Respuesta' : 'Confirmar Asistencia';
+          }
         }
       };
 
@@ -1200,60 +1134,9 @@
         const successView = document.getElementById("rsvp-success-view");
         if (form) form.classList.remove("hidden");
         if (successView) successView.classList.add("hidden");
+        currentStep = 1;
+        updateWizardUI();
       };
-
-      // 4. Selector Dinámico de Fondos (Fondo 1 al 6)
-      const fondos = {
-        '1': '/bautizoaaron/fondo1.jpg',
-        '2': '/bautizoaaron/fondo2.jpg',
-        '3': '/bautizoaaron/fondo3.jpg',
-        '4': '/bautizoaaron/fondo4.jpg',
-        '5': '/bautizoaaron/fondo5.jpg',
-        '6': '/bautizoaaron/fondo6.jpg',
-        '0': ''
-      };
-
-      window.setFondo = function(id) {
-        const bgLayer = document.getElementById('bg-dynamic-layer');
-        const scrim = document.getElementById('bg-readability-scrim');
-        if (!bgLayer) return;
-
-        // Resaltar botón activo
-        document.querySelectorAll('.fondo-btn').forEach(btn => {
-          btn.classList.remove('bg-[#1A2216]', 'text-white', 'border-[#1A2216]', 'shadow-md', 'scale-110');
-          btn.classList.add('bg-white', 'text-[#1A2216]', 'border-[#DFE3D8]');
-        });
-        const activeBtn = document.getElementById(`btn-fondo-${id}`);
-        if (activeBtn) {
-          activeBtn.classList.remove('bg-white', 'text-[#1A2216]', 'border-[#DFE3D8]');
-          activeBtn.classList.add('bg-[#1A2216]', 'text-white', 'border-[#1A2216]', 'shadow-md', 'scale-110');
-        }
-
-        if (id === '0' || !fondos[id]) {
-          bgLayer.style.backgroundImage = 'none';
-          bgLayer.classList.add('opacity-0');
-          if (scrim) scrim.classList.add('opacity-0');
-        } else {
-          // Soporte dual para proxy de producción y localhost
-          const primaryUrl = fondos[id];
-          const localUrl = `/fondo${id}.jpg`;
-          bgLayer.style.backgroundImage = `url("${primaryUrl}"), url("${localUrl}")`;
-          bgLayer.classList.remove('opacity-0');
-          if (scrim) scrim.classList.remove('opacity-0');
-        }
-
-        // Guardar preferencia y sincronizar query param ?fondo=X
-        try {
-          localStorage.setItem('selected_fondo_aaron', id);
-          const url = new URL(window.location.href);
-          url.searchParams.set('fondo', id);
-          window.history.replaceState({}, '', url.toString());
-        } catch (e) {}
-      };
-
-      // Cargar fondo inicial desde URL ?fondo=X o localStorage (por defecto Fondo 1)
-      const initialFondo = urlParams.get('fondo') || localStorage.getItem('selected_fondo_aaron') || '1';
-      window.setFondo(initialFondo);
 
     });
   </script>
