@@ -32,28 +32,17 @@
 
   <style>
     :root {
-      /* PALETA BOTÁNICA DECORATIVA (TERCIOPELO OLIVO, SALVIA, EUCALIPTO, MÁRMOL CÁLIDO Y ALCATRAZ) */
-      --paper: #F6F3EB;
-      --ink: #141714;
-      --ink-muted: #38492F;
-      --olive-velvet: #2E3D25;
-      --olive: #38492F;
-      --sage: #5A6F4E;
-      --eucalyptus: #8CA27A;
-      --marble-warm: #EDE7DD;
-      --gold: #C6A052;
-      --gold-light: #E8D5A6;
-      --line: #DDD5C5;
+      --paper: #FAF9F6;
+      --ink: #1A2216;
+      --ink-light: #4A5640;
+      --gold: #C59B27;
+      --gold-light: #EADCB3;
+      --line: #DFE3D8;
     }
 
     html,
     body {
       background-color: var(--paper);
-      background-image:
-        radial-gradient(circle at 10% 12%, rgba(90, 111, 78, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 90% 32%, rgba(46, 61, 37, 0.07) 0%, transparent 42%),
-        radial-gradient(circle at 8% 70%, rgba(90, 111, 78, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 92% 88%, rgba(46, 61, 37, 0.09) 0%, transparent 50%);
       color: var(--ink);
       margin: 0;
       padding: 0;
@@ -65,12 +54,12 @@
       font-family: 'Lora', serif;
       -webkit-font-smoothing: antialiased;
       font-size: clamp(16px, 3.5vw, 18px);
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.75;
       position: relative;
     }
 
-    /* Textura sutil de papel lino artesanal en tono beige */
+    /* Textura sutil de lino artesanal */
     .grain-overlay {
       position: fixed;
       top: 0;
@@ -79,80 +68,69 @@
       height: 100%;
       pointer-events: none;
       z-index: 9999;
-      opacity: 0.035;
+      opacity: 0.025;
       background-image: url("https://www.transparenttextures.com/patterns/linen-design.png");
       mix-blend-mode: multiply;
     }
 
-    /* Marco Passepartout litúrgico y elegante en verde terciopelo olivo y oro */
+    /* Marco Passepartout litúrgico elegante (estilo bautizo-mateo) */
     .passepartout-outer {
       position: fixed;
-      top: 12px;
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
-      border: 1.5px solid rgba(46, 61, 37, 0.4);
+      top: 15px;
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+      border: 1px solid var(--line);
       pointer-events: none;
-      z-index: 99;
+      z-index: 999;
     }
 
     .passepartout-inner {
       position: fixed;
-      top: 18px;
-      left: 18px;
-      right: 18px;
-      bottom: 18px;
-      border: 1px dashed rgba(198, 160, 82, 0.55);
+      top: 22px;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      border: 1px dashed var(--gold);
+      opacity: 0.5;
       pointer-events: none;
-      z-index: 99;
+      z-index: 999;
     }
 
-    /* Insignias botánicas decorativas */
+    /* Insignias */
     .botanical-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.375rem;
-      padding: 0.35rem 1rem;
-      background: linear-gradient(135deg, rgba(46, 61, 37, 0.1) 0%, rgba(90, 111, 78, 0.16) 100%);
-      border: 1px solid rgba(46, 61, 37, 0.3);
+      padding: 0.35rem 1.1rem;
+      background: rgba(197, 155, 39, 0.09);
+      border: 1px solid rgba(197, 155, 39, 0.4);
       border-radius: 9999px;
-      box-shadow: 0 1px 3px rgba(46, 61, 37, 0.05);
     }
 
     .botanical-badge span {
       font-family: Montserrat, sans-serif;
       font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.3em;
+      font-weight: 700;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: #2E3D25;
+      color: #C59B27;
     }
 
-    /* Separadores con acento floral / botánico sutil */
+    /* Separadores con acento dorado */
     .hairline-v {
-      position: relative;
       width: 1px;
-      height: 52px;
-      background: linear-gradient(180deg, transparent, var(--gold), transparent);
-      margin: 2.8rem auto;
-    }
-
-    .hairline-v::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(45deg);
-      width: 6px;
-      height: 6px;
-      background-color: var(--sage);
-      border-radius: 1px;
+      height: 60px;
+      background-color: var(--gold);
+      opacity: 0.45;
+      margin: 3.2rem auto;
     }
 
     .hairline-h {
-      width: 45px;
+      width: 40px;
       height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      background-color: var(--gold);
+      opacity: 0.45;
       margin: 1.8rem auto;
     }
 
@@ -421,55 +399,42 @@
 
 <body class="antialiased">
 
-  <!-- Fondo de textura de lino beige y marcos passepartout -->
+  <!-- Fondo de textura de lino artesanal y marcos passepartout -->
   <div class="grain-overlay"></div>
   <div class="passepartout-outer"></div>
   <div class="passepartout-inner"></div>
 
-
-
-  <!-- Capa de Fondo Botánico Wallpaper (Fijo, detrás de todo el contenido) -->
-  <div class="fixed inset-0 pointer-events-none select-none z-0 overflow-hidden">
-    <!-- Pradera botánica en la base del fondo (izquierda) -->
-    <div class="absolute -bottom-8 -left-10 w-72 sm:w-88 md:w-[420px] opacity-70 transform -rotate-2">
-      <img src="/bautizoaaron/flor_transparent.png" alt="" loading="eager" class="w-full h-auto object-contain" />
-    </div>
-    <!-- Pradera botánica en la base del fondo (derecha reflejada) -->
-    <div class="absolute -bottom-8 -right-10 w-72 sm:w-88 md:w-[420px] opacity-70 transform scale-x-[-1] rotate-2">
-      <img src="/bautizoaaron/flor_transparent.png" alt="" loading="eager" class="w-full h-auto object-contain" />
-    </div>
-    <!-- Follaje botánico superior izquierdo de fondo (invertido colgando hacia abajo) -->
-    <div class="absolute -top-6 -left-12 w-64 sm:w-80 opacity-65 transform scale-y-[-1] -rotate-12">
-      <img src="/bautizoaaron/flor_transparent.png" alt="" loading="eager" class="w-full h-auto object-contain" />
-    </div>
-    <!-- Follaje botánico superior derecho de fondo (invertido colgando hacia abajo y reflejado) -->
-    <div class="absolute -top-6 -right-12 w-64 sm:w-80 opacity-65 transform scale-x-[-1] scale-y-[-1] rotate-12">
-      <img src="/bautizoaaron/flor_transparent.png" alt="" loading="eager" class="w-full h-auto object-contain" />
-    </div>
-  </div>
-
   <div class="max-w-[550px] mx-auto px-6 py-20 text-center relative z-10 space-y-14">
 
+    <!-- ============================================================= -->
     <!-- 1. ENCABEZADO / TÍTULO PRINCIPAL                              -->
     <!-- ============================================================= -->
-    <header class="reveal space-y-4 pt-2">
+    <header class="reveal space-y-5 pt-2">
       <div class="botanical-badge mx-auto">
         <span>Mi Bautizo &amp; Cumpleaños</span>
       </div>
 
+      <!-- Cruz Litúrgica en Oro (Estilo Bautizo Clásico) -->
+      <div class="py-1">
+        <svg viewBox="0 0 100 100" class="w-8 h-8 text-[#C59B27] mx-auto">
+          <line x1="50" y1="10" x2="50" y2="90" stroke="currentColor" stroke-width="3" />
+          <line x1="25" y1="35" x2="75" y2="35" stroke="currentColor" stroke-width="3" />
+        </svg>
+      </div>
+
       <h1
-        class="font-display text-3xl sm:text-4xl font-normal leading-[1.25] tracking-[0.05em] uppercase text-[#141714]">
+        class="font-display text-3xl sm:text-4xl font-semibold leading-[1.2] tracking-[0.05em] uppercase text-[#1A2216]">
         Aaron Sebastián<br>
-        <span class="text-2xl sm:text-3xl font-light italic font-body lowercase tracking-normal text-[#2E3D25]">
+        <span class="text-2xl sm:text-3xl font-light italic font-body lowercase tracking-normal text-[#2C3524]">
           Ortiz Alcantar
         </span>
       </h1>
 
-      <p class="font-sans text-xs font-semibold tracking-[0.25em] text-[#5A6F4E] uppercase mt-4">
+      <p class="font-sans text-xs font-bold tracking-[0.25em] text-[#4A5640] uppercase mt-3">
         Sábado 3 de Octubre de 2026
       </p>
 
-      <p class="font-body italic text-[17px] text-[#38492F] max-w-[85%] mx-auto pt-2 leading-relaxed">
+      <p class="font-body italic text-[17px] sm:text-[18px] text-[#2C3524] font-medium max-w-[85%] mx-auto pt-1 leading-relaxed">
         "Con la bendición de Dios y rodeado del amor de mi familia, celebro mi bautizo y mi cumpleaños."
       </p>
     </header>
@@ -480,34 +445,34 @@
     <!-- 2. CUENTA REGRESIVA                                           -->
     <!-- ============================================================= -->
     <section class="reveal space-y-3">
-      <p class="font-sans text-[10px] font-semibold tracking-[0.25em] uppercase text-[#5A6F4E]">Faltan</p>
+      <p class="font-sans text-[10px] font-bold tracking-[0.28em] uppercase text-[#4A5640]">Faltan</p>
 
       <div class="flex justify-center items-center gap-2.5 sm:gap-4">
         <div
-          class="flex flex-col items-center bg-[#EDE7DD] border border-[#5A6F4E]/30 rounded-2xl px-3 sm:px-4 py-2.5 shadow-sm min-w-[62px]">
-          <span id="cd-days" class="font-display text-2xl sm:text-3xl font-normal text-[#2E3D25]">--</span>
-          <span class="font-sans text-[8.5px] uppercase tracking-widest text-[#5A6F4E] font-semibold mt-0.5">Días</span>
+          class="flex flex-col items-center bg-white/90 border border-[#DFE3D8] rounded-2xl px-3 sm:px-4 py-2.5 shadow-sm min-w-[62px]">
+          <span id="cd-days" class="font-display text-2xl sm:text-3xl font-semibold text-[#1A2216]">--</span>
+          <span class="font-sans text-[8.5px] uppercase tracking-widest text-[#4A5640] font-bold mt-0.5">Días</span>
         </div>
-        <span class="font-display text-xl text-[#C6A052]">:</span>
+        <span class="font-display text-xl text-[#C59B27] font-bold">:</span>
         <div
-          class="flex flex-col items-center bg-[#EDE7DD] border border-[#5A6F4E]/30 rounded-2xl px-3 sm:px-4 py-2.5 shadow-sm min-w-[62px]">
-          <span id="cd-hours" class="font-display text-2xl sm:text-3xl font-normal text-[#2E3D25]">--</span>
+          class="flex flex-col items-center bg-white/90 border border-[#DFE3D8] rounded-2xl px-3 sm:px-4 py-2.5 shadow-sm min-w-[62px]">
+          <span id="cd-hours" class="font-display text-2xl sm:text-3xl font-semibold text-[#1A2216]">--</span>
           <span
-            class="font-sans text-[8.5px] uppercase tracking-widest text-[#5A6F4E] font-semibold mt-0.5">Horas</span>
+            class="font-sans text-[8.5px] uppercase tracking-widest text-[#4A5640] font-bold mt-0.5">Horas</span>
         </div>
-        <span class="font-display text-xl text-[#C6A052]">:</span>
+        <span class="font-display text-xl text-[#C59B27] font-bold">:</span>
         <div
-          class="flex flex-col items-center bg-[#EDE7DD] border border-[#5A6F4E]/30 rounded-2xl px-3 sm:px-4 py-2.5 shadow-sm min-w-[62px]">
-          <span id="cd-mins" class="font-display text-2xl sm:text-3xl font-normal text-[#2E3D25]">--</span>
+          class="flex flex-col items-center bg-white/90 border border-[#DFE3D8] rounded-2xl px-3 sm:px-4 py-2.5 shadow-sm min-w-[62px]">
+          <span id="cd-mins" class="font-display text-2xl sm:text-3xl font-semibold text-[#1A2216]">--</span>
           <span
-            class="font-sans text-[8.5px] uppercase tracking-widest text-[#5A6F4E] font-semibold mt-0.5">Minutos</span>
+            class="font-sans text-[8.5px] uppercase tracking-widest text-[#4A5640] font-bold mt-0.5">Minutos</span>
         </div>
-        <span class="font-display text-xl text-[#C6A052]">:</span>
+        <span class="font-display text-xl text-[#C59B27] font-bold">:</span>
         <div
-          class="flex flex-col items-center bg-[#EDE7DD] border border-[#5A6F4E]/30 rounded-2xl px-3 sm:px-4 py-2.5 shadow-sm min-w-[62px]">
-          <span id="cd-secs" class="font-display text-2xl sm:text-3xl font-normal text-[#2E3D25]">--</span>
+          class="flex flex-col items-center bg-white/90 border border-[#DFE3D8] rounded-2xl px-3 sm:px-4 py-2.5 shadow-sm min-w-[62px]">
+          <span id="cd-secs" class="font-display text-2xl sm:text-3xl font-semibold text-[#1A2216]">--</span>
           <span
-            class="font-sans text-[8.5px] uppercase tracking-widest text-[#5A6F4E] font-semibold mt-0.5">Segundos</span>
+            class="font-sans text-[8.5px] uppercase tracking-widest text-[#4A5640] font-bold mt-0.5">Segundos</span>
         </div>
       </div>
     </section>
@@ -515,21 +480,50 @@
     <div class="hairline-v reveal"></div>
 
     <!-- ============================================================= -->
-    <!-- 3. CEREMONIA RELIGIOSA                                        -->
+    <!-- 3. PADRES Y PADRINOS (ESTILO IDÉNTICO A BAUTIZO MATEO)         -->
+    <!-- ============================================================= -->
+    <section class="reveal space-y-6">
+      <div>
+        <p class="font-sans text-[10px] tracking-[0.25em] uppercase text-[#4A5640] font-bold mb-1">Mis Padres</p>
+        <p class="font-display text-2xl sm:text-3xl font-semibold tracking-[0.05em] text-[#1A2216]">
+          Maritza Alcantar &amp; José Ortiz
+        </p>
+      </div>
+      <div class="hairline-h"></div>
+      <div>
+        <p class="font-sans text-[10px] tracking-[0.25em] uppercase text-[#4A5640] font-bold mb-1">Mis Padrinos de Bautizo</p>
+        <p class="font-display text-2xl sm:text-3xl font-semibold tracking-[0.05em] text-[#1A2216]">
+          Sheila Acosta &amp; Benjamín Castro
+        </p>
+      </div>
+      <div class="hairline-h"></div>
+      <div>
+        <p class="font-sans text-[10px] tracking-[0.25em] uppercase text-[#4A5640] font-bold mb-1">Mis Padrinos de Presentación</p>
+        <p class="font-display text-xl sm:text-2xl font-normal italic font-body text-[#4A5640]">
+          Por confirmar
+        </p>
+      </div>
+    </section>
+
+    <div class="hairline-v reveal"></div>
+
+    <!-- ============================================================= -->
+    <!-- 4. CEREMONIA RELIGIOSA                                        -->
     <!-- ============================================================= -->
     <section class="reveal space-y-5">
+      <p class="font-sans text-[10px] font-bold tracking-[0.25em] uppercase text-[#4A5640]">Ceremonia Religiosa</p>
 
-      <h3 class="font-display text-2xl font-medium tracking-[0.05em] text-[#141714]">
+      <h3 class="font-display text-2xl sm:text-3xl font-semibold tracking-[0.05em] text-[#1A2216]">
         Iglesia Nuestra Señora del Carmen
       </h3>
 
-      <p class="text-[17px] text-[#38492F] max-w-[85%] mx-auto leading-relaxed">
+      <p class="text-[17px] text-[#2C3524] max-w-[85%] mx-auto leading-relaxed font-medium">
         Avenida México Norte 117, Centro,<br>C.P. 63000, Tepic, Nayarit, México
       </p>
 
       <!-- Mapa integrado de Google Maps -->
       <div class="pt-2 max-w-[95%] mx-auto">
-        <iframe class="map-container border border-[#5A6F4E]/30 rounded-xl shadow-sm"
+        <iframe class="map-container border border-[#DFE3D8] rounded-xl shadow-sm"
           src="https://maps.google.com/maps?q=Iglesia+del+Carmen,+Avenida+Mexico+Norte+117,+Centro,+Tepic,+Nayarit&t=&z=16&ie=UTF8&iwloc=&output=embed"
           allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
         </iframe>
@@ -538,7 +532,7 @@
       <div class="pt-2">
         <a href="https://www.google.com/maps/search/?api=1&query=Iglesia+del+Carmen+Avenida+Mexico+Norte+117+Centro+Tepic+Nayarit"
           target="_blank"
-          class="font-display text-xs tracking-wider uppercase text-[#C6A052] border-b border-[#C6A052]/40 pb-0.5 hover:border-[#C6A052] hover:text-[#2E3D25] transition-colors">
+          class="font-display text-xs tracking-wider uppercase text-[#C59B27] font-semibold border-b border-[#C59B27]/50 pb-0.5 hover:border-[#C59B27] hover:text-[#1A2216] transition-colors">
           Abrir en Google Maps
         </a>
       </div>
@@ -547,22 +541,22 @@
     <div class="hairline-v reveal"></div>
 
     <!-- ============================================================= -->
-    <!-- 4. RECEPCIÓN Y CUMPLEAÑOS                                     -->
+    <!-- 5. RECEPCIÓN Y CUMPLEAÑOS                                     -->
     <!-- ============================================================= -->
     <section class="reveal space-y-5">
+      <p class="font-sans text-[10px] font-bold tracking-[0.25em] uppercase text-[#4A5640]">Recepción &amp; Festejo</p>
 
-
-      <h3 class="font-display text-2xl font-medium tracking-[0.05em] text-[#141714]">
+      <h3 class="font-display text-2xl sm:text-3xl font-semibold tracking-[0.05em] text-[#1A2216]">
         Salón de Eventos La Lomita
       </h3>
 
-      <p class="text-[17px] text-[#38492F] max-w-[85%] mx-auto leading-relaxed">
+      <p class="text-[17px] text-[#2C3524] max-w-[85%] mx-auto leading-relaxed font-medium">
         Boulevard Tepic Xalisco #110, Col. La Curva del Guayabo,<br>Tepic, Nayarit
       </p>
 
       <!-- Mapa integrado de Google Maps -->
       <div class="pt-2 max-w-[95%] mx-auto">
-        <iframe class="map-container border border-[#5A6F4E]/30 rounded-xl shadow-sm"
+        <iframe class="map-container border border-[#DFE3D8] rounded-xl shadow-sm"
           src="https://maps.google.com/maps?q=Salon+de+eventos+La+lomita,+Boulevard+Tepic+Xalisco+110,+Tepic,+Nayarit&t=&z=16&ie=UTF8&iwloc=&output=embed"
           allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
         </iframe>
@@ -571,7 +565,7 @@
       <div class="pt-2">
         <a href="https://www.google.com/maps/search/?api=1&query=Salon+de+eventos+La+lomita+Boulevard+Tepic+Xalisco+110+Tepic+Nayarit"
           target="_blank"
-          class="font-display text-xs tracking-wider uppercase text-[#C6A052] border-b border-[#C6A052]/40 pb-0.5 hover:border-[#C6A052] hover:text-[#2E3D25] transition-colors">
+          class="font-display text-xs tracking-wider uppercase text-[#C59B27] font-semibold border-b border-[#C59B27]/50 pb-0.5 hover:border-[#C59B27] hover:text-[#1A2216] transition-colors">
           Abrir en Google Maps
         </a>
       </div>
@@ -583,53 +577,35 @@
 
         <!-- Emblema de honor editorial -->
         <div class="flex items-center justify-center gap-3 mb-2">
-          <div class="w-8 h-px bg-gradient-to-r from-transparent to-[#C6A052]"></div>
-          <span class="font-sans text-[10px] font-bold tracking-[0.35em] uppercase text-[#2E3D25]">
+          <div class="w-8 h-px bg-gradient-to-r from-transparent to-[#C59B27]"></div>
+          <span class="font-sans text-[10px] font-bold tracking-[0.35em] uppercase text-[#1A2216]">
             El Escuadrón de Aaron
           </span>
-          <div class="w-8 h-px bg-gradient-to-l from-transparent to-[#C6A052]"></div>
+          <div class="w-8 h-px bg-gradient-to-l from-transparent to-[#C59B27]"></div>
         </div>
 
-        <h4 class="font-display text-2xl sm:text-3xl text-[#141714] font-medium tracking-wide">
+        <h4 class="font-display text-2xl sm:text-3xl text-[#1A2216] font-semibold tracking-wide">
           Héroes al Rescate de la Fiesta
         </h4>
 
-        <p class="font-body italic text-[15px] sm:text-[16px] text-[#38492F] max-w-[85%] mx-auto mt-1 mb-2">
+        <p class="font-body italic text-[15px] sm:text-[16px] text-[#2C3524] font-medium max-w-[85%] mx-auto mt-1 mb-2">
           Capitán América, Spider-Man, Iron Man y Hulk se reúnen para celebrar su cumpleaños.
         </p>
-
-        <!-- Badge interactivo de audio / tema musical de Marvel -->
-        <div class="flex justify-center my-2">
-          <button type="button" id="marvel-audio-btn"
-            class="inline-flex items-center gap-2 px-4 py-1.5 bg-[#EDE7DD]/95 border border-[#C6A052]/70 rounded-full shadow-sm cursor-pointer hover:bg-[#EDE7DD] hover:scale-105 active:scale-95 transition-all text-center">
-            <span id="marvel-audio-icon" class="text-[#C6A052] text-xs">🎵</span>
-            <span id="marvel-audio-text" class="font-sans text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#2E3D25]">
-              Tema de Los Vengadores
-            </span>
-            <span id="marvel-audio-indicator" class="w-2 h-2 rounded-full bg-[#5A6F4E] opacity-60"></span>
-          </button>
-        </div>
-
-        <!-- Audio Nativo MP3 de Los Vengadores -->
-        <audio id="marvel-audio" preload="auto" loop class="hidden">
-          <source src="/bautizoaaron/marvel_theme.mp3" type="audio/mpeg">
-          <source src="/marvel_theme.mp3" type="audio/mpeg">
-        </audio>
 
         <!-- ESCENARIO DINÁMICO HEROICO EN 3D -->
         <div class="hero-stage">
 
-          <!-- Aureola celestial con tonalidades botánicas y luz dorada -->
+          <!-- Aureola celestial con tonalidades cálidas y luz dorada -->
           <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <!-- Resplandor central botánico -->
+            <!-- Resplandor central -->
             <div
-              class="w-[260px] sm:w-[320px] h-[260px] sm:h-[320px] rounded-full bg-gradient-to-tr from-[#C6A052]/20 via-[#FAF7F2]/80 to-[#5A6F4E]/20 blur-2xl">
+              class="w-[260px] sm:w-[320px] h-[260px] sm:h-[320px] rounded-full bg-gradient-to-tr from-[#C59B27]/15 via-white/80 to-[#4A5640]/15 blur-2xl">
             </div>
             <!-- Círculos concéntricos litúrgicos con pespunte fino -->
             <div
-              class="w-[250px] sm:w-[310px] h-[250px] sm:h-[310px] rounded-full border border-dashed border-[#C6A052]/40 opacity-80">
+              class="w-[250px] sm:w-[310px] h-[250px] sm:h-[310px] rounded-full border border-dashed border-[#C59B27]/40 opacity-80">
             </div>
-            <div class="w-[200px] sm:w-[250px] h-[200px] sm:h-[250px] rounded-full border border-[#5A6F4E]/25"></div>
+            <div class="w-[200px] sm:w-[250px] h-[200px] sm:h-[250px] rounded-full border border-[#DFE3D8]"></div>
           </div>
 
           <!-- Destellos dorados flotantes (partículas mágicas) -->
@@ -640,7 +616,7 @@
 
           <!-- SOMBRA BASE COLECTIVA EN EL SUELO -->
           <div
-            class="absolute bottom-3 left-1/2 -translate-x-1/2 w-[85%] h-7 bg-[#2E3D25]/20 rounded-[100%] blur-md pointer-events-none">
+            class="absolute bottom-3 left-1/2 -translate-x-1/2 w-[85%] h-7 bg-[#1A2216]/15 rounded-[100%] blur-md pointer-events-none">
           </div>
 
           <!-- 1. HULK (Atrás a la derecha, imponente y protector) -->
@@ -667,7 +643,7 @@
           <div class="hero-layer hero-spidey-pos group" title="Spider-Man">
             <!-- Hilo de telaraña dorada sutil que conecta hacia arriba -->
             <div
-              class="absolute -top-12 left-1/2 w-0.5 h-14 bg-gradient-to-b from-transparent via-[#C6A052]/50 to-[#C6A052] -translate-x-1/2 pointer-events-none">
+              class="absolute -top-12 left-1/2 w-0.5 h-14 bg-gradient-to-b from-transparent via-[#C59B27]/50 to-[#C59B27] -translate-x-1/2 pointer-events-none">
             </div>
             <img src="/bautizoaaron/hero_spiderman.png?v=2" alt="Spider-Man"
               class="hero-actor hero-float-spidey w-full h-auto object-contain" />
@@ -676,76 +652,73 @@
 
         </div>
 
-        <!-- Placa de honor al pie del diorama con tonos mármol y olivo -->
+        <!-- Placa de honor al pie del diorama -->
         <div
-          class="inline-flex items-center gap-2 px-5 py-2 bg-[#EDE7DD]/95 border border-[#5A6F4E]/35 rounded-full shadow-sm mt-1">
-          <span class="text-[#C6A052] text-xs">★</span>
-          <span class="font-sans text-[10px] uppercase tracking-[0.25em] text-[#2E3D25] font-bold">
+          class="inline-flex items-center gap-2 px-5 py-2 bg-white/95 border border-[#DFE3D8] rounded-full shadow-sm mt-1">
+          <span class="text-[#C59B27] text-xs">★</span>
+          <span class="font-sans text-[10px] uppercase tracking-[0.25em] text-[#1A2216] font-bold">
             Guardianes de la Aventura · Festejo de Cumpleaños
           </span>
-          <span class="text-[#C6A052] text-xs">★</span>
+          <span class="text-[#C59B27] text-xs">★</span>
         </div>
 
       </div>
     </section>
 
     <!-- ============================================================= -->
-    <!-- 5. APARTADO ESPECIAL: CUMPLEAÑOS & MESA DE REGALOS            -->
-    <!-- (Estética Botánica de Terciopelo, Mármol Cálido y Cuento)     -->
+    <!-- 6. APARTADO ESPECIAL: CUMPLEAÑOS & MESA DE REGALOS            -->
     <!-- ============================================================= -->
     <section
-      class="reveal relative overflow-hidden rounded-3xl border border-[#5A6F4E]/35 shadow-md bg-gradient-to-b from-[#FAF7F2] to-[#F1ECE2] p-6 sm:p-10 text-center space-y-8 !mt-4 mb-4">
+      class="reveal relative overflow-hidden rounded-3xl border border-[#DFE3D8] shadow-sm bg-white/70 p-6 sm:p-10 text-center space-y-8 !mt-4 mb-4">
 
       <!-- Marco interior litúrgico con pespunte oro -->
-      <div class="absolute inset-2 border border-dashed border-[#C6A052]/40 rounded-2xl pointer-events-none"></div>
+      <div class="absolute inset-2 border border-dashed border-[#C59B27]/40 rounded-2xl pointer-events-none"></div>
 
       <!-- Encabezado de Cumpleaños -->
       <div class="relative z-10 space-y-3 pt-2">
-        <h3 class="font-display text-3xl sm:text-4xl font-normal tracking-[0.05em] uppercase text-[#141714]">
+        <h3 class="font-display text-3xl sm:text-4xl font-semibold tracking-[0.05em] uppercase text-[#1A2216]">
           ¡Mi Cumpleaños!
         </h3>
 
-        <p class="font-sans text-xs font-semibold tracking-[0.25em] text-[#2E3D25] uppercase">
+        <p class="font-sans text-xs font-bold tracking-[0.25em] text-[#4A5640] uppercase">
           Aaron Sebastián Ortiz Alcantar
         </p>
 
-        <p class="font-body italic text-[17px] text-[#38492F] max-w-[90%] mx-auto leading-relaxed pt-1">
+        <p class="font-body italic text-[17px] sm:text-[18px] text-[#2C3524] font-medium max-w-[90%] mx-auto leading-relaxed pt-1">
           "Un pequeño gran héroe celebra su cumpleaños rodeado de amor, bendiciones y aventuras."
         </p>
       </div>
 
-      <!-- Divisor sutil en oro y salvia -->
-      <div class="relative z-10 w-24 h-px bg-gradient-to-r from-transparent via-[#C6A052] to-transparent mx-auto"></div>
+      <!-- Divisor sutil en oro -->
+      <div class="relative z-10 w-24 h-px bg-gradient-to-r from-transparent via-[#C59B27] to-transparent mx-auto"></div>
 
       <!-- Bloque de Regalos -->
       <div class="relative z-10 space-y-5 pt-1">
-        <div class="botanical-badge mx-auto">
-          <span>Mesa de Regalos</span>
-        </div>
+        <p class="font-sans text-[10px] font-bold tracking-[0.28em] uppercase text-[#4A5640]">Mesa de Regalos</p>
 
         <!-- Liverpool Centrado y Clickeable -->
         <div class="text-center">
           <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/60040338" target="_blank"
-            class="inline-flex flex-col items-center justify-center px-9 py-3.5 rounded-2xl border border-[#C6A052]/80 bg-white hover:bg-[#FAF7F2] shadow-sm hover:shadow-md transition-all group active:scale-95 cursor-pointer">
+            class="inline-flex flex-col items-center justify-center px-9 py-3.5 rounded-2xl border border-[#C59B27]/80 bg-white hover:bg-[#FAF9F6] shadow-sm hover:shadow-md transition-all group active:scale-95 cursor-pointer">
             <div class="flex items-center gap-2">
               <span class="font-serif italic font-bold text-2xl text-[#E6007E]">Liverpool</span>
               <svg
-                class="w-4 h-4 text-[#C6A052] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                class="w-4 h-4 text-[#C59B27] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
                 fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round"
                   d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
             </div>
-            <span class="font-sans text-sm tracking-widest text-[#2E3D25] font-bold mt-0.5">60040338</span>
+            <span class="font-sans text-sm tracking-widest text-[#1A2216] font-bold mt-0.5">60040338</span>
           </a>
         </div>
 
         <!-- Sugerencia de Sobre -->
         <div class="pt-3 max-w-[88%] mx-auto space-y-2">
-          <h4 class="font-display text-xl font-normal text-[#141714]">
+          <h4 class="font-display text-xl font-semibold text-[#1A2216]">
             Sugerencia de Sobre
           </h4>
-          <p class="text-[15px] sm:text-[16px] text-[#38492F] leading-relaxed">
+          <p class="text-[15px] sm:text-[16px] text-[#2C3524] font-medium leading-relaxed">
             Tu presencia y cariño son nuestro mejor obsequio. Si de igual manera deseas tener un detalle en sobre para
             Aaron, contaremos con un buzón especial el día del evento en la recepción.
           </p>
@@ -760,52 +733,50 @@
     <div
       class="reveal relative flex flex-col items-center justify-center !mt-1 !mb-1 py-1 select-none group cursor-pointer">
 
-      <!-- Halo celestial de energía dorada y botánica -->
+      <!-- Halo cálido de energía dorada -->
       <div
-        class="absolute w-52 h-52 rounded-full bg-gradient-to-tr from-[#C6A052]/25 via-[#FAF7F2]/60 to-[#5A6F4E]/20 blur-2xl pointer-events-none -z-10">
+        class="absolute w-52 h-52 rounded-full bg-gradient-to-tr from-[#C59B27]/20 via-white/80 to-[#4A5640]/15 blur-2xl pointer-events-none -z-10">
       </div>
 
       <!-- Destellos de honor y luz -->
-      <span class="absolute top-2 right-1/4 text-[#C6A052] text-xs animate-pulse pointer-events-none">★</span>
-      <span class="absolute bottom-5 left-1/4 text-[#C6A052] text-[10px] animate-pulse pointer-events-none"
+      <span class="absolute top-2 right-1/4 text-[#C59B27] text-xs animate-pulse pointer-events-none">★</span>
+      <span class="absolute bottom-5 left-1/4 text-[#C59B27] text-[10px] animate-pulse pointer-events-none"
         style="animation-delay: 1.2s;">✦</span>
 
       <!-- Figura de Capitán América en pose de acción dinámica -->
       <div class="relative w-44 sm:w-48 transition-transform duration-500 group-hover:scale-105">
         <img src="/bautizoaaron/hero_cap_action.png" alt="Capitán América"
-          class="hero-float-cap w-full h-auto object-contain filter drop-shadow-[0_14px_18px_rgba(46,61,37,0.28)] group-hover:drop-shadow-[0_20px_28px_rgba(198,160,82,0.5)] transition-all duration-300" />
+          class="hero-float-cap w-full h-auto object-contain filter drop-shadow-[0_14px_18px_rgba(26,34,22,0.22)] group-hover:drop-shadow-[0_20px_28px_rgba(197,155,39,0.45)] transition-all duration-300" />
         <!-- Sombra en el suelo -->
-        <div class="w-36 h-3 bg-[#2E3D25]/20 rounded-[100%] blur-sm mx-auto -mt-1 pointer-events-none"></div>
+        <div class="w-36 h-3 bg-[#1A2216]/15 rounded-[100%] blur-sm mx-auto -mt-1 pointer-events-none"></div>
       </div>
 
       <!-- Placa de honor en lino y oro -->
       <div
-        class="mt-1 inline-flex items-center gap-1.5 px-3.5 py-1 bg-[#EDE7DD]/90 border border-[#5A6F4E]/30 rounded-full shadow-sm group-hover:border-[#C6A052] transition-colors">
-        <span class="text-[#C6A052] text-[9px]">★</span>
-        <span class="font-sans text-[8.5px] font-bold tracking-[0.25em] uppercase text-[#2E3D25]">
+        class="mt-1 inline-flex items-center gap-1.5 px-3.5 py-1 bg-white/95 border border-[#DFE3D8] rounded-full shadow-sm group-hover:border-[#C59B27] transition-colors">
+        <span class="text-[#C59B27] text-[9px]">★</span>
+        <span class="font-sans text-[8.5px] font-bold tracking-[0.25em] uppercase text-[#1A2216]">
           Capitán América · Centinela de la Libertad
         </span>
       </div>
     </div>
 
     <!-- ============================================================= -->
-    <!-- 6. CONFIRMACIÓN DE ASISTENCIA INTERACTIVA (SUPABASE)         -->
+    <!-- 7. CONFIRMACIÓN DE ASISTENCIA INTERACTIVA (SUPABASE)         -->
     <!-- ============================================================= -->
     <section
-      class="reveal relative overflow-hidden rounded-3xl border border-[#5A6F4E]/35 shadow-md bg-gradient-to-b from-[#FAF7F2] to-[#F1ECE2] p-6 sm:p-10 text-center space-y-6 !mt-3">
+      class="reveal relative overflow-hidden rounded-3xl border border-[#DFE3D8] shadow-sm bg-white/70 p-6 sm:p-10 text-center space-y-6 !mt-3">
 
       <!-- Pespunte litúrgico interior -->
-      <div class="absolute inset-2 border border-dashed border-[#C6A052]/40 rounded-2xl pointer-events-none"></div>
+      <div class="absolute inset-2 border border-dashed border-[#C59B27]/40 rounded-2xl pointer-events-none"></div>
 
       <!-- Título de sección -->
       <div class="relative z-10 space-y-2">
-        <div class="botanical-badge mx-auto">
-          <span>Confirmación de Asistencia</span>
-        </div>
-        <h3 class="font-display text-2xl sm:text-3xl font-normal tracking-[0.05em] uppercase text-[#141714]">
+        <p class="font-sans text-[10px] font-bold tracking-[0.28em] uppercase text-[#4A5640]">Confirmación</p>
+        <h3 class="font-display text-2xl sm:text-3xl font-semibold tracking-[0.05em] uppercase text-[#1A2216]">
           ¿Nos Acompañas?
         </h3>
-        <p class="text-[16px] text-[#38492F] max-w-[90%] mx-auto leading-relaxed">
+        <p class="text-[16px] text-[#2C3524] font-medium max-w-[90%] mx-auto leading-relaxed">
           Tu presencia es muy importante para nosotros. Por favor confirma tu asistencia a más tardar el 20 de
           Septiembre.
         </p>
@@ -1224,92 +1195,6 @@
         if (form) form.classList.remove("hidden");
         if (successView) successView.classList.add("hidden");
       };
-
-      // 4. Reproductor de Música Nativo de Marvel (HTML5 Audio)
-      const marvelAudio = document.getElementById('marvel-audio');
-      let isPlaying = false;
-      let audioStarted = false;
-
-      function playMusic() {
-        if (!marvelAudio) return;
-        marvelAudio.play().then(() => {
-          isPlaying = true;
-          audioStarted = true;
-          updateAudioUi(true);
-        }).catch(err => {
-          console.log("Audio autoplay waiting for user interaction:", err);
-        });
-      }
-
-      function pauseMusic() {
-        if (!marvelAudio) return;
-        marvelAudio.pause();
-        isPlaying = false;
-        updateAudioUi(false);
-      }
-
-      window.toggleMarvelMusic = function () {
-        if (isPlaying) {
-          pauseMusic();
-        } else {
-          playMusic();
-        }
-      };
-
-      // Iniciar música con el primer toque, clic o scroll en cualquier parte
-      const startMusicOnInteraction = () => {
-        if (!audioStarted) {
-          playMusic();
-        }
-      };
-
-      window.addEventListener('click', startMusicOnInteraction, { passive: true });
-      window.addEventListener('touchstart', startMusicOnInteraction, { passive: true });
-      window.addEventListener('scroll', startMusicOnInteraction, { passive: true });
-
-      function updateAudioUi(playing) {
-        isPlaying = playing;
-        
-        // Elementos en la sección de héroes
-        const icon = document.getElementById('marvel-audio-icon');
-        const text = document.getElementById('marvel-audio-text');
-        const indicator = document.getElementById('marvel-audio-indicator');
-        const btn = document.getElementById('marvel-audio-btn');
-
-        // Elemento flotante fijo
-        const floatIcon = document.getElementById('float-music-icon');
-        const floatWave = document.getElementById('float-music-wave');
-
-        if (playing) {
-          if (icon) icon.innerText = "🔊";
-          if (text) text.innerText = "Sonando: Tema de Los Vengadores";
-          if (indicator) {
-            indicator.classList.remove('bg-[#5A6F4E]', 'opacity-60');
-            indicator.classList.add('bg-[#C6A052]', 'animate-ping');
-          }
-          if (btn) btn.classList.add('border-[#C6A052]', 'bg-[#EDE7DD]');
-
-          if (floatIcon) floatIcon.innerText = "🔊";
-          if (floatWave) floatWave.classList.remove('hidden');
-        } else {
-          if (icon) icon.innerText = "🎵";
-          if (text) text.innerText = "Tema de Los Vengadores";
-          if (indicator) {
-            indicator.classList.remove('bg-[#C6A052]', 'animate-ping');
-            indicator.classList.add('bg-[#5A6F4E]', 'opacity-60');
-          }
-          if (btn) btn.classList.remove('border-[#C6A052]');
-
-          if (floatIcon) floatIcon.innerText = "🔇";
-          if (floatWave) floatWave.classList.add('hidden');
-        }
-      }
-
-      const audioBtn = document.getElementById('marvel-audio-btn');
-      if (audioBtn) audioBtn.addEventListener('click', window.toggleMarvelMusic);
-
-      const floatBtn = document.getElementById('floating-music-btn');
-      if (floatBtn) floatBtn.addEventListener('click', window.toggleMarvelMusic);
 
     });
   </script>
