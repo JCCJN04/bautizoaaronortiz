@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/bautizoaaron",
+      "destination": "/index.html"
+    },
+    {
       "source": "/bautizoaaron/:path*",
       "destination": "/:path*"
     }
