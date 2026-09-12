@@ -232,6 +232,102 @@
       </p>
     </header>
 
+    <!-- ============================================================= -->
+    <!-- FOTOGRAFÍA DEL FESTEJADO CON SELECTOR DE ESTILOS               -->
+    <!-- ============================================================= -->
+    <section class="reveal space-y-6 pt-1">
+      
+      <!-- CONTENEDOR DE LA FOTO DINÁMICA -->
+      <div class="relative mx-auto flex justify-center items-center py-2">
+        
+        <!-- ESTILO 1: ÓVALO LITÚRGICO CLÁSICO (Referencia Bautizo) -->
+        <div id="photo-frame-ovalo" class="photo-style-variant transition-all duration-500 transform">
+          <div class="w-[260px] sm:w-[290px] h-[360px] sm:h-[405px] rounded-[50%] p-2.5 sm:p-3 bg-white/85 border border-[#C59B27] shadow-[0_12px_32px_rgba(197,155,39,0.18)] flex items-center justify-center relative">
+            <div class="w-full h-full rounded-[50%] overflow-hidden border border-[#C59B27]/40 relative bg-[#F5F2EB]">
+              <img src="/festejado.jpeg" onerror="this.src='festejado.jpeg'" alt="Aaron Sebastián Ortiz Alcantar"
+                   class="w-full h-full object-cover object-[50%_0%] scale-[1.13] origin-top select-none pointer-events-none" />
+            </div>
+          </div>
+        </div>
+
+        <!-- ESTILO 2: ARCO LITÚRGICO MONASTERIAL (Portal Clásico) -->
+        <div id="photo-frame-arco" class="photo-style-variant hidden transition-all duration-500 transform">
+          <div class="w-[260px] sm:w-[290px] h-[365px] sm:h-[410px] rounded-t-full rounded-b-3xl p-3 bg-white/85 border border-[#C59B27] shadow-[0_12px_32px_rgba(26,34,22,0.14)] flex items-center justify-center relative">
+            <div class="w-full h-full rounded-t-full rounded-b-2xl overflow-hidden border border-[#C59B27]/40 relative bg-[#F5F2EB]">
+              <img src="/festejado.jpeg" onerror="this.src='festejado.jpeg'" alt="Aaron Sebastián Ortiz Alcantar"
+                   class="w-full h-full object-cover object-[50%_0%] scale-[1.13] origin-top select-none pointer-events-none" />
+            </div>
+          </div>
+        </div>
+
+        <!-- ESTILO 3: MEDALLÓN CIRCULAR IMPERIAL (Doble Aro Oro) -->
+        <div id="photo-frame-circulo" class="photo-style-variant hidden transition-all duration-500 transform">
+          <div class="w-[270px] sm:w-[310px] h-[270px] sm:h-[310px] rounded-full p-2.5 sm:p-3 bg-white/90 border-2 border-[#C59B27] ring-4 ring-[#C59B27]/25 shadow-[0_12px_35px_rgba(197,155,39,0.22)] flex items-center justify-center relative">
+            <div class="w-full h-full rounded-full overflow-hidden border border-[#C59B27]/50 relative bg-[#F5F2EB]">
+              <img src="/festejado.jpeg" onerror="this.src='festejado.jpeg'" alt="Aaron Sebastián Ortiz Alcantar"
+                   class="w-full h-full object-cover object-[50%_6%] scale-[1.12] origin-top select-none pointer-events-none" />
+            </div>
+          </div>
+        </div>
+
+        <!-- ESTILO 4: PASSEPARTOUT EDITORIAL (Fine Art con Pespunte Oro) -->
+        <div id="photo-frame-editorial" class="photo-style-variant hidden transition-all duration-500 transform">
+          <div class="w-[265px] sm:w-[295px] h-[365px] sm:h-[410px] rounded-3xl p-3.5 bg-white/90 border border-[#DFE3D8] shadow-[0_12px_35px_rgba(26,34,22,0.12)] flex items-center justify-center relative">
+            <div class="w-full h-full rounded-2xl overflow-hidden border border-dashed border-[#C59B27]/70 p-1.5 relative bg-white">
+              <div class="w-full h-full rounded-xl overflow-hidden bg-[#F5F2EB]">
+                <img src="/festejado.jpeg" onerror="this.src='festejado.jpeg'" alt="Aaron Sebastián Ortiz Alcantar"
+                     class="w-full h-full object-cover object-[50%_0%] scale-[1.13] origin-top select-none pointer-events-none" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ESTILO 5: ESMERALDA LITÚRGICO (Bordes Suaves y Corona de Oro) -->
+        <div id="photo-frame-esmeralda" class="photo-style-variant hidden transition-all duration-500 transform">
+          <div class="w-[260px] sm:w-[290px] h-[365px] sm:h-[410px] rounded-[48px] p-3 bg-white/85 border-2 border-[#C59B27]/80 shadow-[0_12px_32px_rgba(197,155,39,0.2)] flex items-center justify-center relative">
+            <div class="w-full h-full rounded-[38px] overflow-hidden border border-[#C59B27]/40 relative bg-[#F5F2EB]">
+              <img src="/festejado.jpeg" onerror="this.src='festejado.jpeg'" alt="Aaron Sebastián Ortiz Alcantar"
+                   class="w-full h-full object-cover object-[50%_0%] scale-[1.13] origin-top select-none pointer-events-none" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PANEL SELECTOR INTERACTIVO PARA LA CLIENTA -->
+      <div class="bg-white/85 backdrop-blur-sm border border-[#C59B27]/35 rounded-2xl p-4 max-w-[490px] mx-auto shadow-sm space-y-3">
+        <div class="flex items-center justify-center gap-1.5 text-[10.5px] font-sans font-bold uppercase tracking-[0.22em] text-[#4A5640]">
+          <span class="text-[#C59B27]">✦</span>
+          <span>Elige el diseño de marco:</span>
+          <span class="text-[#C59B27]">✦</span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+          <button type="button" onclick="setPhotoStyle('ovalo')" id="btn-photo-ovalo"
+            class="photo-style-btn py-2 px-2.5 rounded-xl border-2 border-[#C59B27] bg-[#FAF9F6] text-[#1A2216] font-sans text-xs font-bold tracking-wider transition-all shadow-xs cursor-pointer">
+            1. Óvalo Clásico
+          </button>
+          <button type="button" onclick="setPhotoStyle('arco')" id="btn-photo-arco"
+            class="photo-style-btn py-2 px-2.5 rounded-xl border border-[#DFE3D8] bg-white hover:border-[#C59B27] text-[#4A5640] font-sans text-xs font-medium tracking-wider transition-all shadow-xs cursor-pointer">
+            2. Arco Litúrgico
+          </button>
+          <button type="button" onclick="setPhotoStyle('circulo')" id="btn-photo-circulo"
+            class="photo-style-btn py-2 px-2.5 rounded-xl border border-[#DFE3D8] bg-white hover:border-[#C59B27] text-[#4A5640] font-sans text-xs font-medium tracking-wider transition-all shadow-xs cursor-pointer">
+            3. Medallón Circular
+          </button>
+          <button type="button" onclick="setPhotoStyle('editorial')" id="btn-photo-editorial"
+            class="photo-style-btn py-2 px-2.5 rounded-xl border border-[#DFE3D8] bg-white hover:border-[#C59B27] text-[#4A5640] font-sans text-xs font-medium tracking-wider transition-all shadow-xs cursor-pointer">
+            4. Marco Galería
+          </button>
+          <button type="button" onclick="setPhotoStyle('esmeralda')" id="btn-photo-esmeralda"
+            class="photo-style-btn py-2 px-2.5 rounded-xl border border-[#DFE3D8] bg-white hover:border-[#C59B27] text-[#4A5640] font-sans text-xs font-medium tracking-wider transition-all shadow-xs cursor-pointer sm:col-span-2">
+            5. Esmeralda Curvo
+          </button>
+        </div>
+      </div>
+
+    </section>
+
     <div class="hairline-v reveal"></div>
 
     <!-- ============================================================= -->
@@ -1163,6 +1259,44 @@
         currentStep = 1;
         updateWizardUI();
       };
+
+      // =============================================================
+      // CONTROLADOR DE ESTILOS DE FOTO PARA LA CLIENTA
+      // =============================================================
+      window.setPhotoStyle = function (style) {
+        const styles = ['ovalo', 'arco', 'circulo', 'editorial', 'esmeralda'];
+        styles.forEach(s => {
+          const frame = document.getElementById(`photo-frame-${s}`);
+          const btn = document.getElementById(`btn-photo-${s}`);
+          if (frame) {
+            if (s === style) {
+              frame.classList.remove('hidden');
+              frame.classList.add('animate-fadeIn');
+            } else {
+              frame.classList.add('hidden');
+              frame.classList.remove('animate-fadeIn');
+            }
+          }
+          if (btn) {
+            if (s === style) {
+              btn.className = "photo-style-btn py-2 px-2.5 rounded-xl border-2 border-[#C59B27] bg-[#FAF9F6] text-[#1A2216] font-sans text-xs font-bold tracking-wider transition-all shadow-xs cursor-pointer";
+            } else {
+              btn.className = "photo-style-btn py-2 px-2.5 rounded-xl border border-[#DFE3D8] bg-white hover:border-[#C59B27] text-[#4A5640] font-sans text-xs font-medium tracking-wider transition-all shadow-xs cursor-pointer";
+            }
+          }
+        });
+        try {
+          localStorage.setItem('selected_photo_style', style);
+        } catch (e) {}
+      };
+
+      // Inicializar estilo guardado o por defecto 'ovalo'
+      try {
+        const savedStyle = localStorage.getItem('selected_photo_style') || 'ovalo';
+        window.setPhotoStyle(savedStyle);
+      } catch (e) {
+        window.setPhotoStyle('ovalo');
+      }
 
     });
   </script>
